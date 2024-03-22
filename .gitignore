@@ -7,7 +7,7 @@ node_modules/
 
 # Test coverage
 coverage/
-
+.idea
 # Build output
 dist/
 

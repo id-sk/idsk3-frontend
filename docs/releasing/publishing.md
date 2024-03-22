@@ -26,7 +26,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
    npm version <NEW VERSION NUMBER> --no-git-tag-version --workspace govuk-frontend
    ```
 
-   This step will update [`govuk-frontend`'s `package.json`](/packages/govuk-frontend/package.json) and project [`package-lock.json`](/package-lock.json) files.
+   This step will update [`govuk-frontend`'s `package.json`](/packages/idsk-frontend/package.json) and project [`package-lock.json`](/package-lock.json) files.
 
    Do not commit the changes.
 
@@ -45,7 +45,7 @@ Developers should pair on releases. When remote working, it can be useful to be 
 
 7. Run `npm run build-release` to:
 
-   - build GOV.UK Frontend into [the package's `/dist`](/packages/govuk-frontend/dist) and [root `/dist`](/dist) directories
+   - build GOV.UK Frontend into [the package's `/dist`](/packages/idsk-frontend/dist) and [root `/dist`](/dist) directories
    - commit the changes
    - push a branch to GitHub
 

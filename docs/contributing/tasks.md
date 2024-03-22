@@ -74,7 +74,7 @@ Gulp tasks from npm workspaces (such as the review app) can be run as shown:
 
 This will list out all available tasks for the review app.
 
-GOV.UK Frontend package build Gulp tasks are defined in [`packages/govuk-frontend/gulpfile.mjs`](/packages/govuk-frontend/gulpfile.mjs) and the [`packages/govuk-frontend/tasks/`](/packages/govuk-frontend/tasks) folder.
+GOV.UK Frontend package build Gulp tasks are defined in [`packages/govuk-frontend/gulpfile.mjs`](/packages/idsk-frontend/gulpfile.mjs) and the [`packages/govuk-frontend/tasks/`](/packages/idsk-frontend/tasks) folder.
 
 **`npx --workspace govuk-frontend -- gulp --tasks`**
 

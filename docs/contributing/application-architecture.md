@@ -45,7 +45,7 @@
 
     - `src/`
 
-      Source files. See [README.md](/packages/govuk-frontend/src/README.md) in the src directory for details.
+      Source files. See [README.md](/packages/idsk-frontend/src/README.md) in the src directory for details.
 
     - `tasks/`
 

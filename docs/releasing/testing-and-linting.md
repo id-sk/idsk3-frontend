@@ -105,7 +105,7 @@ Tests should be written using ES modules (`*.mjs`) by default, but use CommonJS 
 
 We write functional tests for every component to check the output of our Nunjucks code. These are found in `template.test.js` files in each component directory. These Nunjucks tests render the component examples defined in the component yaml files, and assert that the HTML tags, attributes and classes are as expected. For example: checking that when you pass in an `id` to the component using the Nunjucks macro, it outputs the component with an `id` attribute equal to that value.
 
-If a component uses JavaScript, we also write functional tests in a `[component name].test.js` file, for example [checkboxes.test.js](/packages/govuk-frontend/src/govuk/components/checkboxes/checkboxes.test.js). These component tests check that interactions, such as a mouse click, have the expected result.
+If a component uses JavaScript, we also write functional tests in a `[component name].test.js` file, for example [checkboxes.test.js](/packages/idsk-frontend/src/govuk/components/checkboxes/checkboxes.test.js). These component tests check that interactions, such as a mouse click, have the expected result.
 
 If you want to inspect a test that's running in the browser, configure Jest Puppeteer in non-headless mode with the environment variable `HEADLESS=false` and then use [Jest Puppeteer's debug mode](https://github.com/argos-ci/jest-puppeteer/blob/main/README.md#debug-mode) to pause the test execution.
 
@@ -117,7 +117,7 @@ You should also test component Javascript logic with unit tests, in a `[componen
 
 ### Global tests
 
-We write functional tests for checking our JavaScript exports and our global sass variables - see [all.test.mjs](/packages/govuk-frontend/src/govuk/all.test.mjs) and [components/globals.test.js](/packages/govuk-frontend/src/govuk/components/globals.test.js) for examples of global tests we run.
+We write functional tests for checking our JavaScript exports and our global sass variables - see [all.test.mjs](/packages/idsk-frontend/src/govuk/all.test.mjs) and [components/globals.test.js](/packages/idsk-frontend/src/govuk/components/globals.test.js) for examples of global tests we run.
 
 ### Conventions
 

@@ -59,7 +59,7 @@ This includes:
 
 ### npm package
 
-The other primary way is through what is [published to npm](/packages/govuk-frontend).
+The other primary way is through what is [published to npm](/packages/idsk-frontend).
 
 This includes:
 

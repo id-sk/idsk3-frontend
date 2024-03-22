@@ -12,7 +12,7 @@ Stats are shown in the review app [deployed to Heroku](https://govuk-frontend-re
 
 ## Stats for previous version
 
-GOV.UK Frontend is resolved from [./packages/govuk-frontend](../../packages/govuk-frontend/) unless a previous version is installed locally:
+GOV.UK Frontend is resolved from [./packages/govuk-frontend](../../packages/idsk-frontend/) unless a previous version is installed locally:
 
 ```shell
 npm install govuk-frontend@4.7.0 --save --workspace @govuk-frontend/stats
