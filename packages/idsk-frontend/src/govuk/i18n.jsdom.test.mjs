@@ -49,7 +49,7 @@ describe('I18n', () => {
         const i18n = new I18n(translations)
         expect(() => {
           i18n.t('nameString')
-        }).toThrowError(
+        }).toThrow(
           'i18n: cannot replace placeholders in string if no option data provided'
         )
       })
@@ -58,7 +58,7 @@ describe('I18n', () => {
         const i18n = new I18n(translations)
         expect(() => {
           i18n.t('nameString', {})
-        }).toThrowError(
+        }).toThrow(
           'i18n: no data found to replace %{name} placeholder in string'
         )
       })
@@ -67,7 +67,7 @@ describe('I18n', () => {
         const i18n = new I18n(translations)
         expect(() => {
           i18n.t('nameString', { unrelatedThing: 'hello' })
-        }).toThrowError(
+        }).toThrow(
           'i18n: no data found to replace %{name} placeholder in string'
         )
       })
@@ -101,7 +101,7 @@ describe('I18n', () => {
         })
         expect(() => {
           i18n.t('age', {})
-        }).toThrowError(
+        }).toThrow(
           'i18n: no data found to replace %{valueOf} placeholder in string'
         )
       })
@@ -208,8 +208,10 @@ describe('I18n', () => {
       it('interpolates the count variable into the correct plural form', () => {
         const i18n = new I18n(
           {
-            'test.one': '%{count} test',
-            'test.other': '%{count} tests'
+            test: {
+              one: '%{count} test',
+              other: '%{count} tests'
+            }
           },
           {
             locale: 'en'
@@ -245,8 +247,10 @@ describe('I18n', () => {
 
       const i18n = new I18n(
         {
-          'test.one': 'test',
-          'test.other': 'test'
+          test: {
+            one: 'test',
+            other: 'test'
+          }
         },
         {
           locale: 'en'
@@ -254,14 +258,16 @@ describe('I18n', () => {
       )
 
       expect(i18n.getPluralSuffix('test', 1)).toBe('one')
-      expect(IntlPluralRulesSelect).toBeCalledWith(1)
+      expect(IntlPluralRulesSelect).toHaveBeenCalledWith(1)
     })
 
     it('falls back to internal fallback rules', () => {
       const i18n = new I18n(
         {
-          'test.one': 'test',
-          'test.other': 'test'
+          test: {
+            one: 'test',
+            other: 'test'
+          }
         },
         {
           locale: 'en'
@@ -278,14 +284,16 @@ describe('I18n', () => {
       )
 
       i18n.getPluralSuffix('test', 1)
-      expect(selectPluralFormUsingFallbackRules).toBeCalledWith(1)
+      expect(selectPluralFormUsingFallbackRules).toHaveBeenCalledWith(1)
     })
 
     it('returns the preferred plural form for the locale if a translation exists', () => {
       const i18n = new I18n(
         {
-          'test.one': 'test',
-          'test.other': 'test'
+          test: {
+            one: 'test',
+            other: 'test'
+          }
         },
         {
           locale: 'en'
@@ -304,7 +312,9 @@ describe('I18n', () => {
       ({ count }) => {
         const i18n = new I18n(
           {
-            'test.other': 'test'
+            test: {
+              other: 'test'
+            }
           },
           {
             locale: 'cy'
@@ -318,7 +328,9 @@ describe('I18n', () => {
     it('logs a console warning when falling back to `other`', () => {
       const i18n = new I18n(
         {
-          'test.other': 'test'
+          test: {
+            other: 'test'
+          }
         },
         {
           locale: 'en'
@@ -342,13 +354,15 @@ describe('I18n', () => {
 
       expect(() => {
         i18n.getPluralSuffix('test', 2)
-      }).toThrowError('i18n: Plural form ".other" is required for "en" locale')
+      }).toThrow('i18n: Plural form ".other" is required for "en" locale')
     })
 
     it('throws an error if a plural form is not provided and neither is `other`', () => {
       const i18n = new I18n(
         {
-          'test.one': 'test'
+          test: {
+            one: 'test'
+          }
         },
         {
           locale: 'en'
@@ -357,13 +371,15 @@ describe('I18n', () => {
 
       expect(() => {
         i18n.getPluralSuffix('test', 2)
-      }).toThrowError('i18n: Plural form ".other" is required for "en" locale')
+      }).toThrow('i18n: Plural form ".other" is required for "en" locale')
     })
 
     it('returns `other` for non-numbers', () => {
       const i18n = new I18n(
         {
-          'test.other': 'test'
+          test: {
+            other: 'test'
+          }
         },
         {
           locale: 'en'

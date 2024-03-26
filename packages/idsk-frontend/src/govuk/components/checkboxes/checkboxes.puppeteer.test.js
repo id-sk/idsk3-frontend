@@ -53,9 +53,11 @@ describe('Checkboxes', () => {
           $component = await page.$('.govuk-checkboxes')
           $inputs = await $component.$$('.govuk-checkboxes__input')
           $conditionals = await $component.$$('.govuk-checkboxes__conditional')
+        })
 
-          expect($inputs.length).toBe(3)
-          expect($conditionals.length).toBe(3)
+        it('includes the expected number of inputs and conditionals', () => {
+          expect($inputs).toHaveLength(3)
+          expect($conditionals).toHaveLength(3)
         })
 
         it('has no ARIA attributes applied', async () => {
@@ -66,8 +68,8 @@ describe('Checkboxes', () => {
             '.govuk-checkboxes__input[aria-controls]'
           )
 
-          expect($inputsWithAriaExpanded.length).toBe(0)
-          expect($inputsWithAriaControls.length).toBe(0)
+          expect($inputsWithAriaExpanded).toHaveLength(0)
+          expect($inputsWithAriaControls).toHaveLength(0)
         })
 
         it('falls back to making all conditional content visible', async () => {
@@ -199,11 +201,13 @@ describe('Checkboxes', () => {
       describe('with conditional items with special characters', () => {
         it('does not error when ID of revealed content contains special characters', async () => {
           // Errors logged to the console will cause this test to fail
-          await render(
-            page,
-            'checkboxes',
-            examples['with conditional items with special characters']
-          )
+          return expect(
+            render(
+              page,
+              'checkboxes',
+              examples['with conditional items with special characters']
+            )
+          ).resolves.not.toThrow()
         })
       })
     })

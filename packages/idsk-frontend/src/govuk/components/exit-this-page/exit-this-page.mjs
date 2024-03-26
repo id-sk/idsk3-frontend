@@ -1,4 +1,4 @@
-import { mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs'
+import { mergeConfigs } from '../../common/index.mjs'
 import { normaliseDataset } from '../../common/normalise-dataset.mjs'
 import { ElementError } from '../../errors/index.mjs'
 import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
@@ -102,10 +102,10 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     this.config = mergeConfigs(
       ExitThisPage.defaults,
       config,
-      normaliseDataset($module.dataset)
+      normaliseDataset(ExitThisPage, $module.dataset)
     )
 
-    this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'))
+    this.i18n = new I18n(this.config.i18n)
     this.$module = $module
     this.$button = $button
 
@@ -284,10 +284,7 @@ export class ExitThisPage extends GOVUKFrontendComponent {
     // This works because using Shift as a modifier key (e.g. pressing Shift + A)
     // will fire TWO keyup events, one for A (with e.shiftKey: true) and the other
     // for Shift (with e.shiftKey: false).
-    if (
-      (event.key === 'Shift' || event.keyCode === 16 || event.which === 16) &&
-      !this.lastKeyWasModified
-    ) {
+    if (event.key === 'Shift' && !this.lastKeyWasModified) {
       this.keypressCounter += 1
 
       // Update the indicator before the below if statement can reset it back to 0
@@ -440,6 +437,18 @@ export class ExitThisPage extends GOVUKFrontendComponent {
       pressOneMoreTime: 'Shift, press 1 more time to exit.'
     }
   })
+
+  /**
+   * Exit this page config schema
+   *
+   * @constant
+   * @satisfies {Schema}
+   */
+  static schema = Object.freeze({
+    properties: {
+      i18n: { type: 'object' }
+    }
+  })
 }
 
 /**
@@ -466,4 +475,8 @@ export class ExitThisPage extends GOVUKFrontendComponent {
  *   the user they must press the activation key two more times.
  * @property {string} [pressOneMoreTime] - Screen reader announcement informing
  *   the user they must press the activation key one more time.
+ */
+
+/**
+ * @typedef {import('../../common/index.mjs').Schema} Schema
  */

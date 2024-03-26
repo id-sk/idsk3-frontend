@@ -4,6 +4,86 @@ For advice on how to use these release notes see [our guidance on staying up to 
 
 ## Unreleased
 
+### New features
+
+#### Use the Passwords input component to help users accessibly enter passwords
+
+The [Password input component](https://design-system.service.gov.uk/components/password-input/) allows users to toggle the visibility of passwords and enter their passwords in plain text if they choose to do so.
+
+This helps users use longer and more complex passwords without needing to remember what they've already typed.
+
+This change was introduced in [pull request #4442: Create password input component](https://github.com/alphagov/govuk-frontend/pull/4442). Thanks to [@andysellick](https://github.com/andysellick) for the original contribution.
+
+### Recommended changes
+
+#### Update the HTML for the character count
+
+We've updated the HTML for the character count.
+
+The component wrapper `data-module="govuk-character-count"` and its form group `class="govuk-form-group"` are now combined as the same `<div>`. The hint text used as the count message is now placed directly after the `<textarea>`.
+
+If you're not using Nunjucks macros, then you should:
+
+- move all classes and attributes from the form group `<div>` to the component wrapper `<div>`
+- remove the opening `<div>` and closing `</div>` tags used by the form group
+- check the count message is now directly after the `<textarea>`
+
+The following example shows some HTML and the difference once it is updated.
+
+HTML before:
+
+```html
+<div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="100">
+  <div class="govuk-form-group">
+    <!-- // Label, hint, error and textarea -->
+  </div>
+  <!-- // Count message -->
+</div>
+```
+
+HTML after:
+
+```html
+<div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="100">
+  <!-- // Label, hint, error, textarea and count message -->
+</div>
+```
+
+Check your changes against [the character count example in the Design System](https://design-system.service.gov.uk/components/character-count/#character-count-example) to make sure you have correctly implemented them.
+
+This change was introduced in [pull request #4566: Use Character count `formGroup` as module wrapper](https://github.com/alphagov/govuk-frontend/pull/4566).
+
+#### Remove redundant `role` attributes from elements
+
+We've made minor changes to the HTML of the page template, as well as the header, footer and pagination components.
+
+You can update your HTML to remove the `role` attribute from some elements. These include:
+
+- the `main` role on the `main` element in the template.
+- the `banner` role on the `header` element in the header component.
+- the `contentinfo` role on the `footer` element in the footer component.
+- the `navigation` role on the `nav` element in the pagination component.
+
+These roles were present to support legacy browsers, such as older versions of Internet Explorer. GOV.UK Frontend no longer supports these browsers, so the roles can now be removed.
+
+If you're using the Nunjucks versions of the page template or these components, you don't need to change anything.
+
+This change was introduced in [pull request #4854: Remove redundant `role` attributes](https://github.com/alphagov/govuk-frontend/pull/4854).
+
+### Fixes
+
+We've fixed an upstream issue in the [cssnano npm package](https://www.npmjs.com/package/cssnano) that caused elements with transparency to render incorrectly in Internet Explorer 11. This affected the pre-compiled CSS files in the [GOV.UK Frontend npm package](https://www.npmjs.com/package/govuk-frontend) and [GitHub releases](https://github.com/alphagov/govuk-frontend/releases) for versions 5.0, 5.1 and 5.2. This was fixed in:
+
+- [#1573: feat: add preset and plugin options for browserslist](https://github.com/cssnano/cssnano/pull/1573) in the cssnano repository
+- [#4829: Bump the postcss group with 2 updates](https://github.com/alphagov/govuk-frontend/pull/4829)
+
+We've made fixes to GOV.UK Frontend in the following pull requests:
+
+- [#4811: Use `KeyboardEvent.key` over deprecated `KeyboardEvent.keyCode` in the Tabs component](https://github.com/alphagov/govuk-frontend/pull/4811)
+- [#4812: Use `KeyboardEvent.key` over deprecated `KeyboardEvent.keyCode` in the Button component](https://github.com/alphagov/govuk-frontend/pull/4812)
+- [#4813: Remove deprecated `KeyboardEvent` properties from the Exit this Page component](https://github.com/alphagov/govuk-frontend/pull/4813)
+- [#4855: Fix mobile product name being misaligned in new type scale](https://github.com/alphagov/govuk-frontend/pull/4855)
+
 ## 5.2.0 (feature release)
 
 In this release, we’ve adjusted our responsive type scale, which is available behind a feature flag. The type scale change is to make text easier to read on smaller screens. We’ve also deprecated the `useTudorCrown` parameter.

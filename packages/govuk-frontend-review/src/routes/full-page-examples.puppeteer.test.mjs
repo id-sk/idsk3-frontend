@@ -29,7 +29,7 @@ describe('Full page examples', () => {
       const titleText = await getProperty($title, 'textContent')
 
       // Check for matching title
-      expect(titleText).toEqual(`${example.title} - GOV.UK`)
+      expect(titleText).toBe(`${example.title} - GOV.UK`)
     }
   })
 })
@@ -51,6 +51,10 @@ describe('Full page examples (with form submit)', () => {
     {
       title: 'Passport details',
       path: '/full-page-examples/passport-details'
+    },
+    {
+      title: 'Sign in to a service',
+      path: '/full-page-examples/sign-in'
     },
     {
       title: 'Update your account details',
@@ -85,7 +89,7 @@ describe('Full page examples (with form submit)', () => {
       const $title = await page.$('title')
 
       // Check the page responded correctly
-      await expect(getProperty($title, 'textContent')).resolves.toEqual(
+      await expect(getProperty($title, 'textContent')).resolves.toBe(
         `${title} - GOV.UK`
       )
 
@@ -104,7 +108,7 @@ describe('Full page examples (with form submit)', () => {
       const $title = await page.$('title')
 
       // Check the page responded with an error
-      await expect(getProperty($title, 'textContent')).resolves.toEqual(
+      await expect(getProperty($title, 'textContent')).resolves.toBe(
         `Error: ${title} - GOV.UK`
       )
 

@@ -16,7 +16,7 @@ router.post(
       'Enter an email address in the correct format, like name@example.com'
     ),
 
-  body('password').notEmpty().withMessage('Enter your password'),
+  body('password').notEmpty().withMessage('Enter a password'),
 
   (req, res) => {
     const { example } = res.locals

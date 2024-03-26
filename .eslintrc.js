@@ -17,6 +17,7 @@ module.exports = {
       extends: [
         'eslint:recommended',
         'plugin:import/recommended',
+        'plugin:jest/style',
         'plugin:jsdoc/recommended-typescript-flavor',
         'plugin:n/recommended',
         'plugin:promise/recommended',
@@ -32,7 +33,7 @@ module.exports = {
       parserOptions: {
         ecmaVersion: 'latest'
       },
-      plugins: ['import', 'jsdoc', 'n', 'promise'],
+      plugins: ['import', 'jsdoc', 'n', 'promise', 'jest'],
       rules: {
         // Check import or require statements are A-Z ordered
         'import/order': [
@@ -93,7 +94,10 @@ module.exports = {
         // Flow control – avoid continue and else blocks after return statements
         // in if statements
         'no-continue': 'error',
-        'no-else-return': 'error'
+        'no-else-return': 'error',
+
+        // Avoid hard to read multi assign statements
+        'no-multi-assign': 'error'
       },
       settings: {
         jsdoc: {
@@ -137,8 +141,9 @@ module.exports = {
       }
     },
     {
-      // Add plugin for markdown `*.md` code blocks
-      extends: ['plugin:markdown/recommended'],
+      // Add plugin for markdown `*.md` code blocks. Its config is in the new
+      // "flat" format, so we need to use the legacy config
+      extends: ['plugin:markdown/recommended-legacy'],
       files: ['**/*.md'],
       plugins: ['markdown'],
       processor: 'markdown/markdown'
