@@ -1,0 +1,23 @@
+@mixin shadow($x, $y, $blur, $spread, $color) {
+  box-shadow: $x $y $blur $spread $color;
+}
+
+.idsk-shadow-large {
+  @include shadow(0, 24px, 40px, 0, govuk-colour("greyN400"));
+}
+
+.idsk-shadow-medium {
+  @include shadow(0, 12px, 32px, 0, govuk-colour("greyN400"));
+}
+
+.idsk-shadow-small {
+  @include shadow(0, 4px, 8px, 0, govuk-colour("greyN400"));
+}
+
+.idsk-shadow-dialog {
+  @include shadow(0, -8px, 44px, -10px, govuk-colour("greyN400"));
+}
+
+.idsk-shadow-head {
+  @include shadow(0, 10px, 20px, -10px, govuk-colour("greyN400"));
+}

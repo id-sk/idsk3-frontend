@@ -1,0 +1,58 @@
+{% extends "layouts/examples.njk" %}
+
+{% block beforeContent %}
+  {#  {{ govukBackLink({#}
+  {#    href: "/"#}
+  {#  }) }}#}
+{% endblock %}
+
+{% block content %}
+  <style>
+    .flex {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-gap: 50px;
+    }
+    .block {
+      border: 1px solid grey;
+      border-radius: 20px;
+      width: 150px;
+      height: 150px;
+    }
+  </style>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Shadow
+      </h1>
+
+      <!-- Headings -->
+
+      <section>
+        <div class="flex">
+          <div>
+            <span class="govuk-body-s font-bold">Tieň veľký</span>
+            <div class="block idsk-shadow-large"></div>
+          </div>
+          <div>
+            <span class="govuk-body-s font-bold">Tieň stredný</span>
+            <div class="block idsk-shadow-medium"></div>
+          </div>
+          <div>
+            <span class="govuk-body-s font-bold">Tieň malý</span>
+            <div class="block idsk-shadow-small"></div>
+          </div>
+          <div>
+            <span class="govuk-body-s font-bold">Tieň dialog</span>
+            <div class="block idsk-shadow-dialog"></div>
+          </div>
+          <div>
+            <span class="govuk-body-s font-bold">Tieň hlavička</span>
+            <div class="block idsk-shadow-head"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+{% endblock %}
