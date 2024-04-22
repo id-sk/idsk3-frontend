@@ -60,7 +60,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
   $button-shadow-size: $govuk-border-width-form-element;
 
   .govuk-button {
-    @include govuk-font($size: 19, $line-height: 19px);
+    @include govuk-font($size: 16, $line-height: 19px, $weight: bold);
 
     box-sizing: border-box;
     display: inline-block;
@@ -155,11 +155,96 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
     &:active::before {
       top: -($govuk-border-width-form-element + $button-shadow-size);
     }
+
+    &__success {
+      background-color: govuk-colour("green");
+
+      &:link,
+      &:visited,
+      &:active,
+      &:hover {
+        background-color: govuk-colour("dark-green");
+      }
+    }
+    &__warning {
+      background-color: $govuk-warning-button-colour;
+
+      &,
+      &:link,
+      &:visited,
+      &:active,
+      &:hover {
+        color: $govuk-warning-button-text-colour;
+      }
+
+      &:hover {
+        background-color: $govuk-warning-button-hover-colour;
+
+        &[disabled] {
+          background-color: $govuk-warning-button-colour;
+        }
+      }
+    }
+    &--sec {
+      background-color: govuk-colour("light-blue");
+      border: 2px solid govuk-colour("dark-blue");
+
+      &,
+      &:link,
+      &:visited,
+      &:active,
+      &:hover {
+        color: govuk-colour("dark-blue");
+      }
+
+      &:hover {
+        background-color: $govuk-secondary-button-hover-colour;
+
+        &[disabled] {
+          background-color: $govuk-secondary-button-colour;
+        }
+      }
+
+      &__success {
+        border-color: govuk-colour("green");
+        color: govuk-colour("dark-green");
+        background: govuk-colour("medium-green");
+      }
+      &__warning {
+        border-color: govuk-colour("red");
+        color: govuk-colour("dark-red");
+        background: govuk-colour("medium-red");
+      }
+      &__contrast {
+        border-color: govuk-colour("blue");
+        color: govuk-colour("blue");
+        background: govuk-colour("greyN200");
+      }
+    }
+    &--texted {
+      border: none;
+      background-color: transparent;
+      color: govuk-colour("blue");
+      text-decoration: underline;
+
+      &:hover {
+        background-color: transparent;
+        color: govuk-colour("dark-grey");
+        text-decoration: underline;
+      }
+
+      &__success {
+        color: govuk-colour("green");
+      }
+      &__warning {
+        color: govuk-colour("red");
+      }
+      &__contrast {
+        color: govuk-colour("blue");
+      }
+    }
   }
 
-  .govuk-button--success {
-    background-color: govuk-colour("green");
-  }
 
   .govuk-button[disabled] {
     //opacity: (0.5);
@@ -173,48 +258,6 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
     //  top: 0;
     //  box-shadow: 0 $button-shadow-size 0 $govuk-button-shadow-colour; // s0
     //}
-  }
-
-  .govuk-button--secondary {
-    background-color: $govuk-secondary-button-colour;
-    box-shadow: 0 $button-shadow-size 0 $govuk-secondary-button-shadow-colour;
-
-    &,
-    &:link,
-    &:visited,
-    &:active,
-    &:hover {
-      color: $govuk-secondary-button-text-colour;
-    }
-
-    &:hover {
-      background-color: $govuk-secondary-button-hover-colour;
-
-      &[disabled] {
-        background-color: $govuk-secondary-button-colour;
-      }
-    }
-  }
-
-  .govuk-button--warning {
-    background-color: $govuk-warning-button-colour;
-    box-shadow: 0 $button-shadow-size 0 $govuk-warning-button-shadow-colour;
-
-    &,
-    &:link,
-    &:visited,
-    &:active,
-    &:hover {
-      color: $govuk-warning-button-text-colour;
-    }
-
-    &:hover {
-      background-color: $govuk-warning-button-hover-colour;
-
-      &[disabled] {
-        background-color: $govuk-warning-button-colour;
-      }
-    }
   }
 
   .govuk-button--inverse {
