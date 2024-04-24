@@ -56,6 +56,7 @@ examples:
   - name: default
     options:
       text: Primary button
+      classes: govuk-button__basic
   - name: selected
     options:
       text: Selected primary button
@@ -65,11 +66,12 @@ examples:
     options:
       name: active
       text: Active
-      classes: :active
+      classes: govuk-button__basic:active
   - name: input disabled
     options:
       element: input
       text: Explicit input button disabled
+      classes: govuk-button__basic
       disabled: true
   - name: successfully
     options:
