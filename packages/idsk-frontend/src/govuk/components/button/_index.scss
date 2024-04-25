@@ -144,13 +144,19 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
       top: -($govuk-border-width-form-element + $button-shadow-size);
     }
 
+    &[disabled] {
+      background-color: govuk-colour("greyN500");
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
     &__basic {
       &:active {
         background-color: govuk-colour("dark-blue");
       }
 
       &[disabled] {
-        background-color: $govuk-warning-button-colour;
+        background-color: govuk-colour("greyN500");
         cursor: not-allowed;
         box-shadow: none;
       }
@@ -283,6 +289,10 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
           color: govuk-colour("dark-blue");
         }
       }
+    }
+
+    &__large {
+      padding: 0.75rem 1.25rem;
     }
   }
 

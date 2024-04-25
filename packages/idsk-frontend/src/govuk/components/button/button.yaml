@@ -57,16 +57,12 @@ examples:
     options:
       text: Primary button
       classes: govuk-button__basic
-  - name: selected
-    options:
-      text: Selected primary button
-      classes: :focus
   - name: with active state
     description: Simulate triggering the :active CSS pseudo-class, not available in the production build.
     options:
       name: active
       text: Active
-      classes: govuk-button__basic:active
+      classes: govuk-button__basic :active
   - name: input disabled
     options:
       element: input
@@ -96,7 +92,13 @@ examples:
     options:
       name: focus
       text: Focussed
-      classes: :focus
+      classes: :focus-visible
+  - name: large
+    description: Large button
+    options:
+      name: Button Large
+      text: Button Large
+      classes: govuk-button__large
   - name: secondary
     description: A button for secondary actions
     options:
