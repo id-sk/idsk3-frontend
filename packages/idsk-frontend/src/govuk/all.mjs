@@ -93,13 +93,8 @@ export {
  * @typedef {import('./components/accordion/accordion.mjs').AccordionConfig} AccordionConfig
  * @typedef {import('./components/accordion/accordion.mjs').AccordionTranslations} AccordionTranslations
  * @typedef {import('./components/button/button.mjs').ButtonConfig} ButtonConfig
- * @typedef {import('./components/character-count/character-count.mjs').CharacterCountConfig} CharacterCountConfig
- * @typedef {import('./components/character-count/character-count.mjs').CharacterCountTranslations} CharacterCountTranslations
  * @typedef {import('./components/error-summary/error-summary.mjs').ErrorSummaryConfig} ErrorSummaryConfig
- * @typedef {import('./components/exit-this-page/exit-this-page.mjs').ExitThisPageConfig} ExitThisPageConfig
- * @typedef {import('./components/exit-this-page/exit-this-page.mjs').ExitThisPageTranslations} ExitThisPageTranslations
  * @typedef {import('./components/notification-banner/notification-banner.mjs').NotificationBannerConfig} NotificationBannerConfig
- * @typedef {import('./components/password-input/password-input.mjs').PasswordInputConfig} PasswordInputConfig
  */
 
 /**
