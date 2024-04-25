@@ -80,11 +80,8 @@ export {
  * @typedef {object} Config
  * @property {AccordionConfig} [accordion] - Accordion config
  * @property {ButtonConfig} [button] - Button config
- * @property {CharacterCountConfig} [characterCount] - Character Count config
  * @property {ErrorSummaryConfig} [errorSummary] - Error Summary config
- * @property {ExitThisPageConfig} [exitThisPage] - Exit This Page config
  * @property {NotificationBannerConfig} [notificationBanner] - Notification Banner config
- * @property {PasswordInputConfig} [passwordInput] - Password input config
  */
 
 /**
