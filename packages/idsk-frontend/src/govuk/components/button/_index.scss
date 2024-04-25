@@ -87,10 +87,8 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
 
     &:focus-visible {
       z-index: 10;
-      outline-style: solid;
-      outline-width: 3px;
+      outline: govuk-colour("orange") solid 3px;
       outline-offset: 2px;
-      outline-color: govuk-colour("orange");
     }
 
     // Ensure that any global link styles are overridden
@@ -102,14 +100,14 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
     }
 
     &:hover {
-      box-shadow: 0 0 0 2px #000;
+      box-shadow: 0 0 0 2px #000000;
     }
 
-    //&:active {
+    // &:active {
     //  // Bump the button down so it looks like its being pressed in
     //  //top: $button-shadow-size;
     //  background-color: #072c66;
-    //}
+    // }
 
     // The following adjustments do not work for <input type="button"> as
     // non-container elements cannot include pseudo elements (i.e. ::before).
@@ -146,8 +144,8 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
 
     &[disabled] {
       background-color: govuk-colour("greyN500");
-      cursor: not-allowed;
       box-shadow: none;
+      cursor: not-allowed;
     }
 
     &__basic {
@@ -157,10 +155,9 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
 
       &[disabled] {
         background-color: govuk-colour("greyN500");
-        cursor: not-allowed;
         box-shadow: none;
+        cursor: not-allowed;
       }
-
     }
 
     &__success {
@@ -174,26 +171,29 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
         background: govuk-colour("dark-green");
       }
     }
+
     &__warning {
       background-color: $govuk-warning-button-colour;
 
       &:hover {
         box-shadow: 0 0 0 2px govuk-colour("dark-red");
       }
+
       &:active {
         background: govuk-colour("dark-red");
       }
     }
+
     &--sec {
-      background-color: govuk-colour("light-blue");
       border: 2px solid govuk-colour("blue");
       color: govuk-colour("dark-blue");
+      background-color: govuk-colour("light-blue");
 
       &[disabled] {
-        color: govuk-colour("dark-grey");
-        box-shadow: none;
         border-color: transparent;
+        color: govuk-colour("dark-grey");
         background: none;
+        box-shadow: none;
 
         &:hover {
           box-shadow: none;
@@ -210,8 +210,8 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
       }
 
       &:active {
-        box-shadow: 0 0 0 2px govuk-colour("dark-blue");
         border-color: govuk-colour("dark-blue");
+        box-shadow: 0 0 0 2px govuk-colour("dark-blue");
       }
 
       &__success {
@@ -222,11 +222,13 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
         &:hover {
           box-shadow: 0 0 0 2px govuk-colour("green");
         }
+
         &:active {
           border-color: govuk-colour("dark-green");
           box-shadow: 0 0 0 2px govuk-colour("dark-green");
         }
       }
+
       &__warning {
         border-color: govuk-colour("red");
         color: govuk-colour("dark-red");
@@ -235,11 +237,13 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
         &:hover {
           box-shadow: 0 0 0 2px govuk-colour("red");
         }
+
         &:active {
           border-color: govuk-colour("dark-red");
           box-shadow: 0 0 0 2px govuk-colour("dark-red");
         }
       }
+
       &__contrast {
         border-color: govuk-colour("blue");
         color: govuk-colour("blue");
@@ -248,6 +252,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
         &:hover {
           box-shadow: 0 0 0 2px govuk-colour("blue");
         }
+
         &:active {
           border-color: govuk-colour("medium-blue");
           color: govuk-colour("medium-blue");
@@ -255,16 +260,17 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
         }
       }
     }
+
     &--texted {
       border: none;
-      background-color: transparent;
       color: govuk-colour("blue");
+      background-color: transparent;
       text-decoration: underline;
 
       &:hover {
-        box-shadow: none;
-        background-color: transparent;
         color: govuk-colour("dark-grey");
+        background-color: transparent;
+        box-shadow: none;
         text-decoration: underline;
       }
 
@@ -275,6 +281,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
           color: govuk-colour("dark-green");
         }
       }
+
       &__warning {
         color: govuk-colour("red");
 
@@ -282,6 +289,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
           color: govuk-colour("dark-red");
         }
       }
+
       &__contrast {
         color: govuk-colour("blue");
 
