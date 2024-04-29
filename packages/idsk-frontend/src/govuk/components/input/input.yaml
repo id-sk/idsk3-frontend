@@ -416,16 +416,6 @@ examples:
         text: With attributes
       attributes:
         data-attribute: my data value
-  - name: hint with describedBy
-    hidden: true
-    options:
-      id: with-hint-describedby
-      name: with-hint-describedby
-      label:
-        text: With hint describedBy
-      describedBy: test-target-element
-      hint:
-        text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
   - name: error with describedBy
     hidden: true
     options:
