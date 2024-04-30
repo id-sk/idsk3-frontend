@@ -182,24 +182,19 @@
     }
 
     .govuk-accordion__section-button {
+      display: flex;
       width: 100%;
 
-      padding: govuk-spacing(2) 0 0 0;
+      padding: 30px 20px 30px 30px;
 
-      border: 0;
-
-      border-top: $govuk-accordion-bottom-border-width solid $govuk-border-colour;
-
-      // Visually separate the section from the one underneath when user changes colours in their
-      // browser. See https://github.com/alphagov/govuk-frontend/issues/2321#issuecomment-924201488
-      border-bottom: govuk-spacing(2) solid transparent;
+      border: 1px solid govuk-colour("greyN300");
+      border-radius: 10px;
 
       color: $govuk-text-colour;
-      background: none;
-
-      text-align: left;
+      background: govuk-colour("greyN90");
       // Section headers have a pointer cursor as an additional affordance
       cursor: pointer;
+      justify-content: space-between;
       -webkit-appearance: none;
 
       @include govuk-media-query($from: tablet) {
@@ -209,45 +204,6 @@
       &:active {
         color: $govuk-link-active-colour;
         background: none;
-      }
-
-      &:hover {
-        color: $govuk-accordion-base-colour;
-        background: $govuk-accordion-hover-colour;
-
-        .govuk-accordion__section-toggle-text {
-          color: $govuk-accordion-base-colour;
-        }
-
-        .govuk-accordion-nav__chevron {
-          color: $govuk-accordion-base-colour;
-          background: $govuk-accordion-base-colour;
-        }
-
-        .govuk-accordion-nav__chevron::after {
-          color: $govuk-accordion-hover-colour;
-        }
-      }
-
-      &:focus {
-        // Remove default focus border around button as
-        // styling is being applied to inner text elements that receive focus
-        outline: 0;
-
-        .govuk-accordion__section-heading-text-focus,
-        .govuk-accordion__section-summary-focus,
-        .govuk-accordion__section-toggle-focus {
-          @include govuk-focused-text;
-        }
-
-        .govuk-accordion-nav__chevron {
-          color: $govuk-accordion-base-colour;
-          background: $govuk-accordion-base-colour;
-        }
-
-        .govuk-accordion-nav__chevron::after {
-          color: $govuk-accordion-icon-focus-colour;
-        }
       }
 
       // Remove default button focus outline in Firefox
