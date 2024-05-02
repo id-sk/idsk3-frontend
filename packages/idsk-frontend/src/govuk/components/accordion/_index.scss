@@ -10,6 +10,9 @@
 
   .govuk-accordion__section {
     padding-top: govuk-spacing(3);
+    border: 1px solid govuk-colour("greyN300");
+    border-radius: 10px;
+    background-color: govuk-colour("greyN90");
   }
 
   .govuk-accordion__section-heading {
@@ -50,6 +53,9 @@
     // support for `content-visibility` paired with [hidden=until-found]
     .govuk-accordion__section-content {
       display: none;
+      padding-right: 30px;
+      padding-left: 30px;
+      border-radius: 5px;
 
       @include govuk-responsive-padding(3, "top");
       @include govuk-responsive-padding(8, "bottom");
@@ -71,6 +77,10 @@
     // Show the body of expanded sections
     .govuk-accordion__section--expanded .govuk-accordion__section-content {
       display: block;
+    }
+
+    .govuk-accordion__section--expanded .govuk-accordion__section-header {
+      border-bottom: 1px solid govuk-colour("greyN300");
     }
 
     .govuk-accordion__show-all {
@@ -186,12 +196,10 @@
       width: 100%;
 
       padding: 30px 20px 30px 30px;
-
-      border: 1px solid govuk-colour("greyN300");
-      border-radius: 10px;
-
+      border: none;
       color: $govuk-text-colour;
-      background: govuk-colour("greyN90");
+      background: none;
+      text-decoration: underline;
       // Section headers have a pointer cursor as an additional affordance
       cursor: pointer;
       justify-content: space-between;
