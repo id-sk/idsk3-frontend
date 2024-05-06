@@ -37,6 +37,49 @@
 <header class="govuk-header {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-header"
   {{- govukAttributes(params.attributes) }}>
   <div class="govuk-header__container {{ params.containerClasses | default("govuk-width-container", true) }}">
+
+    <div class="idsk-secondary-navigation__header">
+      <div class="idsk-secondary-navigation__heading">
+        <div class="idsk-secondary-navigation__heading-title">
+          <span class="idsk-secondary-navigation__heading-mobile">SK</span>
+          <span class="idsk-secondary-navigation__heading-desktop">Oficiálna stránka</span>
+          <button class="idsk-secondary-navigation__heading-button" aria-expanded="false" aria-label="Oficiálna stránka verejnej správy">
+            <span class="idsk-secondary-navigation__heading-mobile">e-Gov</span>
+            <span class="idsk-secondary-navigation__heading-desktop"><b>verejnej správy</b></span>
+            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="idsk-secondary-navigation__heading-button-icon">
+              <path d="m8.71 11.71 2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71Z" fill="currentColor"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="idsk-secondary-navigation__body hidden" data-testid="secnav-children">
+          <div>
+            <div>
+              <h3 class="idsk-text-body-1">Doména gov.sk je oficiálna</h3>
+              <p>Toto je oficiálna webová stránka orgánu verejnej moci Slovenskej republiky. Oficiálne stránky využívajú najmä doménu gov.sk. <a href="https://www.slovensko.sk/sk/agendy/agenda/_organy-verejnej-moci" target="_blank">Odkazy na jednotlivé webové sídla orgánov verejnej moci nájdete na tomto odkaze.</a></p>
+            </div>
+            <div>
+              <h3 class="idsk-text-body-1">Táto stránka je zabezpečená</h3>
+              <p>Buďte pozorní a vždy sa uistite, že zdieľate informácie iba cez zabezpečenú webovú stránku verejnej správy SR. Zabezpečená stránka vždy začína https:// pred názvom domény webového sídla.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="idsk-dropdown__wrapper idsk-secondary-navigation__dropdown">
+        <button class="idsk-button idsk-dropdown" type="button">
+          <span>slovenčina</span>
+          <span class="material-icons">arrow_drop_down</span>
+        </button>
+        <ul id="undefined-dropdown" class="idsk-dropdown__options opacity-0 hidden" data-testid="dropdown-options" style="opacity: 0;">
+          <li class="idsk-dropdown__option idsk-pseudolabel__wrapper" data-pseudolabel="english">
+            <a class="absolute">english</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="govuk-predheader">
+
+    </div>
     <div class="govuk-header__logo">
       <a href="{{ params.homepageUrl | default("/", true) }}" class="govuk-header__link govuk-header__link--homepage">
         {#- The SVG needs `focusable="false"` so that Internet Explorer does
