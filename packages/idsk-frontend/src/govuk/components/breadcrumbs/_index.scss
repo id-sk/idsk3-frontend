@@ -94,6 +94,15 @@
   .govuk-breadcrumbs__link {
     @include govuk-link-common;
     @include govuk-link-style-text;
+
+    padding: 5px;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: govuk-colour("light-blue");
+      font-weight: bold;
+      text-decoration-thickness: 1px;
+    }
   }
 
   .govuk-breadcrumbs--collapse-on-mobile {
