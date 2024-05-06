@@ -71,7 +71,7 @@ export class Accordion extends GOVUKFrontendComponent {
   sectionShowHideToggleFocusClass = 'govuk-accordion__section-toggle-focus'
 
   /** @private */
-  sectionShowHideTextClass = 'govuk-accordion__section-toggle-text'
+  sectionShowHideTextClass = 'material-icons'
 
   /** @private */
   upChevronIconClass = 'material-icons'
@@ -269,6 +269,7 @@ export class Accordion extends GOVUKFrontendComponent {
     }
 
     // Create container for heading text so it can be styled
+    const $headingWrapper = document.createElement('div')
     const $headingText = document.createElement('span')
     $headingText.classList.add(this.sectionHeadingTextClass)
     // Copy the span ID to the heading text to allow it to be referenced by
@@ -310,7 +311,8 @@ export class Accordion extends GOVUKFrontendComponent {
     // 2. Punctuation
     // 3. (Optional: Summary line followed by punctuation)
     // 4. Show / hide toggle
-    $button.appendChild($headingText)
+    $headingWrapper.appendChild($headingText)
+    $button.appendChild($headingWrapper)
     $button.appendChild(this.getButtonPunctuationEl())
 
     // If summary content exists add to DOM in correct order
@@ -335,7 +337,7 @@ export class Accordion extends GOVUKFrontendComponent {
       $summarySpanFocus.innerHTML = $summary.innerHTML
 
       // Replace the original summary `div` with the new summary `span`
-      $summary.parentNode.replaceChild($summarySpan, $summary)
+      // $summary.parentNode.replaceChild($summarySpan, $summary)
 
       $button.appendChild($summarySpan)
       $button.appendChild(this.getButtonPunctuationEl())
@@ -345,6 +347,7 @@ export class Accordion extends GOVUKFrontendComponent {
 
     $heading.removeChild($span)
     $heading.appendChild($button)
+    $headingWrapper.appendChild($summary)
   }
 
   /**
@@ -425,9 +428,7 @@ export class Accordion extends GOVUKFrontendComponent {
       return
     }
 
-    const newButtonText = expanded
-      ? this.i18n.t('hideSection')
-      : this.i18n.t('showSection')
+    const newButtonText = expanded ? 'remove' : 'add'
 
     $showHideText.textContent = newButtonText
     $button.setAttribute('aria-expanded', `${expanded}`)

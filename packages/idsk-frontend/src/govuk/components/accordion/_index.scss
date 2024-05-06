@@ -260,7 +260,7 @@
     .govuk-accordion__section-toggle {
       @include govuk-font-size($size: 19);
       @include govuk-typography-weight-regular;
-      color: $govuk-link-colour;
+      color: govuk-colour("black");
     }
 
     // Add space between the icon and text.

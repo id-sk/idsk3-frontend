@@ -11,9 +11,9 @@
         </span>
       </h{{ headingLevel }}>
       {% if item.summary.html or item.summary.text %}
-      <div class="govuk-accordion__section-summary govuk-body" id="{{ params.id }}-summary-{{ index }}">
-        {{ item.summary.html | safe | trim | indent(8) if item.summary.html else item.summary.text }}
-      </div>
+        <div class="govuk-accordion__section-summary govuk-body" id="{{ params.id }}-summary-{{ index }}">
+          {{ item.summary.html | safe | trim | indent(8) if item.summary.html else item.summary.text }}
+        </div>
       {% endif %}
     </div>
     <div id="{{ params.id }}-content-{{ index }}" class="govuk-accordion__section-content">
