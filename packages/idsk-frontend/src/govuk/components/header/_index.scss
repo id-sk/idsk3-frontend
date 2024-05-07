@@ -13,12 +13,15 @@
   $govuk-header-menu-button-height: 24px;
   $govuk-header-menu-button-width: 80px;
 
+  button {
+    @include govuk-typography-common;
+  }
+
   .govuk-header {
     @include govuk-font($size: 16, $line-height: 1);
 
     border-bottom: govuk-spacing(2) solid govuk-colour("white");
     color: $govuk-header-text;
-    background: $govuk-header-background;
 
     .hidden {
       display: none;
@@ -37,9 +40,7 @@
   .govuk-header__container {
     @include govuk-clearfix;
     position: relative;
-    margin-bottom: -$govuk-header-border-width;
-    padding-top: govuk-spacing($govuk-header-vertical-spacing-value);
-    border-bottom: $govuk-header-border-width solid $govuk-header-border-color;
+    background-color: govuk-colour("dark-blue");
   }
 
   .govuk-header__logotype {
@@ -170,16 +171,16 @@
   }
 
   .govuk-header__logo {
-    @include govuk-responsive-margin($govuk-header-vertical-spacing-value, "bottom");
+    //@include govuk-responsive-margin($govuk-header-vertical-spacing-value, "bottom");
     // Protect the absolute positioned menu button from overlapping with the
     // logo with right padding using the button's width
-    padding-right: $govuk-header-menu-button-width;
+    //padding-right: $govuk-header-menu-button-width;
 
     @include govuk-media-query($from: desktop) {
-      width: 33.33%;
-      padding-right: $govuk-gutter-half;
-      float: left;
-      vertical-align: top;
+      //width: 33.33%;
+      //padding-right: $govuk-gutter-half;
+      //float: left;
+      //vertical-align: top;
 
       // Reset float when logo is the last child, without a navigation
       &:last-child {
@@ -346,6 +347,25 @@
   }
 }
 
+.govuk-header__wrapper {
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 41;
+  display: flex;
+  max-height: 100vh;
+  width: 100%;
+  flex-direction: column;
+}
+
+.idsk-searchbar__wrapper {
+  display: flex;
+}
+
+.idsk-secondary-navigation {
+}
+
 .idsk-secondary-navigation__header {
   display: flex;
   position: relative;
@@ -356,23 +376,13 @@
   min-height: 2.5rem;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 1rem;
-  padding-left: 1rem;
   color: govuk-colour("white");
   justify-content: space-between;
-
   --tw-text-opacity: 1;
-
-  @media (min-width: 1120px) {
-    padding-right: 2rem;
-    padding-left: 2rem;
-  }
 }
 
 .idsk-secondary-navigation__heading-title {
   display: inline-block;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
 }
 
 .idsk-secondary-navigation__heading-button {
@@ -381,8 +391,61 @@
   color: govuk-colour("white");
   background: none;
   font-size: 16px;
-  font-weight: 700;
   letter-spacing: 0.5px;
   cursor: pointer;
   align-items: center;
+}
+
+.govuk-predheader {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  background: green;
+
+  & .govuk-header__btns-search {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.idsk-button {
+  background: none;
+  color: white;
+  border: none;
+  display: inline-flex;
+  @include govuk-font-size($size: 16);
+}
+
+.idsk-secondary-navigation__heading-desktop {
+  display: none;
+}
+
+.idsk-secondary-navigation__heading-button-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.idsk-secondary-navigation__dropdown {
+  position: absolute;
+  right: 0rem;
+}
+
+.idsk-button.idsk-dropdown span:first-child {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@media (min-width: 520px) {
+  .idsk-secondary-navigation__heading-mobile {
+    display: none;
+  }
+  .idsk-secondary-navigation__heading-desktop {
+    display: inline;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

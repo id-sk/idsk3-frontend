@@ -283,7 +283,7 @@ examples:
   - name: custom homepage url
     hidden: true
     options:
-      homepageUrl: /
+      homepageUrl: https://placehold.co/220x40/000000/FFFFFF
   - name: navigation item with attributes
     hidden: true
     options:
