@@ -104,11 +104,21 @@
           <input class="govuk-input" type="search" />
           <button class="govuk-button"><span class="material-icons">search</span></button>
         </div>
-        <button class="govuk-button">Tlacidlo 1</button>
-        <button class="govuk-button">Tlacidlo 2</button>
+        {% if params.actionPanel  %}
+          <div class="govuk-header__actionPanel">
+            <span role="button" class="material-icons">notifications</span>
+            <span role="button" class="material-icons">info</span>
+          {#<span class="material-icons">person</span>#}
+            <img class="profile" src="https://placehold.co/40x40/072C66/FFFFFF?text=Profile" alt="Profile" />
+          </div>
+        {% else %}
+          <button class="govuk-button">Tlacidlo 1</button>
+          <button class="govuk-button">Tlacidlo 2</button>
+        {% endif %}
         {#    End some expression      #}
       </div>
     </div>
+
     {% if params.serviceName or params.navigation | length %}
       <div class="govuk-header__content">
         {% if params.serviceName %}

@@ -1,4 +1,8 @@
 params:
+  - name: actionPanel
+    type: boolean
+    required: false
+    description: Set true or false to show action panel (notification, info, profile)
   - name: homepageUrl
     type: string
     required: false
@@ -102,6 +106,7 @@ examples:
     description: Legacy header with Queen Elizabeth II's crown.
     options:
       useTudorCrown: false
+      actionPanel: true
 
   - name: with service name
     description: If your service is more than a few pages long, you can help users understand where they are by adding the service name.

@@ -21,10 +21,31 @@
     @include govuk-font($size: 16, $line-height: 1);
 
     border-bottom: govuk-spacing(2) solid govuk-colour("white");
-    color: $govuk-header-text;
+    // color: $govuk-header-text;
 
     .hidden {
       display: none;
+    }
+
+    &__actionPanel {
+      display: flex;
+      align-items: center;
+      @media (min-width: 769px) {
+        gap: 20px;
+      }
+      @media (max-width: 769px) {
+        gap: 10px;
+      }
+
+      & .material-icons {
+        font-size: 28px;
+        color: govuk-colour("blueP500");
+        cursor: pointer;
+      }
+
+      .profile {
+        border-radius: 50%;
+      }
     }
   }
 
