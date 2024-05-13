@@ -193,9 +193,10 @@
 
   .govuk-header__content {
     @include govuk-media-query($from: desktop) {
-      width: 66.66%;
-      padding-left: $govuk-gutter-half;
-      float: left;
+    }
+
+    .govuk-header__link {
+      color: govuk-colour("black");
     }
   }
 
@@ -288,7 +289,7 @@
     @include govuk-media-query($from: desktop) {
       display: inline-block;
       margin-right: govuk-spacing(3);
-      padding: govuk-spacing(1) 0;
+      padding: 16px 0;
       border: 0;
     }
 
@@ -300,11 +301,15 @@
   }
 
   .govuk-header__navigation-item--active {
+    border-bottom: 4px solid govuk-colour("dark-blue");
+    color
     a {
+      color: red;
       &:link,
       &:hover,
       &:visited {
-        color: $govuk-header-link-active;
+        color: govuk-colour("dark-blue");
+
       }
 
       // When printing, use the normal blue as this contrasts better with the
@@ -361,6 +366,23 @@
 
 .idsk-searchbar__wrapper {
   display: flex;
+
+  .govuk-input {
+    border-right: none;
+    border-radius: 5px;
+  }
+
+  .govuk-button {
+    //border-top: 2px solid govuk-colour("black");
+    //border-right: 2px solid govuk-colour("black");
+    //border-bottom: 2px solid govuk-colour("black");
+
+    border-radius: 0;
+
+    .material-icons {
+      font-size: 18px;
+    }
+  }
 }
 
 .idsk-secondary-navigation {
@@ -379,6 +401,11 @@
   color: govuk-colour("white");
   justify-content: space-between;
   --tw-text-opacity: 1;
+}
+
+.idsk-secondary-navigation__heading {
+  display: flex;
+  align-items: center;
 }
 
 .idsk-secondary-navigation__heading-title {
@@ -427,8 +454,10 @@
 }
 
 .idsk-secondary-navigation__dropdown {
-  position: absolute;
-  right: 0rem;
+  //position: absolute;
+  //right: 0rem;
+  display: flex;
+  align-items: center;
 }
 
 .idsk-button.idsk-dropdown span:first-child {
