@@ -110,7 +110,7 @@
       </div>
     </div>
     {% if params.serviceName or params.navigation | length %}
-      <div class="govuk-header__content govuk-width-container">
+      <div class="govuk-header__content">
         {% if params.serviceName %}
           {% if params.serviceUrl %}
             <a href="{{ params.serviceUrl }}" class="govuk-header__link govuk-header__service-name">
@@ -123,7 +123,7 @@
           {% endif %}
         {% endif %}
         {% if params.navigation | length %}
-          <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
+          <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-header__navigation govuk-width-container {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
             <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
               {{ menuButtonText }}
             </button>
