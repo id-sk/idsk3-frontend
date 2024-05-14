@@ -45,6 +45,9 @@
 
       .profile {
         border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
       }
     }
   }
@@ -125,7 +128,7 @@
     // - all links get a 3px underline regardless of text size, as there are
     //   multiple grouped elements close to one another and having slightly
     //   different underline widths looks unbalanced
-    @include govuk-link-style-inverse;
+    //@include govuk-link-style-inverse;
 
     text-decoration: none;
 
@@ -196,6 +199,7 @@
     //padding-right: $govuk-header-menu-button-width;
 
     @include govuk-media-query($from: desktop) {
+      margin-right: 40px;
       //width: 33.33%;
       //padding-right: $govuk-gutter-half;
       //float: left;
@@ -214,10 +218,10 @@
     @include govuk-media-query($from: desktop) {
       border-top: 1px solid govuk-colour("greyN300");
     }
+  }
 
-    .govuk-header__link {
-      color: govuk-colour("black");
-    }
+  .govuk-header__link {
+    color: govuk-colour("black");
   }
 
   .govuk-header__menu-button {
@@ -447,6 +451,9 @@
   & .govuk-header__btns-search {
     display: flex;
     gap: 1rem;
+    justify-content: space-between;
+
+    .govuk-header__navigation
 
     .govuk-button {
       margin-bottom: 0;

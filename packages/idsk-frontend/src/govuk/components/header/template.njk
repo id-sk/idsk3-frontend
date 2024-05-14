@@ -76,7 +76,7 @@
           </div>
         </div>
       </div>
-      </div>
+    </div>
 
     <div class="govuk-predheader govuk-width-container">
       <div class="govuk-header__logo">
@@ -98,12 +98,40 @@
           {#        {% endif %}#}
         </a>
       </div>
-      <div class="govuk-header__btns-search">
+      <div class="govuk-header__btns-search" {% if params.navbarHeader %} style="width: 100%" {% endif %}>
         {#    Start Some expression    #}
-        <div class="idsk-searchbar__wrapper">
-          <input class="govuk-input" type="search" />
-          <button class="govuk-button"><span class="material-icons">search</span></button>
-        </div>
+        {% if params.navbarHeader %}
+{#          {% if params.navigation | length %}#}
+            <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
+              <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
+                {{ menuButtonText }}
+              </button>
+
+              <ul id="navigation" class="govuk-header__navigation-list">
+                {% for item in params.navigation %}
+                  {% if item.text or item.html %}
+                    <li class="govuk-header__navigation-item {%- if item.active %} govuk-header__navigation-item--active{% endif %}">
+                      {% if item.href %}
+                      <a class="govuk-header__link" href="{{ item.href }}"
+                        {{- govukAttributes(item.attributes) -}}>
+                        {% endif %}
+                        {{ item.html | safe | trim | indent(14) if item.html else item.text }}
+                        {% if item.href %}
+                      </a>
+                      {% endif %}
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </nav>
+{#          {% endif %}#}
+        {% endif %}
+        {% if not params.navbarHeader %}
+          <div class="idsk-searchbar__wrapper">
+            <input class="govuk-input" type="search" />
+            <button class="govuk-button"><span class="material-icons">search</span></button>
+          </div>
+        {% endif %}
         {% if params.actionPanel  %}
           <div class="govuk-header__actionPanel">
             <span role="button" class="material-icons">notifications</span>
@@ -132,7 +160,7 @@
       </span>
           {% endif %}
         {% endif %}
-        {% if params.navigation | length %}
+        {% if params.navigation | length and not params.navbarHeader %}
           <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-header__navigation govuk-width-container {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
             <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
               {{ menuButtonText }}
