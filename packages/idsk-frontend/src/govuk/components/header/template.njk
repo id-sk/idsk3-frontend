@@ -117,6 +117,7 @@
                         {% endif %}
                         {{ item.html | safe | trim | indent(14) if item.html else item.text }}
                         {% if item.href %}
+                        <div class="warning">67</div>
                       </a>
                       {% endif %}
                     </li>
@@ -148,8 +149,8 @@
     </div>
 
     {% if params.serviceName or params.navigation | length %}
-      <div class="govuk-header__content">
-        {% if params.serviceName %}
+      {% if params.serviceName %}
+        <div class="govuk-header__content">
           {% if params.serviceUrl %}
             <a href="{{ params.serviceUrl }}" class="govuk-header__link govuk-header__service-name">
               {{ params.serviceName }}
@@ -176,7 +177,6 @@
                       {% endif %}
                       {{ item.html | safe | trim | indent(14) if item.html else item.text }}
                       {% if item.href %}
-                      <div class="warning">166</div>
                     </a>
                     {% endif %}
                   </li>
@@ -184,8 +184,8 @@
               {% endfor %}
             </ul>
           </nav>
-        {% endif %}
-      </div>
+        </div>
+      {% endif %}
     {% endif %}
   </header>
 </div>

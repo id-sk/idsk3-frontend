@@ -301,7 +301,7 @@
       border-radius: 50%;
       width: 20px;
       height: 20px;
-      @include govuk-font-size($size: 14);
+      @include govuk-font-size($size: 12);
 
       display: flex;
       align-items: center;
@@ -429,13 +429,11 @@
   z-index: 10;
   right: 0;
   left: 0;
-  max-width: 74rem;
   min-height: 2.5rem;
   margin-right: auto;
   margin-left: auto;
   color: govuk-colour("white");
   justify-content: space-between;
-  --tw-text-opacity: 1;
 }
 
 .idsk-secondary-navigation__heading {
