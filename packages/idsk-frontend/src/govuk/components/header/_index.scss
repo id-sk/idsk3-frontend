@@ -296,6 +296,19 @@
     &[hidden] {
       display: none;
     }
+    .warning {
+      background: govuk-colour("red");
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      @include govuk-font-size($size: 14);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      margin-left: 10px;
+    }
   }
 
   .govuk-header__navigation--end {
@@ -320,6 +333,9 @@
     a {
       @include govuk-font-size($size: 19);
       white-space: nowrap;
+      color: govuk-colour("black");
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -363,7 +379,7 @@
     .govuk-header__link {
       &:link,
       &:visited {
-        color: govuk-colour("black");
+        //color: govuk-colour("black");
       }
 
       // Do not append link href to GOV.UK link when printing (e.g. '(/)')

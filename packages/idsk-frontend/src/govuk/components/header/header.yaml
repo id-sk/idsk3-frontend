@@ -48,6 +48,10 @@ params:
         type: object
         required: false
         description: HTML attributes (for example data attributes) to add to the navigation item anchor.
+      - name: warning
+        type: string
+        required: false
+        description: On or Off red warning circle
   - name: navigationClasses
     type: string
     required: false
