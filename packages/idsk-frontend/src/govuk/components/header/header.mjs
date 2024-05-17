@@ -146,6 +146,8 @@ export class Header extends GOVUKFrontendComponent {
 
       if (this.menuIsOpen) {
         this.$menu.removeAttribute('hidden')
+        console.log(true)
+        console.log('CLICKED!')
       } else {
         this.$menu.setAttribute('hidden', '')
       }

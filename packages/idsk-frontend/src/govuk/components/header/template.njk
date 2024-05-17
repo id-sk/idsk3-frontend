@@ -103,22 +103,24 @@
         {% if params.navbarHeader %}
 {#          {% if params.navigation | length %}#}
             <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
-              <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
-                {{ menuButtonText }}
-              </button>
+{#              <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>#}
+{#                {{ menuButtonText }}#}
+{#              </button>#}
 
               <ul id="navigation" class="govuk-header__navigation-list">
                 {% for item in params.navigation %}
                   {% if item.text or item.html %}
                     <li class="govuk-header__navigation-item {%- if item.active %} govuk-header__navigation-item--active{% endif %}">
                       {% if item.href %}
-                      <a class="govuk-header__link" href="{{ item.href }}"
-                        {{- govukAttributes(item.attributes) -}}>
-                        {% endif %}
-                        {{ item.html | safe | trim | indent(14) if item.html else item.text }}
-                        {% if item.href %}
+                      <div class="govuk-header__link--wrapper">
+                        <a class="govuk-header__link" href="{{ item.href }}"
+                          {{- govukAttributes(item.attributes) -}}>
+                          {% endif %}
+                          {{ item.html | safe | trim | indent(14) if item.html else item.text }}
+                          {% if item.href %}
+                        </a>
                         <div class="warning">67</div>
-                      </a>
+                      </div>
                       {% endif %}
                     </li>
                   {% endif %}
@@ -145,6 +147,10 @@
           <button class="govuk-button">Tlacidlo 2</button>
         {% endif %}
         {#    End some expression      #}
+        <button type="button" class="govuk-header__menu-button font-bold govuk-js-header-toggle" aria-controls="navigation" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
+          {{ menuButtonText }}
+          <span class="material-icons">menu</span>
+        </button>
       </div>
     </div>
 
@@ -162,22 +168,18 @@
           {% endif %}
         {% endif %}
         {% if params.navigation | length and not params.navbarHeader %}
-          <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-header__navigation govuk-width-container {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
-            <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
-              {{ menuButtonText }}
-            </button>
-
-            <ul id="navigation" class="govuk-header__navigation-list">
+          <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
+            <ul id="navigation" class="govuk-header__navigation-list govuk-width-container">
               {% for item in params.navigation %}
                 {% if item.text or item.html %}
                   <li class="govuk-header__navigation-item {%- if item.active %} govuk-header__navigation-item--active{% endif %}">
                     {% if item.href %}
-                    <a class="govuk-header__link" href="{{ item.href }}"
+                      <a class="govuk-header__link" href="{{ item.href }}"
                       {{- govukAttributes(item.attributes) -}}>
-                      {% endif %}
+                    {% endif %}
                       {{ item.html | safe | trim | indent(14) if item.html else item.text }}
-                      {% if item.href %}
-                    </a>
+                    {% if item.href %}
+                      </a>
                     {% endif %}
                   </li>
                 {% endif %}

@@ -28,8 +28,12 @@
     }
 
     &__actionPanel {
-      display: flex;
-      align-items: center;
+      display: none;
+      @include govuk-media-query($from: desktop) {
+        display: flex;
+        align-items: center;
+      }
+
       @media (min-width: 769px) {
         gap: 20px;
       }
@@ -128,15 +132,20 @@
     // - all links get a 3px underline regardless of text size, as there are
     //   multiple grouped elements close to one another and having slightly
     //   different underline widths looks unbalanced
-    //@include govuk-link-style-inverse;
+    // @include govuk-link-style-inverse;
 
     text-decoration: none;
 
+    &--wrapper {
+      display: flex;
+      align-items: center;
+    }
+
     &:hover {
       text-decoration: underline;
-      text-decoration-thickness: 3px;
-      text-underline-offset: 24px;
-      text-decoration-color: govuk-colour("blueP500");
+      //text-decoration-thickness: 3px;
+      //text-underline-offset: 24px;
+      //text-decoration-color: govuk-colour("blueP500");
     }
 
     &:focus {
@@ -225,28 +234,28 @@
   }
 
   .govuk-header__menu-button {
-    @include govuk-font($size: 16);
-    position: absolute;
+    @include govuk-font($size: 16, $weight: bold);
+
     // calculate top offset by:
     // - getting the vertical spacing for the top and the bottom of the header
     // - adding that to the crown height
     // - dividing it by 2 so you have the vertical centre of the header
     // - subtracting half the height of the menu button
-    top: (((govuk-spacing($govuk-header-vertical-spacing-value) * 2) + $govuk-header-crown-height) / 2) -
-      ($govuk-header-menu-button-height / 2);
-    right: 0;
-    max-width: $govuk-header-menu-button-width;
-    min-height: $govuk-header-menu-button-height;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    color: govuk-colour("white");
+    // margin: 0;
+    padding: 8px 13px;
+    color: govuk-colour("blueP600");
     background: none;
     word-break: break-all;
     cursor: pointer;
+    border: 2px solid govuk-colour("blueP600");
+    border-radius: 5px;
+
+    & .material-icons {
+      margin-left: 5px;
+    }
 
     &:hover {
-      text-decoration: solid underline $govuk-header-link-underline-thickness;
+      //text-decoration: solid underline $govuk-header-link-underline-thickness;
 
       @if $govuk-link-underline-offset {
         text-underline-offset: $govuk-link-underline-offset;
@@ -258,13 +267,13 @@
     }
 
     &::after {
-      @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
-      content: "";
+      //@include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+      //content: "";
       margin-left: govuk-spacing(1);
     }
 
     &[aria-expanded="true"]::after {
-      @include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
+      //@include govuk-shape-arrow($direction: up, $base: 10px, $display: inline-block);
     }
 
     @include govuk-media-query($from: tablet) {
@@ -272,7 +281,9 @@
     }
 
     .govuk-frontend-supported & {
-      display: block;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     &[hidden],
@@ -283,13 +294,13 @@
 
   .govuk-header__navigation {
     @include govuk-media-query($from: desktop) {
-      margin-bottom: govuk-spacing(2);
+      border-top: 1px solid govuk-colour("greyN300");
     }
   }
 
   .govuk-header__navigation-list {
     // Reset user-agent default list styles
-    margin: 0;
+    margin-top: 0;
     padding: 0;
     list-style: none;
 
@@ -323,10 +334,15 @@
     padding: govuk-spacing(2) 0;
     border-bottom: 1px solid $govuk-header-nav-item-border-color;
 
+    &:hover {
+      background-color: govuk-colour("blueP100");
+    }
+
     @include govuk-media-query($from: desktop) {
       display: inline-block;
-      margin-right: govuk-spacing(3);
-      padding: 16px 0;
+      // margin-right: govuk-spacing(1);
+      // padding: 16px 0;
+      padding: 1.25rem .625rem;
       border: 0;
     }
 
@@ -403,8 +419,12 @@
 }
 
 .idsk-searchbar__wrapper {
-  display: flex;
-  align-items: flex-start;
+  display: none;
+
+  @include govuk-media-query($from: desktop) {
+    display: flex;
+    align-items: flex-start;
+  }
 
   .govuk-input {
     border-right: none;
@@ -458,7 +478,7 @@
 
 .govuk-predheader {
   margin-top: 30px;
-  margin-bottom: 30px;
+  padding-bottom: 30px;
   display: flex;
   justify-content: space-between;
 
@@ -467,7 +487,9 @@
     gap: 1rem;
     justify-content: space-between;
 
-    .govuk-header__navigation
+    & .govuk-header__navigation {
+      border-top: none;
+    }
 
     .govuk-button {
       margin-bottom: 0;
