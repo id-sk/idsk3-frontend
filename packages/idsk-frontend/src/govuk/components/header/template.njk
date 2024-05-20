@@ -34,7 +34,7 @@
 </svg>
 {% endset -%}
 <div class="govuk-header__wrapper">
-  <header class="govuk-header {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-header"
+  <header class="govuk-header idsk-shadow-head {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="govuk-header"
     {{- govukAttributes(params.attributes) }}>
     <div class="govuk-header__container {{ params.containerClasses | default("", true) }}">
 
@@ -184,6 +184,21 @@
                   </li>
                 {% endif %}
               {% endfor %}
+              <li class="govuk-header__navigation-item dropdown-toggle">
+                <a href="#" class="govuk-header__link">Dropdown menu<span class="material-icons">expand_more</span></a>
+                  <ul class="submenu idsk-shadow-medium">
+                    <li class="govuk-header__navigation-item">
+                      <a class="govuk-header__link" href="#">Dropdown menu</a>
+                    </li>
+                    <li class="govuk-header__navigation-item">
+                      <a class="govuk-header__link" href="#">Dropdown 2 </a>
+                    </li>
+                    <li class="govuk-header__navigation-item">
+                      <a class="govuk-header__link" href="#">Dropdown menu 3</a>
+                    </li>
+                  </ul>
+
+              </li>
             </ul>
           </nav>
         </div>

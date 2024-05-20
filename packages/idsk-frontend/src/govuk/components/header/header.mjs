@@ -81,8 +81,30 @@ export class Header extends GOVUKFrontendComponent {
       })
     }
 
+    const secondaryNavBody = $module.querySelector('.idsk-secondary-navigation__body')
+    const secondaryNavBtn = $module.querySelector('.idsk-secondary-navigation__heading-button')
+    this.secondaryNavBody = secondaryNavBody
+    this.secondaryNavBtn = secondaryNavBtn
+
+    console.log(secondaryNavBody)
+
+    this.secondaryNavBtn.addEventListener('click', () => {
+      this.secondaryNavBody.classList.toggle('hidden')
+    })
+
+    // Get dropdown menu and toggle. Then function for show or hide dropdown
+    const dropdownMenu = $module.querySelector(".submenu")
+    const dropdownToggle = $module.querySelector(".dropdown-toggle")
+
+    this.dropdownMenu = dropdownMenu
+    this.dropdownToggle = dropdownToggle
+    this.openCloseDropdownMenu()
+
+
+
     this.$menu = $menu
     this.$menuButton = $menuButton
+
 
     this.setupResponsiveChecks()
 
@@ -165,6 +187,20 @@ export class Header extends GOVUKFrontendComponent {
   handleMenuButtonClick() {
     this.menuIsOpen = !this.menuIsOpen
     this.checkMode()
+  }
+
+  openCloseDropdownMenu() {
+    this.dropdownToggle.addEventListener('click', (event) => {
+      if (this.dropdownToggle) {
+        event.preventDefault()
+        this.dropdownToggle.classList.toggle('open')
+      }
+    })
+    document.addEventListener('click', (event) => {
+      if (!this.dropdownToggle.contains(event.target)) {
+        this.dropdownToggle.classList.remove('open')
+      }
+    })
   }
 
   /**
