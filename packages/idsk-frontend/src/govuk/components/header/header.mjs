@@ -72,6 +72,16 @@ export class Header extends GOVUKFrontendComponent {
       })
     }
 
+    const secondaryNavBody = $module.querySelector('.idsk-secondary-navigation__body')
+    const secondaryNavBtn = $module.querySelector('.idsk-secondary-navigation__heading-button')
+    this.secondaryNavBody = secondaryNavBody
+    this.secondaryNavBtn = secondaryNavBtn
+
+    this.secondaryNavBtn.addEventListener('click', () => {
+      this.secondaryNavBody.classList.toggle('hidden')
+      this.secondaryNavBtn.querySelector('.material-icons').classList.toggle('rotate180')
+    })
+
     const $menu = document.getElementById(menuId)
     if (!$menu) {
       throw new ElementError({
@@ -81,17 +91,6 @@ export class Header extends GOVUKFrontendComponent {
       })
     }
 
-    const secondaryNavBody = $module.querySelector('.idsk-secondary-navigation__body')
-    const secondaryNavBtn = $module.querySelector('.idsk-secondary-navigation__heading-button')
-    this.secondaryNavBody = secondaryNavBody
-    this.secondaryNavBtn = secondaryNavBtn
-
-    console.log(secondaryNavBody)
-
-    this.secondaryNavBtn.addEventListener('click', () => {
-      this.secondaryNavBody.classList.toggle('hidden')
-    })
-
     // Get dropdown menu and toggle. Then function for show or hide dropdown
     const dropdownMenu = $module.querySelector(".submenu")
     const dropdownToggle = $module.querySelector(".dropdown-toggle")
@@ -100,17 +99,14 @@ export class Header extends GOVUKFrontendComponent {
     this.dropdownToggle = dropdownToggle
     this.openCloseDropdownMenu()
 
-
-
     this.$menu = $menu
     this.$menuButton = $menuButton
 
-
     this.setupResponsiveChecks()
 
-    this.$menuButton.addEventListener('click', () =>
+    this.$menuButton.addEventListener('click', () => {
       this.handleMenuButtonClick()
-    )
+    })
   }
 
   /**
@@ -168,8 +164,6 @@ export class Header extends GOVUKFrontendComponent {
 
       if (this.menuIsOpen) {
         this.$menu.removeAttribute('hidden')
-        console.log(true)
-        console.log('CLICKED!')
       } else {
         this.$menu.setAttribute('hidden', '')
       }

@@ -443,6 +443,16 @@
 .idsk-secondary-navigation {
 }
 
+.idsk-dropdown__wrapper {
+  position: absolute;
+  right: 1rem;
+  top: 0.4rem;
+
+  @media (min-width: 1120px) {
+    right: 2rem;
+  }
+}
+
 .idsk-secondary-navigation__header {
   display: flex;
   position: relative;
@@ -457,12 +467,13 @@
 }
 
 .idsk-secondary-navigation__heading {
-  display: flex;
-  align-items: center;
+  //display: flex;
+  //align-items: center;
 }
 
 .idsk-secondary-navigation__heading-title {
   display: inline-block;
+  padding-top: .4rem;
 }
 
 .idsk-secondary-navigation__heading-button {
@@ -474,6 +485,31 @@
   letter-spacing: 0.5px;
   cursor: pointer;
   align-items: center;
+}
+
+.idsk-secondary-navigation__text {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+  margin: .625rem 0;
+
+  @include govuk-media-query($from: desktop) {
+    gap: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .govuk-body-s {
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .max-width77-desktop {
+    @include govuk-media-query($from: desktop) {
+      max-width: 77%;
+    }
+  }
 }
 
 .govuk-predheader {
@@ -498,6 +534,8 @@
 }
 
 .idsk-button {
+  position: relative;
+
   background: none;
   color: white;
   border: none;
@@ -516,10 +554,34 @@
 }
 
 .idsk-secondary-navigation__dropdown {
-  //position: absolute;
-  //right: 0rem;
+  position: absolute;
+  right: 0;
   display: flex;
   align-items: center;
+
+  .idsk-dropdown__options {
+    position: absolute;
+    z-index: 10;
+    border-radius: .375rem;
+    background: govuk-colour("white");
+    color: govuk-colour("black");
+    //right: .5rem;
+    top: .7rem;
+    list-style: none;
+    padding: 0;
+
+    .idsk-dropdown__option {
+      position: relative;
+      padding: .75rem 1.25rem;
+
+      &:first-child {
+        margin-top: .25rem;
+      }
+      &:last-child {
+        margin-bottom: .25rem;
+      }
+    }
+  }
 }
 
 .idsk-button.idsk-dropdown span:first-child {
@@ -557,12 +619,16 @@
   background: govuk-colour("white");
 
   .govuk-header__navigation-item {
-    //width: 100%;
+    // width: 100%;
     width: calc(100% - (0.625rem * 2));
   }
-  //&.open {
+  // &.open {
   //  display: block;
-  //}
+  // }
+}
+
+.rotate180 {
+  transform: rotate(180deg);
 }
 
 @media (min-width: 520px) {

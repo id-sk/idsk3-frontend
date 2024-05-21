@@ -41,6 +41,7 @@
       <div class="idsk-secondary-navigation govuk-width-container">
         <div class="idsk-secondary-navigation__header">
           <div class="idsk-secondary-navigation__heading">
+
             <div class="idsk-secondary-navigation__heading-title">
               <span class="idsk-secondary-navigation__heading-mobile">SK</span>
               <span class="idsk-secondary-navigation__heading-desktop">Oficiálna stránka</span>
@@ -51,29 +52,35 @@
               </button>
             </div>
             <div class="idsk-secondary-navigation__body hidden" data-testid="secnav-children">
-              <div>
+              <div class="idsk-secondary-navigation__text">
                 <div>
-                  <h3 class="idsk-text-body-1">Doména gov.sk je oficiálna</h3>
-                  <p>Toto je oficiálna webová stránka orgánu verejnej moci Slovenskej republiky. Oficiálne stránky využívajú najmä doménu gov.sk. <a href="https://www.slovensko.sk/sk/agendy/agenda/_organy-verejnej-moci" target="_blank">Odkazy na jednotlivé webové sídla orgánov verejnej moci nájdete na tomto odkaze.</a></p>
+                  <h3 class="govuk-body-s"><b>Doména gov.sk je oficiálna</b></h3>
+                  <p class="govuk-body-s">Toto je oficiálna webová stránka orgánu verejnej moci Slovenskej republiky. Oficiálne stránky využívajú najmä doménu gov.sk. <a class="govuk-link--inverse" href="https://www.slovensko.sk/sk/agendy/agenda/_organy-verejnej-moci" target="_blank">Odkazy na jednotlivé webové sídla orgánov verejnej moci nájdete na tomto odkaze.</a></p>
                 </div>
                 <div>
-                  <h3 class="idsk-text-body-1">Táto stránka je zabezpečená</h3>
-                  <p>Buďte pozorní a vždy sa uistite, že zdieľate informácie iba cez zabezpečenú webovú stránku verejnej správy SR. Zabezpečená stránka vždy začína https:// pred názvom domény webového sídla.</p>
+                  <h3 class="govuk-body-s"><b>Táto stránka je zabezpečená</b></h3>
+                  <p class="govuk-body-s max-width77-desktop">Buďte pozorní a vždy sa uistite, že zdieľate informácie iba cez zabezpečenú webovú stránku verejnej správy SR. Zabezpečená stránka vždy začína https:// pred názvom domény webového sídla.</p>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="idsk-dropdown__wrapper idsk-secondary-navigation__dropdown">
             <button class="idsk-button idsk-dropdown" type="button">
               <span>slovenčina</span>
               <span class="material-icons">arrow_drop_down</span>
             </button>
-            <ul id="undefined-dropdown" class="idsk-dropdown__options opacity-0 hidden" data-testid="dropdown-options" style="opacity: 0;">
+            <ul id="undefined-dropdown" class="idsk-dropdown__options idsk-shadow-medium" data-testid="dropdown-options">
               <li class="idsk-dropdown__option idsk-pseudolabel__wrapper" data-pseudolabel="english">
-                <a class="absolute">english</a>
+                <a class="govuk-link" href="#">english</a>
+
+              </li>
+              <li class="idsk-dropdown__option idsk-pseudolabel__wrapper" data-pseudolabel="english">
+                <a class="govuk-link" href="#">українська</a>
               </li>
             </ul>
           </div>
+
         </div>
       </div>
     </div>
