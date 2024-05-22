@@ -1,6 +1,6 @@
-import { getBreakpoint } from '../../common/index.mjs'
-import { ElementError } from '../../errors/index.mjs'
-import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
+import {getBreakpoint} from '../../common/index.mjs'
+import {ElementError} from '../../errors/index.mjs'
+import {GOVUKFrontendComponent} from '../../govuk-frontend-component.mjs'
 
 /**
  * Header component
@@ -90,6 +90,11 @@ export class Header extends GOVUKFrontendComponent {
         identifier: `Navigation (\`<ul id="${menuId}">\`)`
       })
     }
+
+    // Get language elems to open or close language list
+    this.langDiv = $module.querySelector(".idsk-secondary-navigation__dropdown")
+    console.log(this.langDiv)
+    this.handleLangClick()
 
     // Get dropdown menu and toggle. Then function for show or hide dropdown
     const dropdownMenu = $module.querySelector(".submenu")
@@ -183,6 +188,13 @@ export class Header extends GOVUKFrontendComponent {
     this.checkMode()
   }
 
+  handleLangClick() {
+    this.langDiv.addEventListener('click', () => {
+      this.langDiv.classList.toggle('open')
+      this.clickOutsideClose(this.langDiv, 'open')
+    })
+  }
+
   openCloseDropdownMenu() {
     this.dropdownToggle.addEventListener('click', (event) => {
       if (this.dropdownToggle) {
@@ -190,9 +202,19 @@ export class Header extends GOVUKFrontendComponent {
         this.dropdownToggle.classList.toggle('open')
       }
     })
+
+    this.clickOutsideClose(this.dropdownToggle, 'open')
+  }
+
+  /**
+   * Function for click outside and close some elem
+   * @param openedElem - element which need to remove open className
+   * @param className - name of className to remove and close some opened element
+   */
+  clickOutsideClose(openedElem, className) {
     document.addEventListener('click', (event) => {
-      if (!this.dropdownToggle.contains(event.target)) {
-        this.dropdownToggle.classList.remove('open')
+      if (!openedElem.contains(event.target)) {
+        openedElem.classList.remove(className.toString())
       }
     })
   }
