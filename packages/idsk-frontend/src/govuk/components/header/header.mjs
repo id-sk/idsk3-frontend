@@ -72,15 +72,19 @@ export class Header extends GOVUKFrontendComponent {
       })
     }
 
-    const secondaryNavBody = $module.querySelector('.idsk-secondary-navigation__body')
-    const secondaryNavBtn = $module.querySelector('.idsk-secondary-navigation__heading-button')
-    this.secondaryNavBody = secondaryNavBody
-    this.secondaryNavBtn = secondaryNavBtn
+    const websitesNavBody = $module.querySelector('.idsk-secondary-navigation__body')
+    const websitesNavBtn = $module.querySelector('.idsk-secondary-navigation__heading-button')
+    this.websitesNavBody = websitesNavBody
+    this.websitesNavBtn = websitesNavBtn
 
-    this.secondaryNavBtn.addEventListener('click', () => {
-      this.secondaryNavBody.classList.toggle('hidden')
-      this.secondaryNavBtn.querySelector('.material-icons').classList.toggle('rotate180')
+    this.websitesNavBtn.addEventListener('click', () => {
+      this.websitesNavBody.classList.toggle('hidden')
+      this.websitesNavBtn.querySelector('.material-icons').classList.toggle('rotate180')
     })
+
+    // Get language elems to open or close language list
+    this.langDiv = $module.querySelector(".idsk-secondary-navigation__dropdown")
+    this.handleLangClick()
 
     const $menu = document.getElementById(menuId)
     if (!$menu) {
@@ -91,19 +95,6 @@ export class Header extends GOVUKFrontendComponent {
       })
     }
 
-    // Get language elems to open or close language list
-    this.langDiv = $module.querySelector(".idsk-secondary-navigation__dropdown")
-    console.log(this.langDiv)
-    this.handleLangClick()
-
-    // Get dropdown menu and toggle. Then function for show or hide dropdown
-    const dropdownMenu = $module.querySelector(".submenu")
-    const dropdownToggle = $module.querySelector(".dropdown-toggle")
-
-    this.dropdownMenu = dropdownMenu
-    this.dropdownToggle = dropdownToggle
-    this.openCloseDropdownMenu()
-
     this.$menu = $menu
     this.$menuButton = $menuButton
 
@@ -112,6 +103,18 @@ export class Header extends GOVUKFrontendComponent {
     this.$menuButton.addEventListener('click', () => {
       this.handleMenuButtonClick()
     })
+
+    // Get dropdown menu and toggle. Then function for show or hide dropdown
+    const dropdownToggle = $module.querySelector(".dropdown-toggle")
+    this.dropdownToggle = dropdownToggle
+    if (!dropdownToggle) {
+      throw new ElementError({
+        componentName: 'Dropdown toggle menu',
+        element: dropdownToggle,
+        identifier: 'Submenu dropdown',
+      })
+    }
+    this.openCloseDropdownMenu()
   }
 
   /**
