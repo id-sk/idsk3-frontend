@@ -28,7 +28,6 @@
     }
 
     &__actionPanel {
-      display: none;
       @include govuk-media-query($from: desktop) {
         display: flex;
         align-items: center;
@@ -52,6 +51,18 @@
         width: 40px;
         height: 40px;
         object-fit: cover;
+      }
+    }
+
+    .btnWrapper {
+      .govuk-button {
+        margin-bottom: 0;
+      }
+
+      @include govuk-media-query($from: mobile) {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
       }
     }
   }
@@ -296,6 +307,21 @@
     @include govuk-media-query($from: desktop) {
       border-top: 1px solid govuk-colour("greyN300");
     }
+
+    span.text {
+      font-size: 16px;
+      color: govuk-colour("black");
+      margin-top: 30px;
+      margin-bottom: 10px;
+      margin-left: 30px;
+
+      padding-bottom: 10px;
+      border-bottom: 2px solid govuk-colour("dark-grey");
+
+      @include govuk-media-query($from: desktop) {
+        display: none;
+      }
+    }
   }
 
   .govuk-header__navigation-list {
@@ -319,6 +345,10 @@
       justify-content: center;
       color: white;
       margin-left: 10px;
+    }
+
+    @include govuk-media-query($until: desktop) {
+      margin: 0;
     }
   }
 
@@ -346,8 +376,14 @@
       border: 0;
     }
 
+    @include govuk-media-query($from: mobile) {
+      padding: 15px 30px;
+      border-bottom: 0;
+    }
+
     a {
-      @include govuk-font-size($size: 19);
+      //@include govuk-font-size($size: 19);
+      font-size: 19px;
       white-space: nowrap;
       color: govuk-colour("black");
       display: flex;
@@ -358,12 +394,19 @@
   .govuk-header__navigation-item--active {
     border-bottom: 4px solid govuk-colour("blueP500");
     color: govuk-colour("blueP500");
+
+    @include govuk-media-query($from: mobile) {
+      border-bottom: 0;
+      border-left: 5px solid govuk-colour("blue");
+    }
+
     a {
       &:link,
       &:hover,
       &:visited {
         color: govuk-colour("dark-blue");
         font-weight: bold;
+        margin-left: -5px;
       }
 
       // When printing, use the normal blue as this contrasts better with the
@@ -643,7 +686,6 @@
   background: govuk-colour("white");
 
   .govuk-header__navigation-item {
-    // width: 100%;
     width: calc(100% - (0.625rem * 2));
   }
 }
