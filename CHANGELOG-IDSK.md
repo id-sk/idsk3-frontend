@@ -5,6 +5,7 @@
 ### ⭐ New Features
 
 - _[ID-86]_: ID-SK Footer design
+- _[ID-98]_: ID-SK Breadcrumbs
 
 - **Property changes**
 
