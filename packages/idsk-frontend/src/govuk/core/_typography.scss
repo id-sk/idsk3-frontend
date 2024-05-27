@@ -80,16 +80,20 @@
   .idsk-caption {
     color: $govuk-text-colour;
     font-family: $govuk-font-family;
-    font-size: 12px;
-    letter-spacing: 0.4px;
-    line-height: 16px;
+
+    // font-size: 12px;
+    // letter-spacing: 0.4px;
+    // line-height: 16px;
+    @include govuk-font($size: 12);
   }
 
   .idsk-text-button {
     font-family: $govuk-font-family;
-    font-size: 16px;
-    letter-spacing: 0.5px;
-    line-height: 24px;
+
+    // font-size: 16px;
+    // letter-spacing: 0.5px;
+    // line-height: 24px;
+    @include govuk-font($size: 16);
   }
 
   .govuk-caption-xl {

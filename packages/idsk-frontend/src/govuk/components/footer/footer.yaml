@@ -142,267 +142,161 @@ examples:
   - name: default
     options: {}
 
-  - name: with custom HTML content licence and copyright notice
-    description: Open Government Licence and Crown copyright notice translated into Welsh
-    options:
-      contentLicence:
-        html: 'Mae’r holl gynnwys ar gael dan <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/" rel="license">Drwydded y Llywodraeth Agored v3.0</a>, ac eithrio lle nodir yn wahanol'
-      copyright:
-        html: '<span>Hawlfraint y Goron</span>'
-
-  - name: with custom text content licence and copyright notice
-    description: Open Government Licence and Crown copyright notice translated into Welsh
-    options:
-      contentLicence:
-        text: 'Mae’r holl gynnwys ar gael dan Drwydded y Llywodraeth Agored v3.0, ac eithrio lle nodir yn wahanol'
-      copyright:
-        text: '© Hawlfraint y Goron'
-
-  - name: with meta
-    description: Secondary navigation with meta information relating to the site
+  - name: s navigáciou
+    description: Základná pätička s navigáciou
     options:
       meta:
         visuallyHiddenTitle: Items
         items:
           - href: '#1'
-            text: Item 1
+            text: Vyhlásenie o prístupnosti
           - href: '#2'
-            text: Item 2
+            text: Kontakt na prevádzkovateľa
           - href: '#3'
-            text: Item 3
+            text: RSS
+          - href: '#4'
+            text: Mapa stránky
+          - href: '#5'
+            text: Metodické usmernenia
+          - href: '#6'
+            text: Oznamy
+          - href: '#7'
+            text: Základné zásadz bezpečnosti
 
-  - name: with custom meta
-    description: Custom meta section
+  - name: bez navigácie s odkazmi
     options:
-      meta:
-        text: GOV.UK Prototype Kit v7.0.1
+      navigation:
+        - title: Názov
+          width: two-thirds
+          columns: 2
+          items:
+            - href: '#1'
+              text: Položka 1
+            - href: '#2'
+              text: Položka 2
+            - href: '#3'
+              text: Položka 3
+            - href: '#4'
+              text: Položka 4
+            - href: '#5'
+              text: Položka 5
+            - href: '#6'
+              text: Položka 6
+            - href: '#7'
+              text: Položka 7
+            - href: '#8'
+              text: Položka 8
+            - href: '#9'
+              text: Položka 9
+            - href: '#10'
+              text: Položka 10
+            - href: '#11'
+              text: Položka 11
+            - href: '#12'
+              text: Položka 12
+            - href: '#13'
+              text: Položka 13
+            - href: '#14'
+              text: Položka 14
+            - href: '#15'
+              text: Položka 15
+            - href: '#16'
+              text: Položka 16
+        - title: Názov
+          width: one-third
+          items:
+            - href: '#1'
+              text: Položka 1
+            - href: '#2'
+              text: Položka 2
+            - href: '#3'
+              text: Položka 3
+            - href: '#4'
+              text: Položka 4
+            - href: '#5'
+              text: Položka 5
+            - href: '#6'
+              text: Položka 6
+            - href: '#7'
+              text: Položka 7
+            - href: '#8'
+              text: Položka 8
 
-  - name: with meta links and meta content
-    description: Secondary navigation links and custom meta text
+  - name: s navigáciou a odkazmi
     options:
+      navigation:
+        - title: Názov
+          width: two-thirds
+          columns: 2
+          items:
+            - href: '#1'
+              text: Položka 1
+            - href: '#2'
+              text: Položka 2
+            - href: '#3'
+              text: Položka 3
+            - href: '#4'
+              text: Položka 4
+            - href: '#5'
+              text: Položka 5
+            - href: '#6'
+              text: Položka 6
+            - href: '#7'
+              text: Položka 7
+            - href: '#8'
+              text: Položka 8
+            - href: '#9'
+              text: Položka 9
+            - href: '#10'
+              text: Položka 10
+            - href: '#11'
+              text: Položka 11
+            - href: '#12'
+              text: Položka 12
+            - href: '#13'
+              text: Položka 13
+            - href: '#14'
+              text: Položka 14
+            - href: '#15'
+              text: Položka 15
+            - href: '#16'
+              text: Položka 16
+        - title: Názov
+          width: one-third
+          items:
+            - href: '#1'
+              text: Položka 1
+            - href: '#2'
+              text: Položka 2
+            - href: '#3'
+              text: Položka 3
+            - href: '#4'
+              text: Položka 4
+            - href: '#5'
+              text: Položka 5
+            - href: '#6'
+              text: Položka 6
+            - href: '#7'
+              text: Položka 7
+            - href: '#8'
+              text: Položka 8
       meta:
+        visuallyHiddenTitle: Items
         items:
           - href: '#1'
-            text: Bibendum Ornare
+            text: Vyhlásenie o prístupnosti
           - href: '#2'
-            text: Nullam
+            text: Kontakt na prevádzkovateľa
           - href: '#3'
-            text: Tortor Fringilla
+            text: RSS
           - href: '#4'
-            text: Tellus
+            text: Mapa stránky
           - href: '#5'
-            text: Egestas Nullam
+            text: Metodické usmernenia
           - href: '#6'
-            text: Euismod Etiam
+            text: Oznamy
           - href: '#7'
-            text: Fusce Sollicitudin
-          - href: '#8'
-            text: Ligula Nullam Ultricies
-        html: Built by the <a href="#" class="govuk-footer__link">Department of Magical Law Enforcement</a>
-
-  - name: with custom meta
-    description: Custom meta section
-    options:
-      meta:
-        text: GOV.UK Prototype Kit v7.0.1
-
-  - name: with default width navigation (one column)
-    options:
-      navigation:
-        - title: Navigation section
-          items:
-            - href: '#1'
-              text: Navigation item 1
-            - href: '#2'
-              text: Navigation item 2
-            - href: '#3'
-              text: Navigation item 3
-            - href: '#4'
-              text: Navigation item 4
-            - href: '#5'
-              text: Navigation item 5
-            - href: '#6'
-              text: Navigation item 6
-
-  - name: with default width navigation (two columns)
-    options:
-      navigation:
-        - title: Navigation section
-          columns: 2
-          items:
-            - href: '#1'
-              text: Navigation item 1
-            - href: '#2'
-              text: Navigation item 2
-            - href: '#3'
-              text: Navigation item 3
-            - href: '#4'
-              text: Navigation item 4
-            - href: '#5'
-              text: Navigation item 5
-            - href: '#6'
-              text: Navigation item 6
-
-  - name: with navigation
-    options:
-      navigation:
-        - title: Two column list
-          width: two-thirds
-          columns: 2
-          items:
-            - href: '#1'
-              text: Navigation item 1
-            - href: '#2'
-              text: Navigation item 2
-            - href: '#3'
-              text: Navigation item 3
-            - href: '#4'
-              text: Navigation item 4
-            - href: '#5'
-              text: Navigation item 5
-            - href: '#6'
-              text: Navigation item 6
-        - title: Single column list
-          width: one-third
-          items:
-            - href: '#1'
-              text: Navigation item 1
-            - href: '#2'
-              text: Navigation item 2
-            - href: '#3'
-              text: Navigation item 3
-
-  - name: Full GDS example
-    description: A full example based on GOV.UK's current footer
-    options:
-      navigation:
-        - title: Coronavirus (COVID-19)
-          width: two-thirds
-          items:
-            - href: '/coronavirus'
-              text: 'Coronavirus (COVID-19): guidance and support'
-        - title: Brexit
-          width: one-third
-          items:
-            - href: '/brexit'
-              text: Check what you need to do
-        - title: Services and information
-          width: two-thirds
-          columns: 2
-          items:
-            - href: '/browse/benefits'
-              text: Benefits
-            - href: '/browse/births-deaths-marriages'
-              text: Births, deaths, marriages and care
-            - href: '/browse/business'
-              text: Business and self-employed
-            - href: '/browse/childcare-parenting'
-              text: Childcare and parenting
-            - href: '/browse/citizenship'
-              text: Citizenship and living in the UK
-            - href: '/browse/justice'
-              text: Crime, justice and the law
-            - href: '/browse/disabilities'
-              text: Disabled people
-            - href: '/browse/driving'
-              text: Driving and transport
-            - href: '/browse/education'
-              text: Education and learning
-            - href: '/browse/employing-people'
-              text: Employing people
-            - href: '/browse/environment-countryside'
-              text: Environment and countryside
-            - href: '/browse/housing-local-services'
-              text: Housing and local services
-            - href: '/browse/tax'
-              text: Money and tax
-            - href: '/browse/abroad'
-              text: Passports, travel and living abroad
-            - href: '/browse/visas-immigration'
-              text: Visas and immigration
-            - href: '/browse/working'
-              text: Working, jobs and pensions
-        - title: Departments and policy
-          width: one-third
-          items:
-            - href: '/government/how-government-works'
-              text: How government works
-            - href: '/government/organisations'
-              text: Departments
-            - href: '/world'
-              text: Worldwide
-            - href: '/government/policies'
-              text: Policies
-            - href: '/government/publications'
-              text: Publications
-            - href: '/government/announcements'
-              text: Announcements
-      meta:
-        items:
-          - href: '/help'
-            text: Help
-          - href: '/help/cookies'
-            text: Cookies
-          - href: '/contact'
-            text: Contact
-          - href: '/help/terms-conditions'
-            text: Terms and conditions
-          - href: '/cymraeg'
-            text: Rhestr o Wasanaethau Cymraeg
-        html: Built by the <a class="govuk-footer__link" href="#">Government Digital Service</a>
-
-  - name: Three equal columns
-    description: A full example to demonstrate three equal width columns
-    options:
-      navigation:
-        - title: Single column list 1
-          width: one-third
-          columns: 1
-          items:
-            - href: '#1'
-              text: Navigation item 1
-            - href: '#2'
-              text: Navigation item 2
-            - href: '#3'
-              text: Navigation item 3
-            - href: '#4'
-              text: Navigation item 4
-            - href: '#5'
-              text: Navigation item 5
-            - href: '#6'
-              text: Navigation item 6
-        - title: Single column list 2
-          width: one-third
-          columns: 1
-          items:
-            - href: '#1'
-              text: Navigation item 1
-            - href: '#2'
-              text: Navigation item 2
-            - href: '#3'
-              text: Navigation item 3
-            - href: '#4'
-              text: Navigation item 4
-            - href: '#5'
-              text: Navigation item 5
-            - href: '#6'
-              text: Navigation item 6
-        - title: Single column list 3
-          width: one-third
-          columns: 1
-          items:
-            - href: '#1'
-              text: Navigation item 1
-            - href: '#2'
-              text: Navigation item 2
-            - href: '#3'
-              text: Navigation item 3
-            - href: '#4'
-              text: Navigation item 4
-            - href: '#5'
-              text: Navigation item 5
-            - href: '#6'
-              text: Navigation item 6
+            text: Základné zásadz bezpečnosti
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
