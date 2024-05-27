@@ -147,7 +147,7 @@
         {#    End some expression      #}
         <button type="button" class="govuk-header__menu-button font-bold govuk-js-header-toggle" aria-controls="navigation" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
           {{ menuButtonText }}
-          <span class="material-icons">menu</span>
+
         </button>
       </div>
     </div>
@@ -207,7 +207,7 @@
                 <img class="profile" src="https://placehold.co/40x40/072C66/FFFFFF?text=Profile" alt="Profile"/>
               </div>
             {% else %}
-              <div class="btnWrapper">
+              <div class="btnWrapper desktop-hidden">
                 <button class="govuk-button">Tlacidlo 1</button>
                 <button class="govuk-button">Tlacidlo 2</button>
               </div>

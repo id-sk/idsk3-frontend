@@ -166,14 +166,19 @@ export class Header extends GOVUKFrontendComponent {
     if (this.mql.matches) {
       this.$menu.removeAttribute('hidden')
       this.$menuButton.setAttribute('hidden', '')
+
     } else {
       this.$menuButton.removeAttribute('hidden')
       this.$menuButton.setAttribute('aria-expanded', this.menuIsOpen.toString())
 
       if (this.menuIsOpen) {
         this.$menu.removeAttribute('hidden')
+        this.$menuButton.textContent = 'Zavrieť'
+        this.createMaterialIcon('close', /** @type {HTMLElement} */ (this.$menuButton));
       } else {
         this.$menu.setAttribute('hidden', '')
+        this.$menuButton.textContent = 'Menu'
+        this.createMaterialIcon('menu', /** @type {HTMLElement} */ (this.$menuButton));
       }
     }
   }
@@ -210,9 +215,22 @@ export class Header extends GOVUKFrontendComponent {
   }
 
   /**
+   *  Create and add material icon to parent element
+   * @param {string} iconName - icon name for create
+   * @param {HTMLElement} parentElem - element to which the icon will be added
+   */
+
+  createMaterialIcon(iconName, parentElem) {
+    let spanIcon = document.createElement('span')
+    spanIcon.className = 'material-icons'
+    spanIcon.textContent = iconName.toString()
+    parentElem.appendChild(spanIcon)
+  }
+
+  /**
    * Function for click outside and close some elem
-   * @param openedElem - element which need to remove open className
-   * @param className - name of className to remove and close some opened element
+   * @param {HTMLElement} openedElem - element which need to remove open className
+   * @param {string} className - name of className to remove and close some opened element
    */
   clickOutsideClose(openedElem, className) {
     document.addEventListener('click', (event) => {

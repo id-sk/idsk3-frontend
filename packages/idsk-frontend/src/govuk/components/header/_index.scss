@@ -55,14 +55,15 @@
     }
 
     .btnWrapper {
-      .govuk-button {
-        margin-bottom: 0;
-      }
-
-      @include govuk-media-query($from: mobile) {
+      @include govuk-media-query($until: desktop) {
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        margin: 0 30px;
+      }
+
+      .govuk-button {
+        margin-bottom: 0;
       }
     }
   }
@@ -313,8 +314,8 @@
       color: govuk-colour("black");
       margin-top: 30px;
       margin-bottom: 10px;
-      margin-left: 30px;
-
+      padding-left: 30px;
+      display: block;
       padding-bottom: 10px;
       border-bottom: 2px solid govuk-colour("dark-grey");
 
@@ -376,7 +377,7 @@
       border: 0;
     }
 
-    @include govuk-media-query($from: mobile) {
+    @include govuk-media-query($until: desktop) {
       padding: 15px 30px;
       border-bottom: 0;
     }
@@ -392,10 +393,12 @@
   }
 
   .govuk-header__navigation-item--active {
-    border-bottom: 4px solid govuk-colour("blueP500");
-    color: govuk-colour("blueP500");
+    @include govuk-media-query($from: desktop) {
+      border-bottom: 4px solid govuk-colour("blueP500");
+      color: govuk-colour("blueP500");
+    }
 
-    @include govuk-media-query($from: mobile) {
+    @include govuk-media-query($until: desktop) {
       border-bottom: 0;
       border-left: 5px solid govuk-colour("blue");
     }
@@ -662,6 +665,22 @@
 .dropdown-toggle {
   position: relative;
 
+  a {
+    //padding: 15px 30px;
+    span.material-icons {
+      @include govuk-media-query($until: desktop) {
+        margin-left: 5rem;
+      }
+    }
+  }
+
+  ul.submenu {
+    @include govuk-media-query($until: desktop) {
+      margin-top: 15px;
+    }
+
+  }
+
   &.open {
     .submenu {
       display: block;
@@ -685,8 +704,18 @@
   z-index: 1;
   background: govuk-colour("white");
 
+  @include govuk-media-query($until: desktop) {
+    position: static;
+  }
+
   .govuk-header__navigation-item {
     width: calc(100% - (0.625rem * 2));
+  }
+}
+
+.submenu.idsk-shadow-medium {
+  @include govuk-media-query($until: desktop) {
+    box-shadow: none;
   }
 }
 
