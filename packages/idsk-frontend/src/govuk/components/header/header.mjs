@@ -86,7 +86,16 @@ export class Header extends GOVUKFrontendComponent {
     this.langDiv = $module.querySelector(".idsk-secondary-navigation__dropdown")
     this.handleLangClick()
 
-    const $menu = document.getElementById(menuId)
+    let $menu
+    const $menus = document.querySelectorAll(`#${menuId}`)
+    $menus.forEach(menu => {
+      if (menu.classList.contains('desktop-hidden')) {
+        $menu = menu
+      } else {
+        $menu = menu
+      }
+    })
+
     if (!$menu) {
       throw new ElementError({
         componentName: 'Header',
@@ -175,10 +184,20 @@ export class Header extends GOVUKFrontendComponent {
         this.$menu.removeAttribute('hidden')
         this.$menuButton.textContent = 'Zavrieť'
         this.createMaterialIcon('close', /** @type {HTMLElement} */ (this.$menuButton));
+        document.querySelector('header.govuk-header').style.background = '#fafafa'
+        document?.querySelector('.govuk-header__actionPanel.mobile-hidden')?.classList.remove('mobile-hidden')
+        document.querySelector('.govuk-header__logo')?.setAttribute('hidden', '')
+
       } else {
         this.$menu.setAttribute('hidden', '')
         this.$menuButton.textContent = 'Menu'
         this.createMaterialIcon('menu', /** @type {HTMLElement} */ (this.$menuButton));
+        document.querySelector('header.govuk-header').style.background = '#fff'
+        document?.querySelector('.govuk-header__actionPanel')?.classList.add('mobile-hidden')
+        document.querySelector('.govuk-header__logo')?.removeAttribute('hidden')
+        document.querySelector('.govuk-header__btns-search').style.justifyContent = 'space-between'
+
+
       }
     }
   }

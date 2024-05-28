@@ -143,29 +143,29 @@ examples:
           text: Sekcia 5
 
 
-#
-#  - name: with navigation in header
-#    options:
-#      navbarHeader: true
-#      actionPanel: true
-#      navigation:
-#        - href: '#1'
-#          text: Section 1
-#          active: true
-#        - href: '#2'
-#          text: Section 2
-#        - href: '#3'
-#          text: Section 3
-#        - href: '#4'
-#          text: Section 4
-#        - href: '#5'
-#          text: Sekcia 5
-#
-#  - name: without navigation in header
-#    options:
-#      navbarHeader: true
-#      actionPanel: true
-#
+
+  - name: with navigation in header
+    options:
+      navbarHeader: true
+      actionPanel: true
+      navigation:
+        - href: '#1'
+          text: Section 1
+          active: true
+        - href: '#2'
+          text: Section 2
+        - href: '#3'
+          text: Section 3
+        - href: '#4'
+          text: Section 4
+        - href: '#5'
+          text: Sekcia 5
+
+  - name: without navigation in header
+    options:
+      navbarHeader: true
+      actionPanel: true
+
 #  - name: with custom navigation label
 #    options:
 #      navigationLabel: Custom navigation label

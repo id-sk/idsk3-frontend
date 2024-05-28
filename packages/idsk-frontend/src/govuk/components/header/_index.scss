@@ -28,9 +28,14 @@
     }
 
     &__actionPanel {
+
       @include govuk-media-query($from: desktop) {
         display: flex;
         align-items: center;
+      }
+      @include govuk-media-query($until: desktop) {
+        display: flex;
+
       }
 
       @media (min-width: 769px) {
@@ -51,6 +56,49 @@
         width: 40px;
         height: 40px;
         object-fit: cover;
+      }
+    }
+
+    &__profile {
+      display: none;
+
+      @include govuk-media-query($until: desktop) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: govuk-colour("white");
+        margin: 0 30px 20px;
+        border: 1px solid govuk-colour("greyN300");
+        border-radius: 10px;
+        padding: 30px 20px 20px 20px;
+      }
+
+      img.profile {
+        @include govuk-media-query($until: desktop) {
+          border-radius: 50%;
+          max-width: 50px;
+        }
+      }
+
+      h4.govuk-heading-l {
+        margin-bottom: 0;
+      }
+
+      span {
+        color: govuk-colour("dark-grey");
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        margin-bottom: 20px;
+      }
+
+      button.govuk-button {
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+
+      button.govuk-button--texted__warning {
+        margin-bottom: 0;
       }
     }
 
@@ -569,6 +617,10 @@
     gap: 1rem;
     justify-content: space-between;
 
+    @include govuk-media-query($until: desktop) {
+      justify-content: flex-end;
+    }
+
     & .govuk-header__navigation {
       border-top: none;
     }
@@ -666,11 +718,9 @@
   position: relative;
 
   a {
-    //padding: 15px 30px;
-    span.material-icons {
-      @include govuk-media-query($until: desktop) {
-        margin-left: 5rem;
-      }
+    @include govuk-media-query($until: desktop) {
+      display: flex;
+      justify-content: space-between;
     }
   }
 

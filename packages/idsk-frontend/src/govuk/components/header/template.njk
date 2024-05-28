@@ -104,7 +104,8 @@
         {#    Start Some expression    #}
         {% if params.navbarHeader %}
 {#          {% if params.navigation | length %}#}
-            <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
+          <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}"
+               class="govuk-header__navigation mobile-hidden {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
               <ul id="navigation" class="govuk-header__navigation-list">
                 {% for item in params.navigation %}
                   {% if item.text or item.html %}
@@ -138,13 +139,19 @@
             <span role="button" class="material-icons">notifications</span>
             <span role="button" class="material-icons">info</span>
           {#<span class="material-icons">person</span>#}
-            <img class="profile" src="https://placehold.co/40x40/072C66/FFFFFF?text=Profile" alt="Profile" />
+            <img class="profile mobile-hidden" src="https://placehold.co/40x40/072C66/FFFFFF?text=Profile"
+                 alt="Profile"/>
           </div>
         {% else %}
           <button class="govuk-button mobile-hidden">Tlacidlo 1</button>
           <button class="govuk-button mobile-hidden">Tlacidlo 2</button>
         {% endif %}
         {#    End some expression      #}
+        <span role="button" class="material-icons search">search</span>
+        <div class="idsk-searchbar__wrapper" hidden>
+          <input class="govuk-input" type="search"/>
+          <button class="govuk-button"><span class="material-icons">search</span></button>
+        </div>
         <button type="button" class="govuk-header__menu-button font-bold govuk-js-header-toggle" aria-controls="navigation" {%- if params.menuButtonLabel and params.menuButtonLabel != menuButtonText %} aria-label="{{ params.menuButtonLabel }}"{% endif %} hidden>
           {{ menuButtonText }}
 
@@ -165,11 +172,22 @@
             </span>
           {% endif %}
         {% endif %}
-      <h1>test</h1>
-        {% if params.navigation | length and not params.navbarHeader %}
-          <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
+      {% if params.navigation | length %}
+        <nav id="navigation" aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}"
+             class="govuk-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %} {% if params.navbarHeader %} desktop-hidden {% endif %}">
+          {% if params.actionPanel %}
+            <div class="govuk-header__profile">
+              <img class="profile" src="https://placehold.co/100x100/072C66/FFFFFF?text=JH" alt="Profile"/>
+              <h4 class="govuk-heading-l">Janko Hruska</h4>
+              <span role="textbox">RČ 123456/1234</span>
+
+              <button class="govuk-button govuk-button__basic">Primárne tlačidlo</button>
+              <button class="govuk-button govuk-button--texted govuk-button--texted__warning">Textové tlačidlo</button>
+
+            </div>
+          {% endif %}
             <span class="text">Menu</span>
-            <ul id="navigation" class="govuk-header__navigation-list govuk-width-container">
+          <ul class="govuk-header__navigation-list govuk-width-container">
               {% for item in params.navigation %}
                 {% if item.text or item.html %}
                   <li class="govuk-header__navigation-item {%- if item.active %} govuk-header__navigation-item--active{% endif %}">
@@ -199,14 +217,7 @@
                   </ul>
               </li>
             </ul>
-            {% if params.actionPanel %}
-              <div class="govuk-header__actionPanel desktop-hidden">
-                <span role="button" class="material-icons">notifications</span>
-                <span role="button" class="material-icons">info</span>
-                {# <span class="material-icons">person</span> #}
-                <img class="profile" src="https://placehold.co/40x40/072C66/FFFFFF?text=Profile" alt="Profile"/>
-              </div>
-            {% else %}
+          {% if not params.actionPanel %}
               <div class="btnWrapper desktop-hidden">
                 <button class="govuk-button">Tlacidlo 1</button>
                 <button class="govuk-button">Tlacidlo 2</button>
