@@ -55,6 +55,7 @@ export class Header extends GOVUKFrontendComponent {
 
     this.$module = $module
     const $menuButton = $module.querySelector('.govuk-js-header-toggle')
+    this.header = document.querySelector('.govuk-header')
 
     // Headers don't necessarily have a navigation. When they don't, the menu
     // toggle won't be rendered by our macro (or may be omitted when writing
@@ -184,23 +185,29 @@ export class Header extends GOVUKFrontendComponent {
         this.$menu.removeAttribute('hidden')
         this.$menuButton.textContent = 'Zavrieť'
         this.createMaterialIcon('close', /** @type {HTMLElement} */ (this.$menuButton));
-        document.querySelector('header.govuk-header').style.background = '#fafafa'
-        document?.querySelector('.govuk-header__actionPanel.mobile-hidden')?.classList.remove('mobile-hidden')
-        document.querySelector('.govuk-header__logo')?.setAttribute('hidden', '')
-
+        this.header.style.background = '#fafafa'
+        this.header?.querySelector('.govuk-header__actionPanel.mobile-hidden')?.classList.remove('mobile-hidden')
+        this.header.querySelector('.govuk-header__link--homepage')?.setAttribute('hidden', '')
+        this.header.querySelector('.govuk-header__actionPanel.desktop-hidden').classList.remove('hide')
       } else {
         this.$menu.setAttribute('hidden', '')
         this.$menuButton.textContent = 'Menu'
         this.createMaterialIcon('menu', /** @type {HTMLElement} */ (this.$menuButton));
-        document.querySelector('header.govuk-header').style.background = '#fff'
-        document?.querySelector('.govuk-header__actionPanel')?.classList.add('mobile-hidden')
-        document.querySelector('.govuk-header__logo')?.removeAttribute('hidden')
-        document.querySelector('.govuk-header__btns-search').style.justifyContent = 'space-between'
+        this.header.style.background = '#fff'
+        this.header?.querySelector('.govuk-header__actionPanel')?.classList.add('mobile-hidden')
+        this.header.querySelector('.govuk-header__link--homepage')?.removeAttribute('hidden')
+        this.header.querySelector('.idsk-searchbar__wrapper').classList.add('hide')
+        // document.querySelector('.govuk-header__btns-search').style.justifyContent = 'space-between'
 
-
+        this.header.querySelector('.material-icons.search').addEventListener('click', () => {
+          this.header.querySelector('.govuk-header__actionPanel.desktop-hidden').classList.add('hide')
+          this.header.querySelector('.idsk-searchbar__wrapper').classList.remove('hide')
+        })
       }
     }
+    // console.log(this.header)
   }
+
 
   /**
    * Handle menu button click
