@@ -167,6 +167,22 @@ $_govuk-typography-scale-legacy: (
       message: "14 on the type scale is deprecated and will be removed as " +
         "a possible option in the next major version."
     )
+  ),
+  12: (
+    null: (
+      font-size: 12px,
+      line-height: 20px,
+      letter-spacing: 0.5px
+    ),
+    tablet: (
+      font-size: 12px,
+      line-height: 20px,
+      letter-spacing: 0.5px
+    ),
+    print: (
+      font-size: 12pt,
+      line-height: 1
+    )
   )
 );
 
@@ -313,6 +329,22 @@ $_govuk-typography-scale-modern: (
       key: "govuk-typography-scale-14",
       message: "14 on the type scale is deprecated and will be removed as " +
         "a possible option in the next major version."
+    )
+  ),
+  12: (
+    null: (
+      font-size: 12px,
+      line-height: 20px,
+      letter-spacing: 0.1px
+    ),
+    tablet: (
+      font-size: 12px,
+      line-height: 20px,
+      letter-spacing: 0.5px
+    ),
+    print: (
+      font-size: 12pt,
+      line-height: 1
     )
   )
 );

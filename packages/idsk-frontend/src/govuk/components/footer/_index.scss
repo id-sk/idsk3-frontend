@@ -11,13 +11,13 @@
   $govuk-footer-crest-image-height: ($govuk-footer-crest-image-height-2x / 2);
 
   .govuk-footer {
-    @include govuk-font($size: if($govuk-new-typography-scale, 19, 16));
+    @include govuk-font($size: 16, $line-height: 1.75);
     @include govuk-responsive-padding(7, "top");
     @include govuk-responsive-padding(5, "bottom");
 
-    border-top: 1px solid $govuk-footer-border;
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
     color: $govuk-footer-text;
-    background: $govuk-footer-background;
+    background: govuk-colour("greyN100");
   }
 
   .govuk-footer__link {
@@ -73,14 +73,6 @@
   .govuk-footer__copyright-logo {
     display: inline-block;
     min-width: $govuk-footer-crest-image-width;
-    padding-top: ($govuk-footer-crest-image-height + govuk-spacing(2));
-    background-image: govuk-image-url("govuk-crest.png");
-    @include govuk-device-pixel-ratio {
-      background-image: govuk-image-url("govuk-crest-2x.png");
-    }
-    background-repeat: no-repeat;
-    background-position: 50% 0%;
-    background-size: $govuk-footer-crest-image-width $govuk-footer-crest-image-height;
     text-align: center;
     white-space: nowrap;
   }
@@ -89,6 +81,9 @@
     margin-top: 0;
     margin-bottom: govuk-spacing(3);
     padding: 0;
+    @include govuk-media-query($until: tablet) {
+      margin-bottom: 0;
+    }
   }
 
   .govuk-footer__meta-custom {
@@ -99,9 +94,14 @@
     display: inline-block;
     margin-right: govuk-spacing(3);
     margin-bottom: govuk-spacing(1);
+    @include govuk-media-query($until: tablet) {
+      width: 100%;
+      margin-bottom: govuk-spacing(3);
+    }
   }
 
   .govuk-footer__heading {
+    @include govuk-font-size(19);
     margin-bottom: govuk-spacing(6);
     padding-bottom: govuk-spacing(4);
 
