@@ -43,6 +43,42 @@ params:
         type: string
         required: false
         description: On or Off red warning circle
+
+  - name: profileNavig
+    type: array
+    required: false
+    description: Can be used to add navigation to the header component.
+    params:
+      - name: text
+        type: string
+        required: true
+        description: Text for the navigation item. If `html` is provided, the `text` option will be ignored.
+      - name: html
+        type: string
+        required: true
+        description: HTML for the navigation item. If `html` is provided, the `text` option will be ignored.
+      - name: href
+        type: string
+        required: false
+        description: URL of the navigation item anchor.
+      - name: active
+        type: boolean
+        required: false
+        description: Flag to mark the navigation item as active or not.
+      - name: attributes
+        type: object
+        required: false
+        description: HTML attributes (for example data attributes) to add to the navigation item anchor.
+      - name: warning
+        type: string
+        required: false
+        description: On or Off red warning circle
+
+  - name: dropdown
+    type: boolean
+    required: false
+    description: Add dropdown menu or no
+
   - name: navigationClasses
     type: string
     required: false
@@ -137,6 +173,7 @@ examples:
           text: Section 4
         - href: '#5'
           text: Sekcia 5
+      dropdown: true
 
   - name: user login (with navigation)
     options:
@@ -154,6 +191,17 @@ examples:
           text: Section 4
         - href: '#5'
           text: Sekcia 5
+      profileNavig:
+        - href: '#1'
+          text: Profile 1
+          active: true
+        - href: '#2'
+          text: Profile 2
+        - href: '#3'
+          text: Profile 3
+        - href: '#4'
+          text: Profile 4
+      dropdown: true
 
   - name: with navigation in header
     options:
@@ -171,6 +219,7 @@ examples:
           text: Section 4
         - href: '#5'
           text: Sekcia 5
+      dropdown: true
 
   - name: without navigation in header
     options:

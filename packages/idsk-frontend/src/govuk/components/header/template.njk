@@ -84,7 +84,8 @@
 {#          {% if params.navigation | length %}#}
           <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}"
                class="govuk-header__navigation mobile-hidden {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
-              <ul id="navigation" class="govuk-header__navigation-list">
+            <ul id="navigation"
+                class="govuk-header__navigation-list" {% if params.navbarHeader %} style="border-top: 0" {% endif %}>
                 {% for item in params.navigation %}
                   {% if item.text or item.html %}
                     <li class="govuk-header__navigation-item {%- if item.active %} govuk-header__navigation-item--active{% endif %}">
@@ -155,46 +156,72 @@
 
               <button class="govuk-button govuk-button__basic">Primárne tlačidlo</button>
               <button class="govuk-button govuk-button--texted govuk-button--texted__warning">Textové tlačidlo</button>
-
             </div>
           {% endif %}
+          {% if params.navigation | length %}
             <span class="text">Menu</span>
-          <ul class="govuk-header__navigation-list govuk-width-container">
-            {% for item in params.navigation %}
-              {% if item.text or item.html %}
-                <li
-                  class="govuk-header__navigation-item {%- if item.active %} govuk-header__navigation-item--active{% endif %}">
-                  {% if item.href %}
-                  <a class="govuk-header__link" href="{{ item.href }}"
-                    {{- govukAttributes(item.attributes) -}}>
-                    {% endif %}
-                    {{ item.html | safe | trim | indent(14) if item.html else item.text }}
-                    {% if item.href %}
-                  </a>
+
+            <div class="govuk-header__navigation-list">
+              <ul class="govuk-width-container">
+                {% for item in params.navigation %}
+                  {% if item.text or item.html %}
+                    <li
+                      class="govuk-header__navigation-item {%- if item.active %} govuk-header__navigation-item--active{% endif %}">
+                      {% if item.href %}
+                      <a class="govuk-header__link" href="{{ item.href }}"
+                        {{- govukAttributes(item.attributes) -}}>
+                        {% endif %}
+                        {{ item.html | safe | trim | indent(14) if item.html else item.text }}
+                        {% if item.href %}
+                      </a>
+                      {% endif %}
+                    </li>
                   {% endif %}
-                </li>
-              {% endif %}
-            {% endfor %}
-            <li class="govuk-header__navigation-item dropdown-toggle">
-              <a href="#" class="govuk-header__link">Dropdown menu<span class="material-icons">expand_more</span></a>
-              <ul class="submenu idsk-shadow-medium">
-                <li class="govuk-header__navigation-item">
-                  <a class="govuk-header__link" href="#">Dropdown menu</a>
-                </li>
-                <li class="govuk-header__navigation-item">
-                  <a class="govuk-header__link" href="#">Dropdown 2 </a>
-                </li>
-                <li class="govuk-header__navigation-item">
-                  <a class="govuk-header__link" href="#">Dropdown menu 3</a>
-                </li>
+                {% endfor %}
+                {% if params.dropdown %}
+                  <li class="govuk-header__navigation-item dropdown-toggle">
+                    <a href="#" class="govuk-header__link">Dropdown menu<span class="material-icons">expand_more</span></a>
+                    <ul class="submenu idsk-shadow-medium">
+                      <li class="govuk-header__navigation-item">
+                        <a class="govuk-header__link" href="#">Dropdown menu</a>
+                      </li>
+                      <li class="govuk-header__navigation-item">
+                        <a class="govuk-header__link" href="#">Dropdown 2 </a>
+                      </li>
+                      <li class="govuk-header__navigation-item">
+                        <a class="govuk-header__link" href="#">Dropdown menu 3</a>
+                      </li>
+                    </ul>
+                  </li>
+                {% endif %}
               </ul>
-            </li>
-            </ul>
+            </div>
+          {% endif %}
+          {% if params.profileNavig %}
+            <span class="text desktop-hidden">Profile</span>
+            <ul class="govuk-header__navigation-list govuk-width-container desktop-hidden">
+              {% for item in params.profileNavig %}
+                {% if item.text or item.html %}
+                  <li
+                    class="govuk-header__navigation-item {%- if item.active %} govuk-header__navigation-item--active{% endif %}">
+                    {% if item.href %}
+                    <a class="govuk-header__link" href="{{ item.href }}"
+                      {{- govukAttributes(item.attributes) -}}>
+                      {% endif %}
+                      {{ item.html | safe | trim | indent(14) if item.html else item.text }}
+                      {% if item.href %}
+                    </a>
+                    {% endif %}
+                  </li>
+                {% endif %}
+              {% endfor %}
+              </ul>
+          {% endif %}
           {% if not params.actionPanel %}
-              <div class="btnWrapper desktop-hidden">
-                <button class="govuk-button govuk-button__basic">Tlacidlo 1</button>
-                <button class="govuk-button govuk-button__basic">Tlacidlo 2</button>
-              </div>
+            <div class="btnWrapper desktop-hidden">
+              <button class="govuk-button govuk-button__basic">Tlacidlo 1</button>
+              <button class="govuk-button govuk-button__basic">Tlacidlo 2</button>
+            </div>
             {% endif %}
           </nav>
         </div>
