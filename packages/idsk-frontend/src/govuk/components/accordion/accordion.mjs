@@ -1,8 +1,8 @@
-import { mergeConfigs } from '../../common/index.mjs'
-import { normaliseDataset } from '../../common/normalise-dataset.mjs'
-import { ElementError } from '../../errors/index.mjs'
-import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
-import { I18n } from '../../i18n.mjs'
+import {mergeConfigs} from '../../common/index.mjs'
+import {normaliseDataset} from '../../common/normalise-dataset.mjs'
+import {ElementError} from '../../errors/index.mjs'
+import {GOVUKFrontendComponent} from '../../govuk-frontend-component.mjs'
+import {I18n} from '../../i18n.mjs'
 
 /**
  * Accordion component
@@ -347,7 +347,7 @@ export class Accordion extends GOVUKFrontendComponent {
 
     $heading.removeChild($span)
     $heading.appendChild($button)
-    $headingWrapper.appendChild($summary)
+    // $headingWrapper.appendChild($summary)
   }
 
   /**
@@ -428,9 +428,7 @@ export class Accordion extends GOVUKFrontendComponent {
       return
     }
 
-    const newButtonText = expanded ? 'remove' : 'add'
-
-    $showHideText.textContent = newButtonText
+    $showHideText.textContent = expanded ? 'remove' : 'add'
     $button.setAttribute('aria-expanded', `${expanded}`)
 
     // Update aria-label combining
@@ -498,9 +496,7 @@ export class Accordion extends GOVUKFrontendComponent {
     const expandedSectionCount = this.$module.querySelectorAll(
       `.${this.sectionExpandedClass}`
     ).length
-    const areAllSectionsOpen = sectionsCount === expandedSectionCount
-
-    return areAllSectionsOpen
+    return sectionsCount === expandedSectionCount
   }
 
   /**
