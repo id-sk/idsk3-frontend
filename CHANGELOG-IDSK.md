@@ -6,6 +6,7 @@
 
 - _[ID-86]_: ID-SK Footer design
 - _[ID-98]_: ID-SK Breadcrumbs
+- _[ID-112]_: ID-SK Table
 
 - **Property changes**
 
