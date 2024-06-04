@@ -1,0 +1,88 @@
+params:
+  - name: isVertical
+    type: boolean
+    reguired: false
+    description: Show card component vertically.
+  - name: title
+    type: string
+    required: false
+    description: Title for a card.
+  - name: description
+    type: string
+    required: false
+    description: Text for description of a card.
+  - name: imgSrc
+    type: string
+    required: false
+    description: Url string for image to appear in card.
+  - name: internalLink
+    type: string
+    required: false
+    description: Url string for internal link in title. Url source will be opened in the same tab.
+  - name: externalLink
+    type: string
+    required: false
+    description: Url string for external link in title. Url source will be opened in the new tab.
+  - name: date
+    type: string
+    required: false
+    description: Date that be displayed at the bottom of card. Card tags will not be displayed if date is not set.
+  - name: tags
+    type: array
+    required: false
+    description: Card tags that be displayed next to date at the bottom of card. Date param must be set to display tags.
+    params:
+      - name: text
+        type: string
+        required: true
+        description: Tag item text.
+      - name: href
+        type: string
+        required: false
+        description: Tag item link `href` attribute.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the footer component container.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the card component container.
+
+examples:
+  - name: default
+    description: Horizontálna kartička
+    options:
+      title: Nadpis kartičky
+      description: V tejto časti nájdete všetky podtrebné informácie spojené s používaním a vytvorením občianského preukazu s čipom
+      imgSrc: '/assets/images/placeholder.png'
+      internalLink: '#'
+      date: 1. 1. 2023
+      tags:
+        - text: Tag 1
+        - text: Tag 2
+        - text: Tag 3
+
+  - name: vertikálna
+    description: Vertikálna kartička
+    options:
+      isVertical: true
+      title: Nadpis kartičky
+      description: V tejto časti nájdete všetky podtrebné informácie spojené s používaním a vytvorením občianského preukazu s čipom
+      imgSrc: '/assets/images/placeholder.png'
+      internalLink: '#'
+      date: 25. 02. 2018
+      tags:
+        - text: Tag 1
+        - text: Tag 2
+          href: '#2'
+
+  - name: horizontálna bez obrázku
+    description: Horizontálna kartička bez obrázku
+    options:
+      title: Nadpis kartičky
+      description: V tejto časti nájdete všetky podtrebné informácie spojené s používaním a vytvorením občianského preukazu s čipom
+      date: 25. 02. 2018
+      tags:
+        - text: Tag 1
+        - text: Tag 2
