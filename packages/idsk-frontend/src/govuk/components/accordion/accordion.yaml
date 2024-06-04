@@ -43,6 +43,10 @@ params:
     type: string
     required: false
     description: Text made available to assistive technologies, like screen-readers, as the final part of the toggle's accessible name when the section is collapsed. Defaults to `"Show this section"`.
+  - name: smallAccordion
+    type: boolean
+    required: false
+    description: Small accordion or no. Change only paddings.
   - name: items
     type: array
     required: true
@@ -95,68 +99,55 @@ params:
 examples:
   - name: default
     options:
-      id: default-example
+      id: with-descriptions
       items:
         - heading:
-            text: Section A
+            text: Názov
           content:
             text: We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
         - heading:
-            text: Section B
+            text: Názov
+          summary:
+            text: Popis
+          content:
+            text: We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+
+  - name: default small
+    options:
+      id: default-example
+      smallAccordion: true
+      items:
+        - heading:
+            text: Názov A
+          content:
+            text: We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+        - heading:
+            text: Názov B
           content:
             html: |
               <ul class="govuk-list govuk-list--bullet">
                 <li>Example item 2</li>
               </ul>
 
-  - name: with additional descriptions
+  - name: with long content and description
     options:
-      id: with-descriptions
+      id: with-long-content-and-description
       items:
         - heading:
-            text: Test
+            text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis tortor porttitor.
           summary:
-            text: Additional description
+            text: Etiam diam dui, tempus ut pharetra in, aliquet non dui. Nunc pulvinar maximus tortor, ac finibus augue congue vitae. Donec sed cursus lorem.
           content:
-            html: |
-              <p class="govuk-body">
-                We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
-              </p>
-              <ul class="govuk-list govuk-list--bullet">
-                <li>Example item 1</li>
-              </ul>
+            text: Lorem ipsum dolor sit amet consectetur adipiscing, elit odio eget at class est, ridiculus arcu suspendisse scelerisque blandit. Donec porttitor taciti interdum litora magna leo, ac primis vestibulum montes habitasse nostra, dictum in torquent nunc congue. Lorem ipsum dolor sit amet consectetur adipiscing, elit odio eget at class est, ridiculus arcu suspendisse scelerisque blandit. Donec porttitor taciti interdum litora magna leo, ac primis vestibulum montes habitasse nostra, dictum in torquent nunc congue.
         - heading:
-            text: Test 2
+            text: Praesent faucibus leo feugiat libero pharetra lacinia. Aliquam aliquet ante vitae mollis vestibulum.
           summary:
-            html: <span class="govuk-!-font-weight-regular">Additional description (wrapped in span)</span>
+            html: <span class="govuk-!-font-weight-regular">Maecenas nec <abbr>est</abbr> sapien. Etiam varius luctus mauris non porttitor. </span>
           content:
             html: |
               <ul class="govuk-list govuk-list--bullet">
                 <li>Example item 2</li>
               </ul>
-  #
-  #  - name: with long content and description
-  #    options:
-  #      id: with-long-content-and-description
-  #      items:
-  #        - heading:
-  #            text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis tortor porttitor.
-  #          summary:
-  #            text: Etiam diam dui, tempus ut pharetra in, aliquet non dui. Nunc pulvinar maximus tortor, ac finibus augue congue vitae. Donec sed cursus lorem.
-  #          content:
-  #            html: |
-  #              <ul class="govuk-list govuk-list--bullet">
-  #                <li>Example item 1</li>
-  #              </ul>
-  #        - heading:
-  #            text: Praesent faucibus leo feugiat libero pharetra lacinia. Aliquam aliquet ante vitae mollis vestibulum.
-  #          summary:
-  #            html: <span class="govuk-!-font-weight-regular">Maecenas nec <abbr>est</abbr> sapien. Etiam varius luctus mauris non porttitor. </span>
-  #          content:
-  #            html: |
-  #              <ul class="govuk-list govuk-list--bullet">
-  #                <li>Example item 2</li>
-  #              </ul>
   #
   #  - name: with one section open
   #    options:

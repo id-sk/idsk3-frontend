@@ -1,8 +1,8 @@
-import {mergeConfigs} from '../../common/index.mjs'
-import {normaliseDataset} from '../../common/normalise-dataset.mjs'
-import {ElementError} from '../../errors/index.mjs'
-import {GOVUKFrontendComponent} from '../../govuk-frontend-component.mjs'
-import {I18n} from '../../i18n.mjs'
+import { mergeConfigs } from '../../common/index.mjs'
+import { normaliseDataset } from '../../common/normalise-dataset.mjs'
+import { ElementError } from '../../errors/index.mjs'
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
+import { I18n } from '../../i18n.mjs'
 
 /**
  * Accordion component
@@ -269,7 +269,6 @@ export class Accordion extends GOVUKFrontendComponent {
     }
 
     // Create container for heading text so it can be styled
-    const $headingWrapper = document.createElement('div')
     const $headingText = document.createElement('span')
     $headingText.classList.add(this.sectionHeadingTextClass)
     // Copy the span ID to the heading text to allow it to be referenced by
@@ -311,8 +310,7 @@ export class Accordion extends GOVUKFrontendComponent {
     // 2. Punctuation
     // 3. (Optional: Summary line followed by punctuation)
     // 4. Show / hide toggle
-    $headingWrapper.appendChild($headingText)
-    $button.appendChild($headingWrapper)
+    $button.appendChild($headingText)
     $button.appendChild(this.getButtonPunctuationEl())
 
     // If summary content exists add to DOM in correct order
@@ -325,8 +323,8 @@ export class Accordion extends GOVUKFrontendComponent {
       // Create an inner summary container to limit the width of the summary
       // focus state
       const $summarySpanFocus = document.createElement('span')
-      $summarySpanFocus.classList.add(this.sectionSummaryFocusClass)
-      $summarySpan.appendChild($summarySpanFocus)
+      // $summarySpanFocus.classList.add(this.sectionSummaryFocusClass)
+      // $summarySpan.appendChild($summarySpanFocus)
 
       // Get original attributes, and pass them to the replacement
       for (const attr of Array.from($summary.attributes)) {
@@ -339,7 +337,7 @@ export class Accordion extends GOVUKFrontendComponent {
       // Replace the original summary `div` with the new summary `span`
       // $summary.parentNode.replaceChild($summarySpan, $summary)
 
-      $button.appendChild($summarySpan)
+      // $button.appendChild($summarySpan)
       $button.appendChild(this.getButtonPunctuationEl())
     }
 
