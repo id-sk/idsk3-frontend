@@ -29,14 +29,12 @@
     }
 
     &__actionPanel {
-
       @include govuk-media-query($from: desktop) {
         display: flex;
         align-items: center;
       }
       @include govuk-media-query($until: desktop) {
         display: flex;
-
       }
 
       @media (min-width: 769px) {
@@ -356,7 +354,6 @@
   }
 
   .govuk-header__navigation {
-
     span.text {
       font-size: 16px;
       color: govuk-colour("black");
@@ -428,7 +425,7 @@
 
     @include govuk-media-query($from: desktop) {
       display: inline-block;
-      padding: 1.25rem .625rem;
+      padding: 1.25rem 0.625rem;
       border: 0;
     }
 
@@ -584,7 +581,7 @@
 
 .idsk-secondary-navigation__heading-title {
   display: inline-block;
-  padding-top: .4rem;
+  padding-top: 0.4rem;
 }
 
 .idsk-secondary-navigation__heading-button {
@@ -602,7 +599,7 @@
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1rem;
-  margin: .625rem 0;
+  margin: 0.625rem 0;
 
   @include govuk-media-query($from: desktop) {
     gap: 2rem;
@@ -683,18 +680,18 @@
     display: none;
     position: absolute;
     z-index: 10;
-    border-radius: .375rem;
+    border-radius: 0.375rem;
     background: govuk-colour("white");
     color: govuk-colour("black");
-    top: .7rem;
+    top: 0.7rem;
     list-style: none;
     padding: 0;
 
     li.idsk-dropdown__option {
       position: relative;
-      padding: .75rem 1.25rem;
+      padding: 0.75rem 1.25rem;
 
-      &:hover{
+      &:hover {
         background-color: govuk-colour("blueP100");
       }
       &:active {
@@ -703,10 +700,10 @@
       }
 
       &:first-child {
-        margin-top: .25rem;
+        margin-top: 0.25rem;
       }
       &:last-child {
-        margin-bottom: .25rem;
+        margin-bottom: 0.25rem;
       }
       a {
         color: govuk-colour("black");
@@ -749,7 +746,6 @@
     @include govuk-media-query($until: desktop) {
       margin-top: 15px;
     }
-
   }
 
   &.open {
@@ -766,7 +762,7 @@
   display: none;
   position: absolute;
   top: 85%;
-  left: -.2rem;
+  left: -0.2rem;
   width: auto;
   list-style-type: none;
   border-radius: 5px;

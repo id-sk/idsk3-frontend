@@ -139,7 +139,6 @@ accessibilityCriteria: |
   Landmarks and Roles in the Header should:
   - have a role of `"banner"` at the root of the component (<header>) (https://www.w3.org/TR/wai-aria-1.1/#banner)
 
-
 examples:
   #  - name: default
   #    description: The standard header as used on information pages
@@ -149,13 +148,13 @@ examples:
     options:
       #      useTudorCrown: false
       actionPanel: false
-      navigation: { }
+      navigation: {}
 
   - name: user login (without navigation)
     options:
       #      useTudorCrown: false
       actionPanel: true
-      navigation: { }
+      navigation: {}
 
   - name: user not logged (with navigation)
     options:
@@ -292,4 +291,4 @@ examples:
   - name: empty navigation array
     hidden: true
     options:
-      navigation: [ ]
+      navigation: []
