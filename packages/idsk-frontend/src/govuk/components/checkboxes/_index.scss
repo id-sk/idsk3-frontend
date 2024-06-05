@@ -268,7 +268,6 @@
       // Apply an outline for those modes to use instead.
       outline: $govuk-focus-width dashed transparent;
       outline-offset: 1px;
-      //box-shadow: 0 0 0 $govuk-hover-width $govuk-hover-colour;
     }
 
     // Because we've overridden the border-shadow provided by the focus state,
