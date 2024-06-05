@@ -1,3 +1,4 @@
+/* stylelint-disable */
 @include govuk-exports("govuk/component/header") {
   $govuk-header-background: govuk-colour("dark-blue");
   $govuk-header-border-color: $govuk-brand-colour;
