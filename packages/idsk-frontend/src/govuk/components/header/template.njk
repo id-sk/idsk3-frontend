@@ -82,10 +82,8 @@
         {#    Start Some expression    #}
         {% if params.navbarHeader %}
 {#          {% if params.navigation | length %}#}
-          <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}"
-               class="govuk-header__navigation mobile-hidden {%- if params.navigationClasses %} {{ params.navigationClasses }} {% endif %}">
-            <ul id="navigation"
-                class="govuk-header__navigation-list" {% if params.navbarHeader %} style="border-top: 0" {% endif %}>
+          <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-header__navigation mobile-hidden {%- if params.navigationClasses %} {{ params.navigationClasses }} {% endif %}">
+            <ul id="navigation" class="govuk-header__navigation-list" {% if params.navbarHeader %} style="border-top: 0" {% endif %}>
                 {% for item in params.navigation %}
                   {% if item.text or item.html %}
                     <li class="govuk-header__navigation-item {%- if item.active %} govuk-header__navigation-item--active{% endif %}">
@@ -117,8 +115,7 @@
           <div class="govuk-header__actionPanel mobile-hidden">
             <span role="button" class="material-icons">notifications</span>
             <span role="button" class="material-icons">info</span>
-            <img class="profile mobile-hidden" src="https://placehold.co/40x40/072C66/FFFFFF?text=Profile"
-                 alt="Profile"/>
+            <img class="profile mobile-hidden" src="https://placehold.co/40x40/072C66/FFFFFF?text=Profile" alt="Profile"/>
           </div>
         {% else %}
           <button class="govuk-button govuk-button__basic mobile-hidden">Tlacidlo 1</button>
@@ -146,17 +143,16 @@
           {% endif %}
         {% endif %}
       {% if params.navigation %}
-        <nav id="navigation" aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}"
-             class="govuk-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %} {% if params.navbarHeader %} desktop-hidden {% endif %}">
+        <nav id="navigation" aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}" class="govuk-header__navigation {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %} {% if params.navbarHeader %} desktop-hidden {% endif %}">
           {% if params.actionPanel %}
-            <div class="govuk-header__profile">
-              <img class="profile" src="https://placehold.co/100x100/072C66/FFFFFF?text=JH" alt="Profile"/>
-              <h4 class="govuk-heading-l">Janko Hruska</h4>
-              <span role="textbox">RČ 123456/1234</span>
+          <div class="govuk-header__profile">
+            <img class="profile" src="https://placehold.co/100x100/072C66/FFFFFF?text=JH" alt="Profile"/>
+            <h4 class="govuk-heading-l">Janko Hruska</h4>
+            <span role="textbox">RČ 123456/1234</span>
 
-              <button class="govuk-button govuk-button__basic">Primárne tlačidlo</button>
-              <button class="govuk-button govuk-button--texted govuk-button--texted__warning">Textové tlačidlo</button>
-            </div>
+            <button class="govuk-button govuk-button__basic">Primárne tlačidlo</button>
+            <button class="govuk-button govuk-button--texted govuk-button--texted__warning">Textové tlačidlo</button>
+          </div>
           {% endif %}
           {% if params.navigation | length %}
             <span class="text">Menu</span>
