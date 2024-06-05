@@ -20,7 +20,7 @@
 
 - **Other changes**
 
-  - No changes.
+  - Deleted unnecessary files
 
 ### 🐞 Bug Fixes
 
