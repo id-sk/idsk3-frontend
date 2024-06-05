@@ -1,6 +1,6 @@
-import {getBreakpoint} from '../../common/index.mjs'
-import {ElementError} from '../../errors/index.mjs'
-import {GOVUKFrontendComponent} from '../../govuk-frontend-component.mjs'
+import { getBreakpoint } from '../../common/index.mjs'
+import { ElementError } from '../../errors/index.mjs'
+import { GOVUKFrontendComponent } from '../../govuk-frontend-component.mjs'
 
 /**
  * Header component
@@ -12,9 +12,11 @@ export class Header extends GOVUKFrontendComponent {
   $module
 
   /** @private */
+  /** @type {HTMLElement} */
   $menuButton
 
   /** @private */
+  /** @type {HTMLElement} */
   $menu
 
   /**
@@ -55,7 +57,8 @@ export class Header extends GOVUKFrontendComponent {
 
     this.$module = $module
     const $menuButton = $module.querySelector('.govuk-js-header-toggle')
-    this.header = document.querySelector('.govuk-header')
+    /** @type {HTMLElement} */ this.header =
+      document.querySelector('.govuk-header')
 
     // Headers don't necessarily have a navigation. When they don't, the menu
     // toggle won't be rendered by our macro (or may be omitted when writing
@@ -73,37 +76,35 @@ export class Header extends GOVUKFrontendComponent {
       })
     }
 
-    const websitesNavBody = $module.querySelector('.idsk-secondary-navigation__body')
-    const websitesNavBtn = $module.querySelector('.idsk-secondary-navigation__heading-button')
+    const websitesNavBody = $module.querySelector(
+      '.idsk-secondary-navigation__body'
+    )
+    const websitesNavBtn = $module.querySelector(
+      '.idsk-secondary-navigation__heading-button'
+    )
     this.websitesNavBody = websitesNavBody
     this.websitesNavBtn = websitesNavBtn
 
     this.websitesNavBtn.addEventListener('click', () => {
       this.websitesNavBody.classList.toggle('hidden')
-      this.websitesNavBtn.querySelector('.material-icons').classList.toggle('rotate180')
+      this.websitesNavBtn
+        .querySelector('.material-icons')
+        .classList.toggle('rotate180')
     })
 
     // Get language elems to open or close language list
-    this.langDiv = $module.querySelector(".idsk-secondary-navigation__dropdown")
+    this.langDiv = $module.querySelector('.idsk-secondary-navigation__dropdown')
     this.handleLangClick()
 
     let $menu
     const $menus = document.querySelectorAll(`#${menuId}`)
-    $menus.forEach(menu => {
+    $menus.forEach((menu) => {
       if (menu.classList.contains('desktop-hidden')) {
         $menu = menu
       } else {
         $menu = menu
       }
     })
-
-    if (!$menu) {
-      throw new ElementError({
-        componentName: 'Header',
-        element: $menu,
-        identifier: `Navigation (\`<ul id="${menuId}">\`)`
-      })
-    }
 
     this.$menu = $menu
     this.$menuButton = $menuButton
@@ -115,13 +116,13 @@ export class Header extends GOVUKFrontendComponent {
     })
 
     // Get dropdown menu and toggle. Then function for show or hide dropdown
-    const dropdownToggle = $module.querySelector(".dropdown-toggle")
+    const dropdownToggle = $module.querySelector('.dropdown-toggle')
     this.dropdownToggle = dropdownToggle
     if (!dropdownToggle) {
       throw new ElementError({
         componentName: 'Dropdown toggle menu',
         element: dropdownToggle,
-        identifier: 'Submenu dropdown',
+        identifier: 'Submenu dropdown'
       })
     }
     this.openCloseDropdownMenu()
@@ -169,14 +170,9 @@ export class Header extends GOVUKFrontendComponent {
    * @private
    */
   checkMode() {
-    if (!this.mql || !this.$menu || !this.$menuButton) {
-      return
-    }
-
     if (this.mql.matches) {
       this.$menu.removeAttribute('hidden')
       this.$menuButton.setAttribute('hidden', '')
-
     } else {
       this.$menuButton.removeAttribute('hidden')
       this.$menuButton.setAttribute('aria-expanded', this.menuIsOpen.toString())
@@ -184,30 +180,51 @@ export class Header extends GOVUKFrontendComponent {
       if (this.menuIsOpen) {
         this.$menu.removeAttribute('hidden')
         this.$menuButton.textContent = 'Zavrieť'
-        this.createMaterialIcon('close', /** @type {HTMLElement} */ (this.$menuButton));
+        this.createMaterialIcon(
+          'close',
+          /** @type {HTMLElement} */ (this.$menuButton)
+        )
         this.header.style.background = '#fafafa'
-        this.header?.querySelector('.govuk-header__actionPanel.mobile-hidden')?.classList.remove('mobile-hidden')
-        this.header.querySelector('.govuk-header__link--homepage')?.setAttribute('hidden', '')
-        this.header.querySelector('.govuk-header__actionPanel.desktop-hidden').classList.remove('hide')
+        this.header
+          .querySelector('.govuk-header__actionPanel.mobile-hidden')
+          ?.classList.remove('mobile-hidden')
+        this.header
+          .querySelector('.govuk-header__link--homepage')
+          ?.setAttribute('hidden', '')
+        this.header
+          .querySelector('.govuk-header__actionPanel.desktop-hidden')
+          .classList.remove('hide')
       } else {
         this.$menu.setAttribute('hidden', '')
         this.$menuButton.textContent = 'Menu'
-        this.createMaterialIcon('menu', /** @type {HTMLElement} */ (this.$menuButton));
+        this.createMaterialIcon(
+          'menu',
+          /** @type {HTMLElement} */ (this.$menuButton)
+        )
         this.header.style.background = '#fff'
-        this.header?.querySelector('.govuk-header__actionPanel')?.classList.add('mobile-hidden')
-        this.header.querySelector('.govuk-header__link--homepage')?.removeAttribute('hidden')
-        this.header.querySelector('.idsk-searchbar__wrapper').classList.add('hide')
-        // document.querySelector('.govuk-header__btns-search').style.justifyContent = 'space-between'
+        this.header
+          .querySelector('.govuk-header__actionPanel')
+          ?.classList.add('mobile-hidden')
+        this.header
+          .querySelector('.govuk-header__link--homepage')
+          ?.removeAttribute('hidden')
+        this.header
+          .querySelector('.idsk-searchbar__wrapper')
+          .classList.add('hide')
 
-        this.header.querySelector('.material-icons.search').addEventListener('click', () => {
-          this.header.querySelector('.govuk-header__actionPanel.desktop-hidden').classList.add('hide')
-          this.header.querySelector('.idsk-searchbar__wrapper').classList.remove('hide')
-        })
+        this.header
+          .querySelector('.material-icons.search')
+          .addEventListener('click', () => {
+            this.header
+              .querySelector('.govuk-header__actionPanel.desktop-hidden')
+              .classList.add('hide')
+            this.header
+              .querySelector('.idsk-searchbar__wrapper')
+              .classList.remove('hide')
+          })
       }
     }
-    // console.log(this.header)
   }
-
 
   /**
    * Handle menu button click
@@ -222,6 +239,9 @@ export class Header extends GOVUKFrontendComponent {
     this.checkMode()
   }
 
+  /**
+   * Toggle for open and close lang dropdown
+   */
   handleLangClick() {
     this.langDiv.addEventListener('click', () => {
       this.langDiv.classList.toggle('open')
@@ -229,6 +249,9 @@ export class Header extends GOVUKFrontendComponent {
     })
   }
 
+  /**
+   * Toggle dropdown menu
+   */
   openCloseDropdownMenu() {
     this.dropdownToggle.addEventListener('click', (event) => {
       if (this.dropdownToggle) {
@@ -241,13 +264,13 @@ export class Header extends GOVUKFrontendComponent {
   }
 
   /**
-   *  Create and add material icon to parent element
+   * Create and add material icon to parent element
+   *
    * @param {string} iconName - icon name for create
    * @param {HTMLElement} parentElem - element to which the icon will be added
    */
-
   createMaterialIcon(iconName, parentElem) {
-    let spanIcon = document.createElement('span')
+    const spanIcon = document.createElement('span')
     spanIcon.className = 'material-icons'
     spanIcon.textContent = iconName.toString()
     parentElem.appendChild(spanIcon)
@@ -255,6 +278,7 @@ export class Header extends GOVUKFrontendComponent {
 
   /**
    * Function for click outside and close some elem
+   *
    * @param {HTMLElement} openedElem - element which need to remove open className
    * @param {string} className - name of className to remove and close some opened element
    */
