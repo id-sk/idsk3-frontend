@@ -9,6 +9,7 @@
 - _[ID-112]_: ID-SK Table
 - _[ID-97]_: ID-SK Accordion
 - _[ID-100]_: ID-SK Card
+- _[ID-85]_: ID-SK Header
 
 - **Property changes**
 
