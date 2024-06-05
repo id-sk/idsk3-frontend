@@ -83,7 +83,7 @@
         {% if params.navbarHeader %}
 {#          {% if params.navigation | length %}#}
           <nav aria-label="{{ params.navigationLabel | default(menuButtonText, true) }}"
-               class="govuk-header__navigation mobile-hidden {%- if params.navigationClasses %} {{ params.navigationClasses }}{% endif %}">
+               class="govuk-header__navigation mobile-hidden {%- if params.navigationClasses %} {{ params.navigationClasses }} {% endif %}">
             <ul id="navigation"
                 class="govuk-header__navigation-list" {% if params.navbarHeader %} style="border-top: 0" {% endif %}>
                 {% for item in params.navigation %}
