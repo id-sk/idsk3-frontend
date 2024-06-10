@@ -47,4 +47,63 @@
       cursor: not-allowed;
     }
   }
+  h2.govuk-heading-m {
+    margin-left: 30px;
+    margin-right: 30px;
+
+    @include govuk-media-query($until: tablet) {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  .upload-container {
+    margin: 0 30px 30px;
+    border: 2px dashed govuk-colour("greyN500");
+    border-radius: 5px;
+    text-align: center;
+    background-color: govuk-colour("greyN90");
+
+    @include govuk-media-query($until: tablet) {
+      margin: 0 10px 10px;
+    }
+  }
+
+  .upload-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .upload-icon {
+    margin-top: 30px;
+    .material-icons {
+      font-size: 36px;
+      color: govuk-colour("dark-blue");
+    }
+  }
+
+  .upload-text p {
+    margin: 5px 0;
+    color: govuk-colour("dark-blue");
+  }
+
+  .upload-button {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+
+    span.material-icons {
+      margin-right: 10px;
+    }
+  }
+
+  .upload-button:hover {
+    background-color: #0056b3;
+  }
 }
