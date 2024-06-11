@@ -10,6 +10,7 @@
 - _[ID-97]_: ID-SK Accordion
 - _[ID-100]_: ID-SK Card
 - _[ID-85]_: ID-SK Header
+- _[ID-93]_: ID-SK File upload
 
 - **Property changes**
 
