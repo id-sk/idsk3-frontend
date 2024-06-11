@@ -46,14 +46,58 @@
       opacity: 0.5;
       cursor: not-allowed;
     }
+
+    &.just-file::file-selector-button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      color: govuk-colour("white");
+      background: govuk-colour("blue");
+    }
   }
-  h2.govuk-heading-m {
-    margin-left: 30px;
+
+  .file-upload-component.govuk-form-group--error {
+    padding-left: 0;
+
+    .govuk-heading-m {
+      margin-bottom: 0;
+    }
+
+    .govuk-error-message {
+      margin-left: 30px;
+    }
+  }
+
+  .file-upload-component.js-enabled {
+    .upload-container {
+      border: none;
+      background: none;
+      text-align: left;
+    }
+  }
+
+  .file-upload-component.disabled {
+    .upload-box {
+      cursor: not-allowed;
+    }
+
+    .upload-container {
+      border-color: govuk-colour("greyN300");
+
+      .upload-icon .material-icons,
+      .upload-text p {
+        color: govuk-colour("dark-grey");
+      }
+    }
+  }
+
+  .govuk-heading-m {
     margin-right: 30px;
+    margin-left: 30px;
 
     @include govuk-media-query($until: tablet) {
-      margin-left: 10px;
       margin-right: 10px;
+      margin-left: 10px;
     }
   }
 
@@ -61,8 +105,8 @@
     margin: 0 30px 30px;
     border: 2px dashed govuk-colour("greyN500");
     border-radius: 5px;
-    text-align: center;
     background-color: govuk-colour("greyN90");
+    text-align: center;
 
     @include govuk-media-query($until: tablet) {
       margin: 0 10px 10px;
@@ -78,9 +122,10 @@
 
   .upload-icon {
     margin-top: 30px;
+
     .material-icons {
-      font-size: 36px;
       color: govuk-colour("dark-blue");
+      font-size: 36px;
     }
   }
 
@@ -91,14 +136,14 @@
 
   .upload-button {
     display: flex;
-    align-items: center;
+    width: auto;
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: auto;
+    align-items: center;
 
-    span.material-icons {
+    .material-icons {
       margin-right: 10px;
     }
   }

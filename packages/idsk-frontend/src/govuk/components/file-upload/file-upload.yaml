@@ -107,8 +107,6 @@ params:
     required: false
     description: show error
 
-
-
 examples:
   - name: default
     options:
@@ -119,31 +117,24 @@ examples:
 
   - name: without javascript
     options:
-      id: file-upload-2
-      name: file-upload-2
-      label:
-        text: Upload your photo
-      hint:
-        text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+      enableJs: true
 
-  - name: with active
+  - name: without javascript with error
     options:
-      id: file-upload-3
-      name: file-upload-3
-      label:
-        text: Upload a file
-      hint:
-        text: Your photo may be in your Pictures, Photos, Downloads or Desktop folder. Or in an app like iPhoto.
+      enableJs: true
       errorMessage:
-        text: Error message goes here
+        text: Veľkosť súboru musí byť menšia ako 10MB
+
+  #  - name: with active
+  #    options:
+  #      errorMessage:
+  #        text: Veľkosť súboru musí byť menšia ako 10MB
 
   - name: disabled
     options:
-      id: file-upload-4
-      name: file-upload-4
-      value: C:\fakepath\myphoto.jpg
       label:
         text: Upload a photo
+      disabled: true
 
   - name: file uploaded
     options:
@@ -153,15 +144,6 @@ examples:
         text: Upload a file
         classes: govuk-label--l
         isPageHeading: true
-
-  - name: with error
-    options:
-      id: file-upload-1
-      name: file-upload-1
-      label:
-        text: Upload a file
-      formGroup:
-        classes: extra-class
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes

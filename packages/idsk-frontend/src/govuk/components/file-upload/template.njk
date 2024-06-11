@@ -4,29 +4,40 @@
 {#- a record of other elements that we need to associate with the input using
   aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.describedBy if params.describedBy else "" %}
-<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}"
+<div class="govuk-form-group file-upload-component
+{%- if params.errorMessage %} govuk-form-group--error{% endif %}
+{% if params.enableJs %} js-enabled {% endif %}
+{% if params.disabled %} disabled {% endif %}
+{%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}"
   {{- govukAttributes(params.formGroup.attributes) }}>
 
 {% if params.hint %}
   {% set hintId = params.id + '-hint' %}
   {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
 {% endif %}
-
-{% if params.errorMessage %}
-  {% set errorId = params.id + '-error' %}
-  {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
-  {{ govukErrorMessage({
-    id: errorId,
-    classes: params.errorMessage.classes,
-    attributes: params.errorMessage.attributes,
-    html: params.errorMessage.html,
-    text: params.errorMessage.text,
-    visuallyHiddenText: params.errorMessage.visuallyHiddenText
-  }) | trim | indent(2) }}
-{% endif %}
   <h2 class="govuk-heading-m">Nahraj subor</h2>
+  {% if params.errorMessage %}
+    {% set errorId = params.id + '-error' %}
+    {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
+    {{ govukErrorMessage({
+      id: errorId,
+      classes: params.errorMessage.classes,
+      attributes: params.errorMessage.attributes,
+      html: params.errorMessage.html,
+      text: params.errorMessage.text,
+      visuallyHiddenText: params.errorMessage.visuallyHiddenText1
+    }) | trim | indent(2) }}
+  {% endif %}
   <div class="upload-container" aria-label="File upload section" role="region">
-    <input type="file" id="fileInput" class="file-input" hidden aria-describedby="uploadInstructions">
+{#    <input type="file" id="fileInput" class="file-input" hidden aria-describedby="uploadInstructions">#}
+
+  <input class="govuk-file-upload file-input {%- if params.errorMessage %} govuk-file-upload--error{% endif %} {% if params.enableJs %} just-file {% endif %}" id="fileInput" type="file" aria-describedby="uploadInstructions"
+  {%- if not params.enableJs  %} hidden {% endif %}
+  {%- if params.disabled %} disabled{% endif %} >
+  {% if params.formGroup.afterInput %}
+    {{ params.formGroup.afterInput.html | safe | trim | indent(2) if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
+  {% endif %}
+  {% if not params.enableJs %}
     <label for="fileInput" class="upload-box" aria-label="File upload box">
       <div class="upload-icon" aria-hidden="true">
         <span class="material-icons">cloud_upload</span>
@@ -35,18 +46,11 @@
         <p class="govuk-body"><b>Zvoľte súbor a nahrajte ho</b></p>
         <p class="govuk-body">alebo preneste zvolenú prílohu sem (max. veľkosť 50MB)</p>
       </div>
-      <button class="govuk-button govuk-button__basic upload-button" aria-label="Add attachment">
+      <button class="govuk-button govuk-button__basic upload-button" aria-label="Add attachment" {% if params.disabled %} disabled {% endif %}>
         <span class="material-icons">add</span>
         <span>Pridať prílohu</span>
       </button>
     </label>
+  {% endif %}
   </div>
-
-  <input class="govuk-file-upload {%- if params.errorMessage %} govuk-file-upload--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="file"
-  {%- if params.value %} value="{{ params.value }}"{% endif %}
-  {%- if params.disabled %} disabled{% endif %}
-  {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}>
-{% if params.formGroup.afterInput %}
-  {{ params.formGroup.afterInput.html | safe | trim | indent(2) if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
-{% endif %}
 </div>
