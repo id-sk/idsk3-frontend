@@ -110,10 +110,13 @@ params:
 examples:
   - name: default
     options:
-      id: file-upload-1
-      name: file-upload-1
       label:
         text: Upload a file
+
+  - name: default with error
+    options:
+      errorMessage:
+        text: Veľkosť súboru musí byť menšia ako 10MB
 
   - name: without javascript
     options:
@@ -125,25 +128,11 @@ examples:
       errorMessage:
         text: Veľkosť súboru musí byť menšia ako 10MB
 
-  #  - name: with active
-  #    options:
-  #      errorMessage:
-  #        text: Veľkosť súboru musí byť menšia ako 10MB
-
   - name: disabled
     options:
       label:
         text: Upload a photo
       disabled: true
-
-  - name: file uploaded
-    options:
-      id: file-upload-1
-      name: file-upload-1
-      label:
-        text: Upload a file
-        classes: govuk-label--l
-        isPageHeading: true
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: attributes
