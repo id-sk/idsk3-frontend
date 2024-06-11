@@ -19,6 +19,7 @@ export class FileUpload extends GOVUKFrontendComponent {
    */
   constructor($module) {
     super()
+
     this.$module = $module
   }
 }
