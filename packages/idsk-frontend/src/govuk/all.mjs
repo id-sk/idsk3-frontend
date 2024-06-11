@@ -10,7 +10,7 @@ import { Header } from './components/header/header.mjs'
 import { NotificationBanner } from './components/notification-banner/notification-banner.mjs'
 import { Radios } from './components/radios/radios.mjs'
 import { SupportError } from './errors/index.mjs'
-import {FileUpload} from "./components/file-upload/file-upload.mjs";
+import { FileUpload } from './components/file-upload/file-upload.mjs'
 
 /**
  * Initialise all components

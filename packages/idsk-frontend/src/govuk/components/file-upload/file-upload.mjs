@@ -18,7 +18,7 @@ export class FileUpload extends GOVUKFrontendComponent {
    * @param {Element | null} $module - HTML element to use for error summary
    */
   constructor($module) {
-    super();
+    super()
     this.$module = $module
   }
 }
@@ -34,4 +34,3 @@ export class FileUpload extends GOVUKFrontendComponent {
 /**
  * @typedef {import('../../common/index.mjs').Schema} Schema
  */
-
