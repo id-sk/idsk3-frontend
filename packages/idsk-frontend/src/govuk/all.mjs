@@ -6,11 +6,11 @@ import { Accordion } from './components/accordion/accordion.mjs'
 import { Button } from './components/button/button.mjs'
 import { Checkboxes } from './components/checkboxes/checkboxes.mjs'
 import { ErrorSummary } from './components/error-summary/error-summary.mjs'
+import { FileUpload } from './components/file-upload/file-upload.mjs'
 import { Header } from './components/header/header.mjs'
 import { NotificationBanner } from './components/notification-banner/notification-banner.mjs'
 import { Radios } from './components/radios/radios.mjs'
 import { SupportError } from './errors/index.mjs'
-import { FileUpload } from './components/file-upload/file-upload.mjs'
 
 /**
  * Initialise all components
@@ -36,7 +36,8 @@ function initAll(config) {
     [ErrorSummary, config.errorSummary],
     [Header],
     [NotificationBanner, config.notificationBanner],
-    [Radios]
+    [Radios],
+    [FileUpload]
   ])
 
   // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
@@ -94,7 +95,6 @@ export {
  * @typedef {import('./components/button/button.mjs').ButtonConfig} ButtonConfig
  * @typedef {import('./components/error-summary/error-summary.mjs').ErrorSummaryConfig} ErrorSummaryConfig
  * @typedef {import('./components/notification-banner/notification-banner.mjs').NotificationBannerConfig} NotificationBannerConfig
- * @typeof {import('./components/file-upload/file-upload.mjs').FileUploadConfig} FileUploadConfig
  */
 
 /**

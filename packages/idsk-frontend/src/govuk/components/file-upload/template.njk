@@ -8,7 +8,7 @@
 {%- if params.errorMessage %} govuk-form-group--error{% endif %}
 {% if params.enableJs %} js-enabled {% endif %}
 {% if params.disabled %} disabled {% endif %}
-{%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}"
+{%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}" data-module="govuk-fileUpload"
   {{- govukAttributes(params.formGroup.attributes) }}>
 
 {% if params.hint %}

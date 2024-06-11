@@ -103,9 +103,7 @@
 
   .upload-container {
     margin: 0 30px 30px;
-    border: 2px dashed govuk-colour("greyN500");
-    border-radius: 5px;
-    background-color: govuk-colour("greyN90");
+
     text-align: center;
 
     @include govuk-media-query($until: tablet) {
@@ -115,9 +113,17 @@
 
   .upload-box {
     display: flex;
+    border: 2px dashed govuk-colour("greyN500");
+    border-radius: 5px;
+    background-color: govuk-colour("greyN90");
+    cursor: pointer;
     flex-direction: column;
     align-items: center;
-    cursor: pointer;
+  }
+
+  .upload-box.dragover {
+    border-color: govuk-colour("blue");
+    background: govuk-colour("light-blue");
   }
 
   .upload-icon {
