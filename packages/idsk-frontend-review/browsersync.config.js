@@ -33,7 +33,7 @@ module.exports = {
     join(paths.app, 'dist/stylesheets/**/*.css'),
     join(paths.app, 'src/views/**/*.njk'),
     join(frontendPath, 'assets/**/*'),
-    join(frontendPath, 'govuk-frontend.min.js'),
+    join(frontendPath, 'idsk-frontend.min.js'),
     join(frontendPath, '**/*.njk')
   ],
   ignore: ['**/*.test.*'],

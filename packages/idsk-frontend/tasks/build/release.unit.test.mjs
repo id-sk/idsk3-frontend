@@ -113,12 +113,12 @@ describe('dist/', () => {
     })
   })
 
-  describe('govuk-frontend-[version].min.js.map', () => {
+  describe('idsk-frontend-[version].min.js.map', () => {
     let filename
     let sourcemap
 
     beforeAll(async () => {
-      filename = `govuk-frontend-${pkg.version}.min.js.map`
+      filename = `idsk-frontend-${pkg.version}.min.js.map`
       sourcemap = JSON.parse(
         await readFile(join(paths.root, `dist/${filename}`), 'utf8')
       )

@@ -6,11 +6,11 @@
   $chevron-size: govuk-em(7px, $font-size);
 
   // Size of chevron border
-  $chevron-border-min-width: 1px;
+  $chevron-border-min-width: 2px;
   $chevron-border-width: govuk-em($chevron-border-min-width, $font-size);
 
   // Colour of chevron
-  $chevron-border-colour: $govuk-secondary-text-colour;
+  $chevron-border-colour: $govuk-text-colour;
 
   // Calculated altitude (△↕) of the right-angled isosceles chevron with sides
   // of length 8 (7px + 1px border):
@@ -94,6 +94,23 @@
   .govuk-breadcrumbs__link {
     @include govuk-link-common;
     @include govuk-link-style-text;
+
+    padding: 5px;
+    border-radius: 5px;
+
+    &:hover {
+      font-weight: bold;
+      text-decoration-thickness: 1px;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: govuk-colour("light-blue");
+      box-shadow: none;
+      font-weight: bold;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+    }
   }
 
   .govuk-breadcrumbs--collapse-on-mobile {

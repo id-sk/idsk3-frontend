@@ -1,0 +1,46 @@
+{% from "../../macros/attributes.njk" import govukAttributes -%}
+
+<div class="idsk-card {%- if params.isVertical %} idsk-card--vertical{% endif %} {%- if params.classes %}{{ params.classes }}{% endif %}"
+  {{- govukAttributes(params.attributes) }}>
+  {% if params.imgSrc %}
+    <div class="idsk-card__image-wrapper">
+      <img src="{{ params.imgSrc }}" alt="{{ params.title }}">
+    </div>
+  {% endif %}
+  <div class="idsk-card__content">
+    <div class="idsk-card__heading">
+      <h3>
+        {% if params.internalLink or params.externalLink %}
+          <a href="{{ params.internalLink or params.externalLink }}" target="{%- if params.externalLink %} _blank {% else %} _self {% endif %}">{{ params.title }}</a>
+        {% else %}
+          {{ params.title }}
+        {% endif %}
+      </h3>
+    </div>
+    <div class="idsk-card__description">{{ params.description }}</div>
+    {% if params.date %}
+      <p class="idsk-card__date-tags">
+        <time datetime="{{ params.date }}">{{ params.date }}</time>
+        <span>—</span>
+        {% if params.tags | length %}
+          {% for tag in params.tags %}
+            {% if tag.text %}
+              <span>
+                {% if tag.href %}
+                  <a href="{{ tag.href }}">
+                    {{ tag.text }}
+                  </a>
+                {% else %}
+                  {{ tag.text }}
+                {% endif %}
+              </span>
+              {% if not loop.last %}
+                <span>|</span>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </p>
+    {% endif %}
+  </div>
+</div>

@@ -71,10 +71,10 @@ export class Accordion extends GOVUKFrontendComponent {
   sectionShowHideToggleFocusClass = 'govuk-accordion__section-toggle-focus'
 
   /** @private */
-  sectionShowHideTextClass = 'govuk-accordion__section-toggle-text'
+  sectionShowHideTextClass = 'material-icons'
 
   /** @private */
-  upChevronIconClass = 'govuk-accordion-nav__chevron'
+  upChevronIconClass = 'material-icons'
 
   /** @private */
   downChevronIconClass = 'govuk-accordion-nav__chevron--down'
@@ -174,10 +174,10 @@ export class Accordion extends GOVUKFrontendComponent {
     this.$showAllButton.appendChild(this.$showAllIcon)
 
     // Create control wrapper and add controls to it
-    const $accordionControls = document.createElement('div')
-    $accordionControls.setAttribute('class', this.controlsClass)
-    $accordionControls.appendChild(this.$showAllButton)
-    this.$module.insertBefore($accordionControls, this.$module.firstChild)
+    // const $accordionControls = document.createElement('div')
+    // $accordionControls.setAttribute('class', this.controlsClass)
+    // $accordionControls.appendChild(this.$showAllButton)
+    // this.$module.insertBefore($accordionControls, this.$module.firstChild)
 
     // Build additional wrapper for Show all toggle text and place after icon
     this.$showAllText = document.createElement('span')
@@ -298,7 +298,9 @@ export class Accordion extends GOVUKFrontendComponent {
     // Create wrapper for the show / hide text. Append text after the show/hide icon
     const $showHideText = document.createElement('span')
     const $showHideIcon = document.createElement('span')
+    $showHideIcon.textContent = 'add'
     $showHideIcon.classList.add(this.upChevronIconClass)
+    // $showHideIcon.classList.add('material-icons')
     $showHideToggleFocus.appendChild($showHideIcon)
     $showHideText.classList.add(this.sectionShowHideTextClass)
     $showHideToggleFocus.appendChild($showHideText)
@@ -321,8 +323,8 @@ export class Accordion extends GOVUKFrontendComponent {
       // Create an inner summary container to limit the width of the summary
       // focus state
       const $summarySpanFocus = document.createElement('span')
-      $summarySpanFocus.classList.add(this.sectionSummaryFocusClass)
-      $summarySpan.appendChild($summarySpanFocus)
+      // $summarySpanFocus.classList.add(this.sectionSummaryFocusClass)
+      // $summarySpan.appendChild($summarySpanFocus)
 
       // Get original attributes, and pass them to the replacement
       for (const attr of Array.from($summary.attributes)) {
@@ -333,9 +335,9 @@ export class Accordion extends GOVUKFrontendComponent {
       $summarySpanFocus.innerHTML = $summary.innerHTML
 
       // Replace the original summary `div` with the new summary `span`
-      $summary.parentNode.replaceChild($summarySpan, $summary)
+      // $summary.parentNode.replaceChild($summarySpan, $summary)
 
-      $button.appendChild($summarySpan)
+      // $button.appendChild($summarySpan)
       $button.appendChild(this.getButtonPunctuationEl())
     }
 
@@ -343,6 +345,7 @@ export class Accordion extends GOVUKFrontendComponent {
 
     $heading.removeChild($span)
     $heading.appendChild($button)
+    // $headingWrapper.appendChild($summary)
   }
 
   /**
@@ -423,11 +426,7 @@ export class Accordion extends GOVUKFrontendComponent {
       return
     }
 
-    const newButtonText = expanded
-      ? this.i18n.t('hideSection')
-      : this.i18n.t('showSection')
-
-    $showHideText.textContent = newButtonText
+    $showHideText.textContent = expanded ? 'remove' : 'add'
     $button.setAttribute('aria-expanded', `${expanded}`)
 
     // Update aria-label combining
@@ -495,9 +494,7 @@ export class Accordion extends GOVUKFrontendComponent {
     const expandedSectionCount = this.$module.querySelectorAll(
       `.${this.sectionExpandedClass}`
     ).length
-    const areAllSectionsOpen = sectionsCount === expandedSectionCount
-
-    return areAllSectionsOpen
+    return sectionsCount === expandedSectionCount
   }
 
   /**

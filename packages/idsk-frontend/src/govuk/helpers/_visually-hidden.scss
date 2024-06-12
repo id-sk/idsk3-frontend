@@ -104,3 +104,19 @@
     user-select: text;
   }
 }
+
+.desktop-hidden {
+  @include govuk-media-query($from: desktop) {
+    display: none !important; /* stylelint-disable-line declaration-no-important */
+  }
+}
+
+.mobile-hidden {
+  @include govuk-media-query($until: desktop) {
+    display: none !important; /* stylelint-disable-line declaration-no-important */
+  }
+}
+
+.hide {
+  display: none !important; /* stylelint-disable-line declaration-no-important */
+}

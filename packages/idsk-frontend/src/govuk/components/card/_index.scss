@@ -1,0 +1,75 @@
+@include govuk-exports("govuk/component/card") {
+  .idsk-card {
+    @include govuk-font($size: 16, $line-height: 1.5);
+    @include govuk-responsive-padding(4);
+
+    display: grid;
+    flex-direction: row;
+    max-width: 48rem;
+    row-gap: 1.25rem;
+    column-gap: 2rem;
+    border: 1px solid govuk-colour("greyN300");
+    border-radius: 0.5rem;
+    background-color: govuk-colour("white");
+
+    @include govuk-media-query($from: desktop) {
+      grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    }
+
+    &:hover {
+      border-color: govuk-colour("greyN500");
+    }
+
+    &--vertical {
+      display: flex;
+      flex-direction: column;
+      column-gap: 1.25rem;
+    }
+
+    &__image-wrapper {
+      position: relative;
+      aspect-ratio: 3/2;
+      overflow: hidden;
+
+      > * {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        -o-object-fit: cover;
+        -o-object-position: center;
+      }
+    }
+
+    &__heading {
+      @include govuk-font($size: 24, $line-height: 2.1875);
+      font-weight: 700;
+
+      @include govuk-media-query($until: tablet) {
+        @include govuk-font($size: 20, $line-height: 1.625);
+      }
+
+      h3 {
+        margin: 0;
+      }
+    }
+
+    &__description {
+      @include govuk-media-query($from: desktop) {
+        @include govuk-font($size: 19, $line-height: 1.75);
+        letter-spacing: 0.5;
+      }
+    }
+
+    &__date-tags {
+      letter-spacing: 0.5px;
+
+      @include govuk-media-query($until: tablet) {
+        @include govuk-font($size: 14, $line-height: 1.25);
+        letter-spacing: 0.1px;
+      }
+    }
+  }
+}

@@ -102,8 +102,8 @@ describe('packages/govuk-frontend/dist/', () => {
           join(requirePath, 'all.mjs'),
 
           // ES module bundles for browsers, minified
-          join(requirePath, 'govuk-frontend.min.js'), // avoid .mjs extension MIME issues
-          join(requirePath, 'govuk-frontend.min.js.map') // with source map
+          join(requirePath, 'idsk-frontend.min.js'), // avoid .mjs extension MIME issues
+          join(requirePath, 'idsk-frontend.min.js.map') // with source map
         ])
       )
 

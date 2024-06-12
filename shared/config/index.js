@@ -29,4 +29,3 @@ module.exports = {
   urls,
   version
 }
-
