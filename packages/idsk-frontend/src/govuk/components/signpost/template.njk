@@ -1,8 +1,4 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
-{# TODO #}
-{#{% from "../hint/macro.njk" import govukHint %}#}
-{#{% from "../label/macro.njk" import govukLabel %}#}
-
 
 {% if not params.layout or params.layout === "vertical" %}
     {% set vertical = true %}
@@ -24,9 +20,9 @@
 
 {% if params.asLink %}
 <a class='{{ signpostClass }} govuk-signpost__link' href="#">
-{% else %}    
+{% else %}
 <div class='{{ signpostClass }}' href="#">
-{% endif %}  
+{% endif %}
     {% if params.icon %}
         <div class='govuk-signpost__icon {%- if vertical %} govuk-signpost__icon--vertical {% endif %}'>
             {{ params.icon | safe | trim | indent() }}
@@ -43,7 +39,7 @@
             {% if text and params.subtitle%}
             <p class='govuk-signpost__subtitle'>{{ params.subtitle }}</p>
             {% endif %}
-            <p class='govuk-signpost__description'>Tento text slúži iba ako ukážka naplneného obsahu v danom komponente. Nepoužívať pri implementácii a dizajne.</p>    
+            <p class='govuk-signpost__description'>Tento text slúži iba ako ukážka naplneného obsahu v danom komponente. Nepoužívať pri implementácii a dizajne.</p>
             {% if params.actions %}
             <div class='govuk-signpost__actions'>
                 {{ params.actions | safe | trim | indent(4) }}
@@ -51,7 +47,7 @@
             {% endif %}
             {% if text and params.tag%}
             <p class='govuk-signpost__tag'>{{ params.tag }}</p>
-            {% endif %}       
+            {% endif %}
         </div>
         {% if params.withArrow %}
             <div class='govuk-signpost__arrow-icon'>
@@ -61,6 +57,6 @@
     </div>
 {% if params.asLink %}
 </a>
-{% else %}    
+{% else %}
 </div>
-{% endif %}  
+{% endif %}
