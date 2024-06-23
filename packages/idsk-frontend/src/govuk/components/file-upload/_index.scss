@@ -91,13 +91,15 @@
     }
   }
 
-  .govuk-heading-m {
-    margin-right: 30px;
-    margin-left: 30px;
+  .file-upload-component {
+    .govuk-heading-m {
+      margin-right: 30px;
+      margin-left: 30px;
 
-    @include govuk-media-query($until: tablet) {
-      margin-right: 10px;
-      margin-left: 10px;
+      @include govuk-media-query($until: tablet) {
+        margin-right: 10px;
+        margin-left: 10px;
+      }
     }
   }
 

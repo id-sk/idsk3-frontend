@@ -161,17 +161,22 @@ params:
     required: false
     description: HTML attributes (for example data attributes) to add to the input.
 
+  - name: requiredProps
+    type: boolean
+    required: false
+    description: property for required or no required input
+
 examples:
   - name: default
     options:
       label:
-        text: National Insurance number
+        text: Názov textového poľa
       id: input-example
       name: test-name
   - name: with hint text
     options:
       label:
-        text: National insurance number
+        text: Názov textového poľa
       hint:
         text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
       id: input-with-hint-text
@@ -179,18 +184,18 @@ examples:
   - name: with error message
     options:
       label:
-        text: National Insurance number
+        text: Názov textového poľa
       hint:
         text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
       id: input-with-error-message
       name: test-name-3
       errorMessage:
-        text: Error message goes here
+        text:
 
   - name: with label as page heading
     options:
       label:
-        text: National Insurance number
+        text: Názov textového poľa
         classes: govuk-label--l
         isPageHeading: true
       id: input-with-page-heading
@@ -198,7 +203,7 @@ examples:
   - name: with optional form-group classes
     options:
       label:
-        text: National Insurance number
+        text: Názov textového poľa
       id: input-example
       name: test-name
       formGroup:
@@ -242,7 +247,6 @@ examples:
       name: autocapitalize
       type: text
       autocapitalize: none
-
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes

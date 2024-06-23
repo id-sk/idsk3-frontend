@@ -1,7 +1,6 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
 {% from "../error-message/macro.njk" import govukErrorMessage %}
 {# TODO #}
-{#{% from "../hint/macro.njk" import govukHint %}#}
 {% from "../label/macro.njk" import govukLabel %}
 
 {#- a record of other elements that we need to associate with the input using
@@ -14,6 +13,15 @@
 {%- set hasAfterInput = true if params.formGroup.afterInput and (params.formGroup.afterInput.text or params.formGroup.afterInput.html) else false %}
 
 {%- macro _inputElement(params) -%}
+  <label class="govuk-label govuk-body-m" for="{{ params.id }}">
+    Názov textového poľa
+    {% if params.requiredProps %}
+      <span>*</span>
+    {% else %}
+      <span class="govuk-body-s">(nepovinné)</span>
+    {% endif %}
+  </label>
+  <p class="govuk-body-s">Popis textového poľa</p>
   <div class="govuk-input-container">
     <input class="govuk-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default("text", true) }}"
       {%- if (params.spellcheck === false) or (params.spellcheck === true) %} spellcheck="{{ params.spellcheck }}"{% endif %}
@@ -25,11 +33,14 @@
       {%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
       {%- if params.autocapitalize %} autocapitalize="{{ params.autocapitalize }}"{% endif %}
       {{- govukAttributes(params.attributes) }}>
-    <div class="input-icon">
-      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3.72543 17.4999H16.2754C17.5588 17.4999 18.3588 16.1083 17.7171 14.9999L11.4421 4.15828C10.8004 3.04994 9.20043 3.04994 8.55876 4.15828L2.28376 14.9999C1.64209 16.1083 2.44209 17.4999 3.72543 17.4999ZM10.0004 11.6666C9.54209 11.6666 9.16709 11.2916 9.16709 10.8333V9.16661C9.16709 8.70828 9.54209 8.33328 10.0004 8.33328C10.4588 8.33328 10.8338 8.70828 10.8338 9.16661V10.8333C10.8338 11.2916 10.4588 11.6666 10.0004 11.6666ZM10.8338 14.9999H9.16709V13.3333H10.8338V14.9999Z" fill="#C3112B"/>
-      </svg>
-    </div>
+
+    {% if params.errorMessage %}
+      <div class="input-icon">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3.72543 17.4999H16.2754C17.5588 17.4999 18.3588 16.1083 17.7171 14.9999L11.4421 4.15828C10.8004 3.04994 9.20043 3.04994 8.55876 4.15828L2.28376 14.9999C1.64209 16.1083 2.44209 17.4999 3.72543 17.4999ZM10.0004 11.6666C9.54209 11.6666 9.16709 11.2916 9.16709 10.8333V9.16661C9.16709 8.70828 9.54209 8.33328 10.0004 8.33328C10.4588 8.33328 10.8338 8.70828 10.8338 9.16661V10.8333C10.8338 11.2916 10.4588 11.6666 10.0004 11.6666ZM10.8338 14.9999H9.16709V13.3333H10.8338V14.9999Z" fill="#C3112B"/>
+        </svg>
+      </div>
+    {% endif %}
   </div>
 {%- endmacro -%}
 
@@ -41,37 +52,6 @@
 
 <div class="govuk-form-group {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}"
   {{- govukAttributes(params.formGroup.attributes) }}>
-  {{ govukLabel({
-    html: params.label.html,
-    text: params.label.text,
-    classes: params.label.classes,
-    isPageHeading: params.label.isPageHeading,
-    attributes: params.label.attributes,
-    for: params.id
-  }) | trim | indent(2) }}
-{% if params.hint %}
-  {% set hintId = params.id + '-hint' %}
-  {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
-{#  {{ govukHint({#}
-{#    id: hintId,#}
-{#    classes: params.hint.classes,#}
-{#    attributes: params.hint.attributes,#}
-{#    html: params.hint.html,#}
-{#    text: params.hint.text#}
-{#  }) | trim | indent(2) }}#}
-{% endif %}
-{% if params.errorMessage %}
-  {% set errorId = params.id + '-error' %}
-  {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
-  {{ govukErrorMessage({
-    id: errorId,
-    classes: params.errorMessage.classes,
-    attributes: params.errorMessage.attributes,
-    html: params.errorMessage.html,
-    text: params.errorMessage.text,
-    visuallyHiddenText: params.errorMessage.visuallyHiddenText
-  }) | trim | indent(2) }}
-{% endif %}
 
 {%- if hasPrefix or hasSuffix or hasBeforeInput or hasAfterInput %}
   <div class="govuk-input__wrapper {%- if params.inputWrapper.classes %} {{ params.inputWrapper.classes }}{% endif %}"

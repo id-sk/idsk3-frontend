@@ -7,6 +7,8 @@
     @include govuk-font($size: 19);
 
     box-sizing: border-box;
+
+    position: relative;
     width: 100%;
     height: govuk-px-to-rem(40px);
     margin-top: 0;
@@ -18,8 +20,6 @@
 
     // Disable inner shadow and remove rounded corners
     appearance: none;
-
-    position: relative;
 
     &:focus {
       outline-color: govuk-colour("orange");
@@ -41,15 +41,20 @@
   }
 
   .govuk-input-container {
-    display: inline-block;
     position: relative;
 
-    .input-icon{
+    .input-icon {
       position: absolute;
       top: 50%;
       right: 8px;
-      width: 30px;
-      height: 30px;
+      width: 24px;
+      height: 24px;
+      transform: translateY(-50%);
+    }
+
+    .govuk-body-s {
+      margin-bottom: 10px;
+      color: govuk-colour("dark-grey");
     }
   }
 
