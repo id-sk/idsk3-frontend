@@ -139,6 +139,16 @@
     }
   }
 
+  .govuk-input-component {
+    .govuk-body-s {
+      color: govuk-colour("dark-grey");
+    }
+
+    .required {
+      color: govuk-colour("red");
+    }
+  }
+
   // Split prefix/suffix onto separate lines on narrow screens
   .govuk-input__suffix {
     @include govuk-media-query($until: mobile) {

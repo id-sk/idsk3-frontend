@@ -175,6 +175,7 @@ examples:
       name: test-name
   - name: with hint text
     options:
+      requiredProps: true
       label:
         text: Názov textového poľa
       hint:

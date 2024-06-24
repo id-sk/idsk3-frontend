@@ -16,7 +16,7 @@
   <label class="govuk-label govuk-body-m" for="{{ params.id }}">
     Názov textového poľa
     {% if params.requiredProps %}
-      <span>*</span>
+      <span class="required">*</span>
     {% else %}
       <span class="govuk-body-s">(nepovinné)</span>
     {% endif %}
@@ -50,7 +50,7 @@
   </div>
 {%- endmacro -%}
 
-<div class="govuk-form-group {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}"
+<div class="govuk-form-group govuk-input-component {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}"
   {{- govukAttributes(params.formGroup.attributes) }}>
 
 {%- if hasPrefix or hasSuffix or hasBeforeInput or hasAfterInput %}
