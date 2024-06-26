@@ -1,0 +1,33 @@
+params:
+  - name: action
+    type: string
+    required: false
+    description: Action button for the feedback bar
+  - name: success
+    type: boolean
+    required: false
+    description: True if feedback was successfully submitted
+  - name: label
+    type: string
+    required: true
+    description: Label for the feedback bar
+
+examples:
+  - name: with button
+    options:
+      label: Boli tieto informácie pre vás užitočné?
+      action: |
+        <button name="secondary" class="govuk-button govuk-button--sec" data-module="govuk-button" aria-label="Nahlásiť chybu">
+          Nahlásiť chybu
+        </button>
+  - name: without button
+    options:
+      label: Boli tieto informácie pre vás užitočné?
+  - name: submitted
+    options:
+      label: Ďakujeme za Váš čas a hodnotenie! Vaša spätná väzba nám pomáha vylepšovať kvalitu portálu.
+      success: true
+      action: |
+        <button name="secondary" class="govuk-button govuk-button--sec" data-module="govuk-button" aria-label="Nahlásiť chybu">
+          Nahlásiť chybu
+        </button>

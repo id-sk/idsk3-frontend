@@ -1,0 +1,29 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+
+<div class='govuk-feedback-bar'>
+    <div class='govuk-feedback-bar__body'>
+        <p class='govuk-feedback-bar__label'>
+            {% if params.success %}
+                <span class='govuk-feedback-bar__check'>
+                    <span class="material-icons">check</span>
+                </span>
+            {% endif %}
+            <span>{{ params.label }}</span>
+        </p>
+        
+        {% if not params.success %}
+        <div class='govuk-feedback-bar__actions'>
+            <button name="secondary" class="govuk-button govuk-button" data-module="govuk-button" aria-label="Áno">
+                Áno
+            </button>
+            <button name="secondary" class="govuk-button govuk-button--sec" data-module="govuk-button" aria-label="Nie">
+                Nie
+            </button>
+        </div>
+        {% endif %}
+
+        {% if params.action %}
+            <div class='govuk-feedback-bar__action'>{{ params.action | safe | trim | indent(4) }}</div>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,46 @@
+@include govuk-exports("govuk/component/feedback-bar") {
+  .govuk-feedback-bar {
+    @include govuk-font($size: 19);
+    padding: govuk-spacing(2);
+    background-color: govuk-colour("greyN200");
+  }
+
+  .govuk-feedback-bar__body {
+    display: flex;
+    align-items: center;
+    gap: govuk-spacing(8);
+    max-width: 1120px;
+    margin: auto;
+
+    button {
+      margin: 0;
+    }
+  }
+
+  .govuk-feedback-bar__label {
+    display: flex;
+    align-items: center;
+    gap: govuk-spacing(2);
+    margin: 0;
+    font-weight: bold;
+  }
+
+  .govuk-feedback-bar__actions {
+    display: flex;
+    align-items: center;
+    gap: govuk-spacing(3);
+  }
+
+  .govuk-feedback-bar__action {
+    margin-left: auto;
+  }
+
+  .govuk-feedback-bar__check {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    border-radius: 1000px;
+    color: govuk-colour("white");
+    background-color: govuk-colour("green");
+  }
+}
