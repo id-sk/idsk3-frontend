@@ -10,12 +10,12 @@
     <h2 class="govuk-error-summary__title">
       {{ params.titleHtml | safe | trim | indent(6) if params.titleHtml else params.titleText }}
     </h2>
-    <div class="govuk-error-summary__body">
-      {% if caller or params.descriptionHtml or params.descriptionText %}
-      <p>
+    {% if caller or params.descriptionHtml or params.descriptionText %}
+      <p class="govuk-error-summary__description">
         {{ caller() if caller else (params.descriptionHtml | safe | trim | indent(8) if params.descriptionHtml else params.descriptionText) }}
       </p>
       {% endif %}
+    <div class="govuk-error-summary__body">
       <ul class="govuk-list govuk-error-summary__list">
       {% for item in params.errorList %}
         <li>

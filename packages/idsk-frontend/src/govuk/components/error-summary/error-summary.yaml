@@ -59,12 +59,15 @@ accessibilityCriteria: |
 examples:
   - name: default
     options:
-      titleText: There is a problem
+      titleText: Zadajte správne tieto vstupné údaje a skúste odoslať znova.
+      descriptionText: Priestor pre popis, k akým chybám došlo a ako ich opraviť.
       errorList:
-        - text: The date your passport was issued must be in the past
+        - text: Prosím, zadajte správny tvar vášho Rodného čísla.
           href: '#example-error-1'
-        - text: Enter a postcode, like AA1 1AA
+        - text: Prosím, zadajte správny tvar vášho OP preukazu.
           href: '#example-error-2'
+        - text: Prosím, zadajte správny tvar vášho Tel.čísla.
+          href: '#example-error-3'
   - name: without links
     options:
       titleText: There is a problem
