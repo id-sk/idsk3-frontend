@@ -1,0 +1,154 @@
+@include govuk-exports("govuk/component/dropdown") {
+  .idsk-dropdown {
+    @include govuk-font($size: 16, $line-height: 1.5);
+    @include govuk-responsive-padding(4, "top");
+    @include govuk-responsive-padding(4, "bottom");
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 0.125rem;
+    color: govuk-colour("black");
+
+    @include govuk-media-query($from: desktop) {
+      justify-content: flex-start;
+      height: 100%;
+    }
+
+    &:hover {
+      text-decoration-line: underline;
+    }
+
+    &__wrapper {
+      display: inline-block;
+      position: relative;
+
+      ul {
+        @include govuk-responsive-margin(0);
+        @include govuk-responsive-padding(0);
+      }
+    }
+
+    &__icon {
+      @include govuk-font-size(24);
+      width: 1.5rem;
+      height: 1.5rem;
+
+      &--opened {
+        rotate: 180deg;
+      }
+    }
+
+    &__options {
+      position: absolute;
+      z-index: 10;
+      border: 1px solid transparent;
+      border-radius: 0.375rem;
+      opacity: 0;
+      color: govuk-colour("black");
+      background-color: govuk-colour("white");
+      box-shadow:
+        0 0 #00000000,
+        0 0 #00000000,
+        0 12px 32px #1a1a1a3d;
+
+      &--left {
+        right: 0;
+      }
+
+      &--up {
+        bottom: 100%;
+      }
+
+      &--down {
+        top: 100%;
+      }
+
+      hr {
+        position: absolute;
+        right: 0;
+        left: 0;
+        width: 100%;
+        border: 1px solid govuk-colour("greyN300");
+      }
+    }
+
+    &__option {
+      display: flex;
+      position: relative;
+      white-space: nowrap;
+
+      &:first-of-type {
+        @include govuk-responsive-margin(1, "top");
+      }
+
+      &:last-of-type {
+        @include govuk-responsive-margin(1, "bottom");
+      }
+
+      * {
+        @include govuk-font($size: 16, $line-height: 1.5);
+        box-sizing: border-box;
+        color: inherit;
+        text-decoration: inherit;
+
+        &:not(hr) {
+          @include govuk-responsive-padding(3);
+          @include govuk-responsive-padding(2, "top");
+          @include govuk-responsive-padding(2, "bottom");
+
+          width: 100%;
+
+          &:hover {
+            background-color: govuk-colour("greyN100");
+          }
+
+          &:active {
+            color: govuk-colour("blueP500");
+            font-weight: bold;
+          }
+        }
+      }
+
+      &[data-pseudolabel]::before {
+        content: attr(data-pseudolabel);
+        @include govuk-responsive-padding(3);
+        @include govuk-responsive-padding(2, "top");
+        @include govuk-responsive-padding(2, "bottom");
+        width: 100%;
+        opacity: 0;
+        font-weight: bold;
+      }
+    }
+
+    &--opened {
+      opacity: 1;
+    }
+  }
+
+  .idsk-pseudolabel__wrapper {
+    position: relative;
+
+    &[data-pseudolabel] {
+      * {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      &::before {
+        content: attr(data-pseudolabel);
+        opacity: 0;
+        font-weight: bold;
+      }
+    }
+
+    &--center[data-pseudolabel] * {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

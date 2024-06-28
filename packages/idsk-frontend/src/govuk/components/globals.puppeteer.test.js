@@ -39,6 +39,7 @@ describe('GOV.UK Frontend', () => {
         'Button',
         'CharacterCount',
         'Checkboxes',
+        'Dropdown',
         'ErrorSummary',
         'ExitThisPage',
         'Header',
