@@ -13,6 +13,7 @@
 - _[ID-93]_: ID-SK File upload
 - _[ID-87]_: ID-SK Feedback bar
 - _[ID-94]_: ID-SK Error summary
+- _[ID-84]_: ID-SK Input
 
 - **Property changes**
 
