@@ -42,48 +42,6 @@ params:
     required: false
     description: Can be used to add an error message to the text input component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
     isComponent: true
-  - name: prefix
-    type: object
-    required: false
-    description: Can be used to add a prefix to the text input component.
-    params:
-      - name: text
-        type: string
-        required: true
-        description: Required. If `html` is set, this is not required. Text to use within the prefix. If `html` is provided, the `text` option will be ignored.
-      - name: html
-        type: string
-        required: true
-        description: Required. If `text` is set, this is not required. HTML to use within the prefix. If `html` is provided, the `text` option will be ignored.
-      - name: classes
-        type: string
-        required: false
-        description: Classes to add to the prefix.
-      - name: attributes
-        type: object
-        required: false
-        description: HTML attributes (for example data attributes) to add to the prefix element.
-  - name: suffix
-    type: object
-    required: false
-    description: Can be used to add a suffix to the text input component.
-    params:
-      - name: text
-        type: string
-        required: true
-        description: If `html` is set, this is not required. Text to use within the suffix. If `html` is provided, the `text` option will be ignored.
-      - name: html
-        type: string
-        required: true
-        description: If `text` is set, this is not required. HTML to use within the suffix. If `html` is provided, the `text` option will be ignored.
-      - name: classes
-        type: string
-        required: false
-        description: Classes to add to the suffix element.
-      - name: attributes
-        type: object
-        required: false
-        description: HTML attributes (for example data attributes) to add to the suffix element.
   - name: formGroup
     type: object
     required: false
@@ -166,88 +124,93 @@ params:
     required: false
     description: property for required or no required input
 
+  - name: descriptionText
+    type: boolean
+    required: false
+    description: props to add descriptive text
+
+  - name: smallInput
+    type: boolean
+    required: false
+    description: change input and head size to small
+
 examples:
   - name: default
     options:
       label:
         text: Názov textového poľa
       id: input-example
-      name: test-name
+      name: default
+
+  - name: with hover
+    options:
+      label:
+        text: Názov textového poľa
+      id: input-example-hover
+      name: hover
+      classes: :hover
+
+  - name: with focus
+    options:
+      label:
+        text: Názov textového poľa
+      id: input-example-focus
+      name: test-name-focus
+      classes: :focus
+
+  - name: with disabled
+    options:
+      label:
+        text: Názov textového poľa
+      id: input-example-disabled
+      name: test-name-disabled
+      disabled: true
+
   - name: with hint text
+    options:
+      label:
+        text: Názov textového poľa
+      hint:
+        text: Popis textového poľa
+      id: input-with-hint-text
+      name: test-name-2
+
+  - name: with hint text and required
     options:
       requiredProps: true
       label:
         text: Názov textového poľa
       hint:
-        text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
-      id: input-with-hint-text
-      name: test-name-2
+        text: Popis textového poľa
+      id: input-with-hint-text-required
+      name: test-name-3
+
   - name: with error message
     options:
       label:
         text: Názov textového poľa
       hint:
-        text: It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+        text: Popis textového poľa
       id: input-with-error-message
-      name: test-name-3
+      name: test-name-4
       errorMessage:
         text:
 
-  - name: with label as page heading
+  - name: with descriptive text
     options:
       label:
         text: Názov textového poľa
-        classes: govuk-label--l
-        isPageHeading: true
-      id: input-with-page-heading
-      name: test-name
-  - name: with optional form-group classes
+      id: input-with-hint-text-descriptiveText
+      name: test-name-5
+      descriptionText: true
+
+  - name: small
     options:
       label:
         text: Názov textového poľa
-      id: input-example
-      name: test-name
-      formGroup:
-        classes: extra-class
-  - name: with autocomplete attribute
-    options:
-      label:
-        text: Postcode
-      id: input-with-autocomplete-attribute
-      name: postcode
-      autocomplete: postal-code
-  - name: with pattern attribute
-    options:
-      label:
-        text: Numbers only
-      id: input-with-pattern-attribute
-      name: numbers-only
-      type: number
-      pattern: '[0-9]*'
-  - name: with spellcheck enabled
-    options:
-      label:
-        text: Spellcheck is enabled
-      id: input-with-spellcheck-enabled
-      name: spellcheck
-      type: text
-      spellcheck: true
-  - name: with spellcheck disabled
-    options:
-      label:
-        text: Spellcheck is disabled
-      id: input-with-spellcheck-disabled
-      name: spellcheck
-      type: text
-      spellcheck: false
-  - name: with autocapitalize turned off
-    options:
-      label:
-        text: Autocapitalize is turned off
-      id: input-with-autocapitalize-off
-      name: autocapitalize
-      type: text
-      autocapitalize: none
+      id: input-small
+      name: test-name-6
+      smallInput: true
 
   # Hidden examples are not shown in the review app, but are used for tests and HTML fixtures
   - name: classes

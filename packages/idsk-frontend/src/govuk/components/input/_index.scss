@@ -10,7 +10,7 @@
 
     position: relative;
     width: 100%;
-    height: govuk-px-to-rem(40px);
+    height: govuk-px-to-rem(48px);
     margin-top: 0;
     padding: govuk-spacing(1) 1rem;
     // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
@@ -22,21 +22,19 @@
     appearance: none;
 
     &:focus {
-      outline-color: govuk-colour("orange");
+      outline: govuk-colour("orange") solid 3px;
       outline-offset: 2px;
-      outline-style: solid;
-      outline-width: 3px;
-    }
-
-    &:hover {
-      box-shadow: 0 0 0 4px govuk-colour("mid-grey");
     }
 
     &:disabled {
-      opacity: 0.5;
+      border-color: govuk-colour("greyN400");
       color: inherit;
       background-color: transparent;
       cursor: not-allowed;
+    }
+
+    &.small {
+      height: govuk-px-to-rem(40px);
     }
   }
 
@@ -55,6 +53,10 @@
     .govuk-body-s {
       margin-bottom: 10px;
       color: govuk-colour("dark-grey");
+    }
+
+    .descriptive-text {
+      margin-top: 10px;
     }
   }
 
@@ -104,58 +106,22 @@
     }
   }
 
-  .govuk-input__prefix,
-  .govuk-input__suffix {
-    @include govuk-font($size: 19);
-    box-sizing: border-box;
-    // Use flexbox to align text within the prefix and suffix
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: govuk-px-to-rem(40px);
-    height: govuk-px-to-rem(40px);
-    padding: govuk-spacing(1);
-    border: $govuk-border-width-form-element solid $govuk-input-border-colour;
-    background-color: govuk-colour("light-grey");
-    text-align: center;
-    white-space: nowrap;
-    // Emphasise non-editable status of prefixes and suffixes
-    cursor: default;
-    flex: 0 0 auto;
-    // Split prefix/suffix onto separate lines on narrow screens
-    @include govuk-media-query($until: mobile) {
-      display: block;
-      height: 100%;
-      white-space: normal;
-    }
-  }
-
-  .govuk-input__prefix {
-    @include govuk-media-query($until: mobile) {
-      border-bottom: 0;
-    }
-    @include govuk-media-query($from: mobile) {
-      border-right: 0;
-    }
-  }
-
   .govuk-input-component {
+    .govuk-label {
+      margin-bottom: 10px;
+
+      &.small {
+        @include govuk-font($size: 16);
+      }
+    }
+
     .govuk-body-s {
+      margin-bottom: 10px;
       color: govuk-colour("dark-grey");
     }
 
     .required {
       color: govuk-colour("red");
-    }
-  }
-
-  // Split prefix/suffix onto separate lines on narrow screens
-  .govuk-input__suffix {
-    @include govuk-media-query($until: mobile) {
-      border-top: 0;
-    }
-    @include govuk-media-query($from: mobile) {
-      border-left: 0;
     }
   }
 }

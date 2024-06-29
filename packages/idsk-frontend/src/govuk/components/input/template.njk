@@ -1,29 +1,23 @@
 {% from "../../macros/attributes.njk" import govukAttributes %}
-{% from "../error-message/macro.njk" import govukErrorMessage %}
-{# TODO #}
-{% from "../label/macro.njk" import govukLabel %}
 
 {#- a record of other elements that we need to associate with the input using
   aria-describedby – for example hints or error messages -#}
 {% set describedBy = params.describedBy if params.describedBy else "" -%}
 
-{%- set hasPrefix = true if params.prefix and (params.prefix.text or params.prefix.html) else false %}
-{%- set hasSuffix = true if params.suffix and (params.suffix.text or params.suffix.html) else false %}
-{%- set hasBeforeInput = true if params.formGroup.beforeInput and (params.formGroup.beforeInput.text or params.formGroup.beforeInput.html) else false %}
-{%- set hasAfterInput = true if params.formGroup.afterInput and (params.formGroup.afterInput.text or params.formGroup.afterInput.html) else false %}
-
 {%- macro _inputElement(params) -%}
-  <label class="govuk-label govuk-body-m" for="{{ params.id }}">
+  <label class="govuk-label {% if params.smallInput%} small {% endif %} govuk-body-m" for="{{ params.id }}">
     Názov textového poľa
     {% if params.requiredProps %}
       <span class="required">*</span>
     {% else %}
       <span class="govuk-body-s">(nepovinné)</span>
     {% endif %}
+    {% if params.hint %}
+      <p class="govuk-body-s">{{ params.hint.text }}</p>
+    {% endif %}
   </label>
-  <p class="govuk-body-s">Popis textového poľa</p>
   <div class="govuk-input-container">
-    <input class="govuk-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default("text", true) }}"
+    <input class="govuk-input {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.errorMessage %} govuk-input--error{% endif %} {% if params.smallInput%} small {% endif %} " id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default("text", true) }}"
       {%- if (params.spellcheck === false) or (params.spellcheck === true) %} spellcheck="{{ params.spellcheck }}"{% endif %}
       {%- if params.value %} value="{{ params.value }}"{% endif %}
       {%- if params.disabled %} disabled{% endif %}
@@ -33,6 +27,10 @@
       {%- if params.inputmode %} inputmode="{{ params.inputmode }}"{% endif %}
       {%- if params.autocapitalize %} autocapitalize="{{ params.autocapitalize }}"{% endif %}
       {{- govukAttributes(params.attributes) }}>
+
+    {% if params.descriptionText %}
+      <p class="govuk-body-s descriptive-text">Popisný text</p>
+    {% endif %}
 
     {% if params.errorMessage %}
       <div class="input-icon">
@@ -53,24 +51,5 @@
 <div class="govuk-form-group govuk-input-component {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}"
   {{- govukAttributes(params.formGroup.attributes) }}>
 
-{%- if hasPrefix or hasSuffix or hasBeforeInput or hasAfterInput %}
-  <div class="govuk-input__wrapper {%- if params.inputWrapper.classes %} {{ params.inputWrapper.classes }}{% endif %}"
-    {{- govukAttributes(params.inputWrapper.attributes) }}>
-    {% if hasBeforeInput %}
-      {{- params.formGroup.beforeInput.html | safe | trim | indent(4, true) if params.formGroup.beforeInput.html else params.formGroup.beforeInput.text }}
-    {% endif %}
-    {% if hasPrefix %}
-      {{- _affixItem(params.prefix, "prefix") | indent(2, true) }}
-    {% endif %}
-    {{ _inputElement(params) }}
-    {% if hasSuffix %}
-      {{- _affixItem(params.suffix, "suffix") | indent(2, true) }}
-    {% endif %}
-    {% if hasAfterInput %}
-      {{- params.formGroup.afterInput.html | safe | trim | indent(4, true) if params.formGroup.afterInput.html else params.formGroup.afterInput.text }}
-    {% endif %}
-  </div>
-{% else %}
   {{ _inputElement(params) }}
-{% endif %}
 </div>
