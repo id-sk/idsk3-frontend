@@ -1,0 +1,62 @@
+{% from "../../macros/attributes.njk" import govukAttributes %}
+
+{% if not params.layout or params.layout === "vertical" %}
+    {% set vertical = true %}
+{% endif %}
+
+{% if params.layout === "text" %}
+    {% set text = true %}
+{% endif %}
+
+{% if text %}
+    {% set signpostClass = "govuk-signpost govuk-signpost__card--text"%}
+{% else %}
+    {% set signpostClass = "govuk-signpost govuk-signpost__card {%- if vertical %} govuk-signpost__card--vertical {% endif %}" %}
+{% endif %}
+
+{% if params.image %}
+    {% set image = params.image%}
+{% endif %}
+
+{% if params.asLink %}
+<a class='{{ signpostClass }} govuk-signpost__link' href="#">
+{% else %}
+<div class='{{ signpostClass }}' href="#">
+{% endif %}
+    {% if params.icon %}
+        <div class='govuk-signpost__icon {%- if vertical %} govuk-signpost__icon--vertical {% endif %}'>
+            {{ params.icon | safe | trim | indent() }}
+        </div>
+    {% endif %}
+    <div class='govuk-signpost__container'>
+        <div>
+            {% if image %}
+            <img src='{{ image }}' class='govuk-signpost__image' alt='placeholder'/>
+            {% endif %}
+            {% if text %} <a href="#"> {% endif %}
+            <h3 class='govuk-signpost__title'>Dlhý nadpis</h3>
+            {% if text %} <a/> {% endif %}
+            {% if text and params.subtitle%}
+            <p class='govuk-signpost__subtitle'>{{ params.subtitle }}</p>
+            {% endif %}
+            <p class='govuk-signpost__description'>Tento text slúži iba ako ukážka naplneného obsahu v danom komponente. Nepoužívať pri implementácii a dizajne.</p>
+            {% if params.actions %}
+            <div class='govuk-signpost__actions'>
+                {{ params.actions | safe | trim | indent(4) }}
+            </div>
+            {% endif %}
+            {% if text and params.tag%}
+            <p class='govuk-signpost__tag'>{{ params.tag }}</p>
+            {% endif %}
+        </div>
+        {% if params.withArrow %}
+            <div class='govuk-signpost__arrow-icon'>
+                <span class="material-icons">east</span>
+            </div>
+        {% endif %}
+    </div>
+{% if params.asLink %}
+</a>
+{% else %}
+</div>
+{% endif %}

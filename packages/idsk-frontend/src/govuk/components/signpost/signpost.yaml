@@ -1,0 +1,83 @@
+params:
+  - name: layout
+    type: string
+    required: false
+    description: Horizontal, vertical or text layout of the signpost
+  - name: asLink
+    type: boolean
+    required: false
+    description: Ff true, whole signpost is rendered as anchor tag
+  - name: actions
+    type: string
+    required: false
+    description: Buttons or links inside the signpost
+  - name: icon
+    type: string
+    required: false
+    description: Icon component
+  - name: subtitle
+    type: string
+    required: false
+    description: Subtitle of the text layout signpost
+  - name: tag
+    type: string
+    required: false
+    description: Tags of the text layout signpost
+  - name: image
+    type: text
+    required: false
+    description: Path to image to be shown in the vertical layout signpost
+  - name: withArrow
+    type: boolean
+    required: false
+    description: Add arrow icon to the horizontal signpost
+
+examples:
+  - name: default
+    options:
+      asLink: true
+  - name: with action
+    options:
+      actions: |
+        <button class="govuk-button govuk-button__basic" aria-label="Akcia">
+          Akcia
+        </button>
+
+  - name: with icon
+    options:
+      icon: |
+        <span class="material-icons">home</span>
+      asLink: true
+  - name: with picture
+    options:
+      image: https://www.pulsecarshalton.co.uk/wp-content/uploads/2016/08/jk-placeholder-image.jpg
+      asLink: true
+  - name: horizontal
+    options:
+      icon: |
+        <span class="material-icons">home</span>
+      layout: 'horizontal'
+      asLink: true
+  - name: horizontal with arrow
+    options:
+      icon: |
+        <span class="material-icons">home</span>
+      layout: 'horizontal'
+      withArrow: true
+      asLink: true
+  - name: text
+    options:
+      layout: 'text'
+  - name: text with subtitle
+    options:
+      layout: 'text'
+      subtitle: Tento text slúži iba ako ukážka naplneného obsahu v danom komponente.
+  - name: text with link
+    options:
+      layout: 'text'
+      actions: |
+        <a href="#" class='govuk-link'>Hypertextovy link</a>
+  - name: text with tag
+    options:
+      layout: 'text'
+      tag: 1.1. 2020   —   Tag 1   |  Tag 2  |  Tag 3
