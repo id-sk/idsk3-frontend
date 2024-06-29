@@ -12,6 +12,7 @@
 - _[ID-85]_: ID-SK Header
 - _[ID-93]_: ID-SK File upload
 - _[ID-87]_: ID-SK Feedback bar
+- _[ID-94]_: ID-SK Error summary
 
 - **Property changes**
 
