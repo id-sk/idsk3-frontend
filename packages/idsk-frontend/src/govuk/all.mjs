@@ -10,6 +10,7 @@ import { FileUpload } from './components/file-upload/file-upload.mjs'
 import { Header } from './components/header/header.mjs'
 import { NotificationBanner } from './components/notification-banner/notification-banner.mjs'
 import { Radios } from './components/radios/radios.mjs'
+import { Textarea } from './components/textarea/textarea.mjs'
 import { SupportError } from './errors/index.mjs'
 
 /**
@@ -37,7 +38,8 @@ function initAll(config) {
     [Header],
     [NotificationBanner, config.notificationBanner],
     [Radios],
-    [FileUpload]
+    [FileUpload],
+    [Textarea]
   ])
 
   // Allow the user to initialise GOV.UK Frontend in only certain sections of the page
@@ -74,7 +76,8 @@ export {
   Header,
   NotificationBanner,
   Radios,
-  FileUpload
+  FileUpload,
+  Textarea
 }
 
 /**

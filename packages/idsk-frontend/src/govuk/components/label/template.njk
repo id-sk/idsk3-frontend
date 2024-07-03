@@ -6,6 +6,11 @@
   {{- govukAttributes(params.attributes) -}}
   {%- if params.for %} for="{{ params.for }}"{% endif %}>
   {{ params.html | safe | trim | indent(2) if params.html else params.text }}
+  {% if params.notRequired %}
+    <span class="idsk-not-required">({{ params.notRequired }})</span>
+  {% else %}
+    <span class="idsk-required">*</span>
+  {% endif %}
 </label>
 {% endset -%}
 

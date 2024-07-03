@@ -14,6 +14,7 @@
 - _[ID-87]_: ID-SK Feedback bar
 - _[ID-94]_: ID-SK Error summary
 - _[ID-84]_: ID-SK Input
+- _[ID-89]_: ID-SK Textarea
 
 - **Property changes**
 

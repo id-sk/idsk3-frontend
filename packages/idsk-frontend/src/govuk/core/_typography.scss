@@ -96,6 +96,15 @@
     @include govuk-font($size: 16);
   }
 
+  .idsk-required {
+    @include govuk-font($size: 19, $weight: bold);
+    color: $govuk-error-colour;
+  }
+
+  .idsk-not-required {
+    color: $govuk-secondary-text-colour;
+  }
+
   .govuk-caption-xl {
     @include govuk-font($size: 27);
 

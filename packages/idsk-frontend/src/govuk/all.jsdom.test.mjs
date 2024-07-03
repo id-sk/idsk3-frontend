@@ -18,9 +18,17 @@ jest.mock(`./components/password-input/password-input.mjs`)
 jest.mock(`./components/radios/radios.mjs`)
 jest.mock(`./components/skip-link/skip-link.mjs`)
 jest.mock(`./components/tabs/tabs.mjs`)
+jest.mock(`./components/textarea/textarea.mjs`)
 
 describe('initAll', () => {
-  const components = ['checkboxes', 'header', 'radios', 'skip-link', 'tabs']
+  const components = [
+    'checkboxes',
+    'header',
+    'radios',
+    'skip-link',
+    'tabs',
+    'textarea'
+  ]
 
   const componentsThatTakeConfig = [
     'accordion',

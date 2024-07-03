@@ -107,8 +107,18 @@ examples:
       id: more-detail
       label:
         text: Can you provide more detail?
-      hint:
-        text: Don't include personal or financial information, eg your National Insurance number or credit card details.
+        notRequired: nepovinné
+      formGroup:
+        afterInput:
+          text: Don't include personal or financial information, eg your National Insurance number or credit card details.
+  - name: with custom length
+    options:
+      name: more-detail
+      id: more-detail
+      label:
+        text: Can you provide more detail?
+      attributes:
+        maxlength: '500'
 
   - name: with error message
     options:
