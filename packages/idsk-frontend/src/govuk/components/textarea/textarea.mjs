@@ -69,7 +69,7 @@ export class Textarea extends GOVUKFrontendComponent {
    */
   handleChange(event) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    this.counter?.textContent = event.target?.value?.length.toString()
+    this.counter.textContent = event.target?.value?.length.toString()
   }
 
   /**
