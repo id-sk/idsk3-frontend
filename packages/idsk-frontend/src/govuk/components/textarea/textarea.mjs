@@ -56,9 +56,7 @@ export class Textarea extends GOVUKFrontendComponent {
     }
 
     this.counter.textContent = this.textarea?.value.length.toString()
-    this.textarea.addEventListener('change', (event) =>
-      this.handleChange(event)
-    )
+    this.textarea.addEventListener('input', (event) => this.handleChange(event))
   }
 
   /**
