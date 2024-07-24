@@ -130,6 +130,7 @@ examples:
         text: You must provide an explanation
 
   - name: with default value
+    hidden: true
     options:
       id: full-address
       name: address
@@ -141,6 +142,7 @@ examples:
         text: Full address
 
   - name: with custom rows
+    hidden: true
     options:
       id: full-address
       name: address
@@ -158,6 +160,7 @@ examples:
         isPageHeading: true
 
   - name: with optional form-group classes
+    hidden: true
     options:
       id: textarea-with-page-heading
       name: address
@@ -167,6 +170,7 @@ examples:
         classes: extra-class
 
   - name: with autocomplete attribute
+    hidden: true
     options:
       id: textarea-with-autocomplete-attribute
       name: address
@@ -175,6 +179,7 @@ examples:
       autocomplete: street-address
 
   - name: with spellcheck enabled
+    hidden: true
     options:
       label:
         text: Spellcheck is enabled
@@ -183,6 +188,7 @@ examples:
       spellcheck: true
 
   - name: with spellcheck disabled
+    hidden: true
     options:
       label:
         text: Spellcheck is disabled
