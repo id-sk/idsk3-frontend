@@ -1,0 +1,41 @@
+name: Publish to npm on Release
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    environment: prod  # Specify the environment
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.9.0'  # Specify your desired Node.js version
+          registry-url: 'https://registry.npmjs.org/'
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Build the project
+      - name: Build the project
+        run: npm run build  # Adjust this if your build command is different
+
+      # Step 5: Run tests (optional)
+      - name: Run tests
+        run: npm test  # Optional step for testing
+
+      # Step 6: Publish to npm
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
