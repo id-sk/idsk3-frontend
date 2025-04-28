@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@govuk-frontend/repository",
-  "description": "Used only for the development of GOV.UK Frontend, see `packages/govuk-frontend/package.json` for the published `package.json`",
+  "description": "Used only for the development of GOV.UK Frontend, see `packages/idsk-frontend/package.json` for the published `package.json`",
   "engines": {
     "node": "^20.9.0",
     "npm": "^10.1.0"
@@ -21,10 +21,10 @@
     "publish-release": "./bin/publish-release.sh",
     "publish-preview": "./bin/publish-preview.sh",
     "predev": "npm run build -- --ignore-scripts",
-    "dev": "concurrently \"npm run dev --workspace @govuk-frontend/review\" \"npm run dev --workspace idsk-frontend\" --kill-others --names \"app,pkg\" --prefix-colors \"red.dim,blue.dim\"",
-    "build": "npm run build --workspace idsk-frontend --workspace @govuk-frontend/review",
+    "dev": "concurrently \"npm run dev --workspace @idsk-frontend/review\" \"npm run dev --workspace @id-sk/frontend3\" --kill-others --names \"app,pkg\" --prefix-colors \"red.dim,blue.dim\"",
+    "build": "npm run build --workspace @id-sk/frontend3 --workspace @idsk-frontend/review",
     "build:app": "cross-env-shell NODE_ENV=production npm run build --workspace @govuk-frontend/review",
-    "build:package": "cross-env-shell NODE_ENV=production npm run build:package --workspace idsk-frontend",
+    "build:package": "cross-env-shell NODE_ENV=production npm run build:package --workspace @id-sk/frontend3",
     "build:release": "cross-env-shell NODE_ENV=production npm run build:release --workspace idsk-frontend",
     "build:types": "npm run build:types --workspaces --if-present",
     "postbuild:package": "jest --color --selectProjects \"Build tasks\" --testMatch \"**/build/package.unit.test.mjs\"",

@@ -1,7 +1,7 @@
 {
-  "name": "idsk-frontend",
-  "description": "GOV.UK Frontend contains the code you need to start building a user interface for government platforms and services.",
-  "version": "5.2.0",
+  "name": "@id-sk/frontend3",
+  "description": "ID-SK3 Frontend obsahuje kód, ktorý potrebujete na začatie vytvárania používateľského rozhrania pre vládne platformy a služby.",
+  "version": "3.0.0-beta.1",
   "main": "dist/govuk/all.bundle.js",
   "module": "dist/govuk/all.mjs",
   "sass": "dist/govuk/all.scss",
@@ -24,22 +24,26 @@
     "./package.json": "./package.json"
   },
   "engines": {
-    "node": ">= 4.2.0"
+    "node": ">= 20.9.0"
   },
   "author": {
-    "name": "GOV.UK Design System Team (Government Digital Service)",
-    "email": "design-system-developers@digital.cabinet-office.gov.uk"
+    "name": "ID-SK3 Design System Team (Government Digital Service)",
+    "email": "idsk@mirri.gov.sk"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alphagov/govuk-frontend.git"
+    "url": "https://github.com/id-sk/idsk3-frontend.git"
   },
   "bugs": {
-    "url": "https://github.com/alphagov/govuk-frontend/issues"
+    "url": "https://github.com/id-sk/idsk3-frontend/issues"
   },
-  "homepage": "https://frontend.design-system.service.gov.uk/",
+  "homepage": "https://idsk.gov.sk",
   "keywords": [
-    "govuk",
+    "idsk",
+    "idsk3",
+    "id-sk",
+    "id-sk3",
+    "id-sk3-frontend",
     "frontend",
     "design system",
     "template"
