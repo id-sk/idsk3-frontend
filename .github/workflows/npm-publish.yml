@@ -20,6 +20,6 @@ jobs:
       - run: npm ci
       # - run: npm test
       - run: npm run build:package --ignore-scripts
-      - run: npm publish --workspace @id-sk/frontend --access=public
+      - run: npm publish --workspace @id-sk/frontend3 --access=public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
