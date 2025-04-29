@@ -12,7 +12,7 @@ ID-SK Frontend obsahuje zdrojový kód, ktorý vychádza z [britského dizajn ma
 Živé príklady ID-SK komponentov s pokynmi ako ich využiť pri tvorbe vlastnej služby nájdete na [Dizajn manuále ID-SK](https://idsk.gov.sk/).
 
 ## Rozvoj ID-SK
- Našli ste v ID-SK chybu alebo chcete navrhnúť zmenu? Môžete tak urobiť priamo na GitHube
+ Našli ste v ID-SK chybu alebo chcete navrhnúť zmenu? Môžete tak urobiť priamo na GitHube.
 
  Chyby a úpravy: [https://github.com/id-sk/idsk3-frontend/issues](https://github.com/id-sk/idsk3-frontend/issues)
 
