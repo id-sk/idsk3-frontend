@@ -5,7 +5,11 @@ const { packageTypeToPath } = require('@govuk-frontend/lib/names')
 
 // Resolve GOV.UK Frontend from review app `node_modules`
 // to allow previous versions to be installed locally
+<<<<<<< HEAD
 const frontendPath = packageTypeToPath('@id-sk/frontend', {
+=======
+const frontendPath = packageTypeToPath('@id-sk/frontend3', {
+>>>>>>> develop
   modulePath: '/',
   moduleRoot: paths.app
 })

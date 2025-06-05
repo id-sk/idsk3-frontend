@@ -10,7 +10,11 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import { modulePaths, packageOptions } from './src/index.mjs'
 
 // Locate GOV.UK Frontend
+<<<<<<< HEAD
 const packagePath = packageTypeToPath('@id-sk/frontend', packageOptions)
+=======
+const packagePath = packageTypeToPath('@id-sk/frontend3', packageOptions)
+>>>>>>> develop
 
 /**
  * Rollup config with stats output
@@ -19,7 +23,11 @@ export default defineConfig(
   modulePaths.map(
     (modulePath) =>
       /** @satisfies {import('rollup').RollupOptions} */ ({
+<<<<<<< HEAD
         input: packageTypeToPath('@id-sk/frontend', {
+=======
+        input: packageTypeToPath('@id-sk/frontend3', {
+>>>>>>> develop
           ...packageOptions,
           modulePath
         }),
