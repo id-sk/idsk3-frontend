@@ -1,5 +1,5 @@
 import config from '@govuk-frontend/config'
-import * as IDSK3 Frontend from '@id-sk/frontend3/src/govuk/all.mjs'
+import * as GOVUKFrontend from '@id-sk/frontend/src/govuk/all.mjs'
 import { babel } from '@rollup/plugin-babel'
 import replace from '@rollup/plugin-replace'
 import terser from '@rollup/plugin-terser'
@@ -37,7 +37,7 @@ export default defineConfig(({ i: input }) => ({
           keep_fnames: true,
           // Ensure all top-level exports skip mangling, for example
           // non-function string constants like `export { version }`
-          reserved: Object.keys(IDSK3Frontend)
+          reserved: Object.keys(GOVUKFrontend)
         },
 
         // Include sources content from source maps to inspect
