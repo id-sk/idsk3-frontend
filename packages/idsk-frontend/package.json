@@ -1,6 +1,6 @@
 {
   "name": "@id-sk/frontend",
-  "description": "ID-SK Frontend contains the code you need to start building a user interface for government platforms and services.",
+  "description": "IDSK Frontend contains the code you need to start building a user interface for government platforms and services.",
   "version": "3.0.0-beta.0",
   "main": "dist/govuk/all.bundle.js",
   "module": "dist/govuk/all.mjs",
@@ -27,7 +27,7 @@
     "node": ">= 4.2.0"
   },
   "author": {
-    "name": "ID-SK tím",
+    "name": "IDSK tím",
     "email": "idsk@mirri.gov.sk"
   },
   "repository": {
