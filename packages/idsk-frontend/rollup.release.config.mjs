@@ -1,5 +1,5 @@
 import config from '@govuk-frontend/config'
-import * as IDSK3Frontend from '@id-sk/frontend3/src/govuk/all.mjs'
+import * as IDSK3 Frontend from '@id-sk/frontend3/src/govuk/all.mjs'
 import { babel } from '@rollup/plugin-babel'
 import replace from '@rollup/plugin-replace'
 import terser from '@rollup/plugin-terser'

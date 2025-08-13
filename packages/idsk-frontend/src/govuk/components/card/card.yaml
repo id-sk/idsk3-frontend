@@ -1,7 +1,7 @@
 params:
   - name: isVertical
     type: boolean
-    reguired: false
+    required: false
     description: Show card component vertically.
   - name: title
     type: string

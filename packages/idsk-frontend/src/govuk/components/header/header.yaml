@@ -112,12 +112,12 @@ accessibilityCriteria: |
 title: Hlavička
 examples:
   - name: default
-    description: The standard header as used on information pages
+    description: Základná verzia hlavičky webovej stránky.
     options:
       searchPanel: true
       headerButtons: false
 
-  - name: neprihlásený používateľ (bez navigácie)
+  - name: bez navigácie – neprihlásený používateľ
     options:
       #      useTudorCrown: false
       actionPanel: false
@@ -125,7 +125,7 @@ examples:
       searchPanel: true
       headerButtons: true
 
-  - name: prihlásený používateľ (bez navigácie)
+  - name: bez navigácie – prihlásený používateľ
     options:
       #      useTudorCrown: false
       actionPanel: true
@@ -133,7 +133,7 @@ examples:
       searchPanel: true
       headerButtons: false
 
-  - name: neprihlásený používateľ (s navigáciou)
+  - name: s navigáciou – neprihlásený používateľ
     options:
       #      useTudorCrown: false
       actionPanel: false
@@ -152,7 +152,7 @@ examples:
       searchPanel: true
       headerButtons: true
 
-  - name: prihlásený používateľ (s navigáciou)
+  - name: s navigáciou – prihlásený používateľ
     options:
       #      useTudorCrown: false
       actionPanel: true
@@ -171,7 +171,7 @@ examples:
       searchPanel: true
       headerButtons: false
 
-  - name: prihlásený s navigáciou v hlavičke
+  - name: elektronickej služby s navigáciou
     options:
       actionPanel: true
       navbarHeader:
@@ -199,7 +199,7 @@ examples:
       searchPanel: false
       headerButtons: false
 
-  - name: bez navigácie v hlavičke
+  - name: elektronickej služby bez navigácie
     options:
       actionPanel: true
       searchPanel: false

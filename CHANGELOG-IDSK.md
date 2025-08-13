@@ -4,18 +4,18 @@
 
 ### ⭐ New Features
 
-- _[ID-86]_: ID-SK Footer design
-- _[ID-98]_: ID-SK Breadcrumbs
-- _[ID-112]_: ID-SK Table
-- _[ID-97]_: ID-SK Accordion
-- _[ID-100]_: ID-SK Card
-- _[ID-85]_: ID-SK Header
-- _[ID-93]_: ID-SK File upload
-- _[ID-92]_: ID-SK Dropdown
-- _[ID-87]_: ID-SK Feedback bar
-- _[ID-94]_: ID-SK Error summary
-- _[ID-84]_: ID-SK Input
-- _[ID-89]_: ID-SK Textarea
+- _[ID-86]_: IDSK Footer design
+- _[ID-98]_: IDSK Breadcrumbs
+- _[ID-112]_: IDSK Table
+- _[ID-97]_: IDSK Accordion
+- _[ID-100]_: IDSK Card
+- _[ID-85]_: IDSK Header
+- _[ID-93]_: IDSK File upload
+- _[ID-92]_: IDSK Dropdown
+- _[ID-87]_: IDSK Feedback bar
+- _[ID-94]_: IDSK Error summary
+- _[ID-84]_: IDSK Input
+- _[ID-89]_: IDSK Textarea
 
 - **Property changes**
 

@@ -9,7 +9,7 @@ import { visualizer } from 'rollup-plugin-visualizer'
 
 import { modulePaths, packageOptions } from './src/index.mjs'
 
-// Locate GOV.UK Frontend
+// Locate IDSK Frontend
 const packagePath = packageTypeToPath('@id-sk/frontend3', packageOptions)
 
 /**

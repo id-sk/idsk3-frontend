@@ -102,8 +102,8 @@ describe('packages/govuk-frontend/dist/', () => {
           join(requirePath, 'all.mjs'),
 
           // ES module bundles for browsers, minified
-          join(requirePath, 'idsk-frontend.min.js'), // avoid .mjs extension MIME issues
-          join(requirePath, 'idsk-frontend.min.js.map') // with source map
+          join(requirePath, '@id-sk/frontend.min.js'), // avoid .mjs extension MIME issues
+          join(requirePath, '@id-sk/frontend.min.js.map') // with source map
         ])
       )
 
@@ -113,8 +113,8 @@ describe('packages/govuk-frontend/dist/', () => {
           join(requirePath, 'all.scss'),
 
           // CSS bundle, minified
-          join(requirePath, 'govuk-frontend.min.css'),
-          join(requirePath, 'govuk-frontend.min.css.map') // with source map
+          join(requirePath, '@id-sk/frontend.min.css'),
+          join(requirePath, '@id-sk/frontend.min.css.map') // with source map
         ])
       )
 

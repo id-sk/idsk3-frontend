@@ -289,7 +289,7 @@ describe('header', () => {
     })
 
     it('has an embedded <title> element to serve as alternative text', () => {
-      expect($svg.html()).toContain('<title>GOV.UK</title>')
+      expect($svg.html()).toContain('<title>IDSK</title>')
     })
 
     it("uses the St Edward's Crown if useTudorCrown is false", () => {

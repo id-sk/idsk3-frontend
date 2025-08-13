@@ -24,7 +24,7 @@ params:
     required: false
     description: Tags of the text layout signpost
   - name: image
-    type: text
+    type: string
     required: false
     description: Path to image to be shown in the vertical layout signpost
   - name: withArrow
