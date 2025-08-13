@@ -54,8 +54,8 @@
   font-weight: 400;
   font-display: block;
   src:
-    govuk-font-url("/material-icon/material-icons.woff2") format("woff2"),
-    govuk-font-url("/material-icon/material-icons.woff") format("woff");
+    govuk-font-url("material-icon/material-icons.woff2") format("woff2"),
+    govuk-font-url("material-icon/material-icons.woff") format("woff");
 }
 
 .material-icons {
@@ -82,8 +82,8 @@
   font-weight: 400;
   font-display: block;
   src:
-    govuk-font-url("/material-icon/material-icons-outlined.woff2") format("woff2"),
-    govuk-font-url("/material-icon/material-icons-outlined.woff") format("woff");
+    govuk-font-url("material-icon/material-icons-outlined.woff2") format("woff2"),
+    govuk-font-url("material-icon/material-icons-outlined.woff") format("woff");
 }
 
 .material-icons-outlined {

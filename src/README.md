@@ -1,3 +1,3 @@
-# GOV.UK Frontend
+# IDSK Frontend
 
-GOV.UK Frontend source code has moved to the [`govuk-frontend` package directory](../packages/govuk-frontend).
+IDSK Frontend source code has moved to the [`govuk-frontend` package directory](../packages/govuk-frontend).
