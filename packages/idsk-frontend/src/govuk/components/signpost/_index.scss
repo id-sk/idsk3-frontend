@@ -35,7 +35,7 @@
   }
 
   .govuk-signpost__card--text {
-    padding: govuk-spacing(6) 0 govuk-spacing(6) 0;
+    padding: govuk-spacing(6) 0;
     border-bottom: 1px solid govuk-colour("greyN300");
 
     .govuk-signpost__title {
@@ -59,7 +59,7 @@
   }
 
   .govuk-signpost__tag {
-    margin: govuk-spacing(2) 0 0 0;
+    margin: govuk-spacing(2) 0 0;
   }
 
   .govuk-link {
@@ -103,7 +103,7 @@
   }
 
   .govuk-signpost__description {
-    margin: govuk-spacing(2) 0 0 0;
+    margin: govuk-spacing(2) 0 0;
     color: govuk-colour("black");
   }
 
@@ -119,7 +119,7 @@
   }
 
   .govuk-signpost__actions {
-    margin: govuk-spacing(3) 0 0 0;
+    margin: govuk-spacing(3) 0 0;
 
     button {
       margin: 0;

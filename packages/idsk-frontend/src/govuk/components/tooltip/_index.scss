@@ -1,0 +1,170 @@
+@mixin govuk-tooltip-arrow-position($default-pos: 50%) {
+  left: $default-pos;
+  left: var(--arrow-left, #{$default-pos});
+}
+
+@mixin govuk-tooltip-arrow-position-y($default-pos: 50%) {
+  top: $default-pos;
+  top: var(--arrow-top, #{$default-pos});
+}
+
+@include govuk-exports("govuk/component/tooltip") {
+  $tooltip-icon: $govuk-link-hover-colour;
+  $tooltip-bg: govuk-colour("black");
+  $tooltip-text: govuk-colour("white");
+  $tooltip-arrow-size: 8px;
+  $govuk-tooltip-border-focus: $govuk-focus-colour;
+  $govuk-tooltip-border-hover: $govuk-hover-colour;
+
+  .govuk-tooltip {
+    display: inline-flex;
+    align-items: center;
+
+    // Trigger (ikonka "i")
+    &__trigger {
+      display: inline-block;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      border: 2px solid $tooltip-icon;
+      border-radius: 50%;
+      color: $tooltip-icon;
+      background-color: transparent;
+      user-select: none;
+      font-family: $govuk-font-family;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+
+      &:hover,
+      &--hovered {
+        border-color: $govuk-link-colour;
+        color: $govuk-link-colour;
+        box-shadow: 0 0 0 5px #757575;
+      }
+
+      &:focus,
+      &--focused {
+        border-color: $govuk-link-colour;
+        outline: 3px solid $govuk-tooltip-border-focus;
+        outline-offset: 2px;
+        color: $govuk-link-colour;
+      }
+    }
+
+    // Label (text vedľa ikonky)
+    &__label {
+      margin-right: govuk-spacing(2);
+      @include govuk-font($size: 19);
+    }
+
+    &__item-wrapper {
+      display: inline-flex; // obalenie okolo ikonky
+      position: relative; // kotva
+    }
+
+    // Content (samotný tooltip)
+    &__content {
+      display: none;
+      position: absolute;
+      z-index: 100;
+      width: max-content;
+      max-width: 290px;
+      padding: govuk-spacing(2);
+      border-radius: 4px;
+      color: $tooltip-text;
+      background-color: $tooltip-bg;
+      text-align: left;
+      @include govuk-font($size: 16);
+
+      input,
+      select,
+      textarea,
+      button,
+      details {
+        pointer-events: none; // Znemožní kliknutie a focus
+        opacity: 0.5; // Vizuálne naznačí, že je to "pokazené/disabled"
+      }
+
+      &--visible {
+        display: block;
+      }
+
+      // Arrow (šípka)
+      &::after {
+        content: "";
+        position: absolute;
+        border-width: $tooltip-arrow-size;
+        border-style: solid;
+      }
+    }
+
+    // --- Modifiers for Positions ---
+
+    // Right (Default)
+    &--right .govuk-tooltip__content {
+      top: 50%;
+      left: 100%;
+      margin-left: 14px;
+      transform: translateY(-50%);
+
+      &::after {
+        top: 50%;
+        right: 100%;
+        transform: translateY(-50%);
+        border-color: transparent $tooltip-bg transparent transparent;
+        @include govuk-tooltip-arrow-position-y(50%);
+      }
+    }
+
+    // Left
+    &--left .govuk-tooltip__content {
+      top: 50%;
+      right: 100%;
+      margin-right: 14px;
+      transform: translateY(-50%);
+
+      &::after {
+        top: 50%;
+        left: 100%;
+        transform: translateY(-50%);
+        border-color: transparent transparent transparent $tooltip-bg;
+        @include govuk-tooltip-arrow-position-y(50%);
+      }
+    }
+
+    // Top
+    &--top .govuk-tooltip__content {
+      bottom: 100%;
+      left: 50%;
+      margin-bottom: 14px;
+      transform: translateX(-50%);
+
+      &::after {
+        top: 100%;
+        transform: translateX(-50%);
+        border-color: $tooltip-bg transparent transparent;
+        // mixin a centrovanie
+        @include govuk-tooltip-arrow-position(50%);
+      }
+    }
+
+    // Bottom
+    &--bottom .govuk-tooltip__content {
+      top: 100%;
+      left: 50%;
+      margin-top: 14px;
+      transform: translateX(-50%);
+
+      &::after {
+        bottom: 100%;
+        transform: translateX(-50%);
+        border-color: transparent transparent $tooltip-bg;
+        // mixin a centrovanie
+        @include govuk-tooltip-arrow-position(50%);
+      }
+    }
+  }
+}

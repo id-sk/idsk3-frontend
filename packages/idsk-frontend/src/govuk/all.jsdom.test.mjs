@@ -19,6 +19,7 @@ jest.mock(`./components/radios/radios.mjs`)
 jest.mock(`./components/skip-link/skip-link.mjs`)
 jest.mock(`./components/tabs/tabs.mjs`)
 jest.mock(`./components/textarea/textarea.mjs`)
+jest.mock(`./components/tooltip/tooltip.mjs`)
 
 describe('initAll', () => {
   const components = [
@@ -27,7 +28,8 @@ describe('initAll', () => {
     'radios',
     'skip-link',
     'tabs',
-    'textarea'
+    'textarea',
+    'tooltip'
   ]
 
   const componentsThatTakeConfig = [
@@ -54,6 +56,7 @@ describe('initAll', () => {
 
       GOVUKFrontend.initAll()
 
+      // eslint-disable-next-line import/namespace
       expect(GOVUKFrontend[className]).toHaveBeenCalledWith(
         document.querySelector(`[data-module="govuk-${componentName}"]`)
       )
@@ -73,6 +76,7 @@ describe('initAll', () => {
         [configName]: { __test: true }
       })
 
+      // eslint-disable-next-line import/namespace
       expect(GOVUKFrontend[className]).toHaveBeenCalledWith(
         document.querySelector(`[data-module="govuk-${componentName}"]`),
         { __test: true }

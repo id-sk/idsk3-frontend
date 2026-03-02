@@ -48,7 +48,8 @@ describe('GOV.UK Frontend', () => {
         'Radios',
         'SkipLink',
         'Tabs',
-        'Textarea'
+        'Textarea',
+        'Tooltip'
       ])
     })
   })
