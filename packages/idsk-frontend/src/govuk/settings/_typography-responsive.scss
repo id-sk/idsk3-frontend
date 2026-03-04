@@ -123,7 +123,7 @@ $_govuk-typography-scale-legacy: (
   ),
   19: (
     null: (
-      font-size: 36px,
+      font-size: 16px,
       line-height: 24px
     ),
     tablet: (
@@ -166,7 +166,7 @@ $_govuk-typography-scale-legacy: (
     //   key: "govuk-typography-scale-14",
     //   message: "14 on the type scale is deprecated and will be removed as " +
     //     "a possible option in the next major version."
-    // )
+     // )
   ),
   12: (
     null: (
@@ -242,8 +242,7 @@ $_govuk-typography-scale-modern: (
   ),
   27: (
     // Made same as 24 on mobile (consider deprecating this size)
-    null:
-      (
+    null: (
         font-size: 21px,
         line-height: 25px
       ),
@@ -258,8 +257,7 @@ $_govuk-typography-scale-modern: (
   ),
   24: (
     // Bump up mobile size from 18/20 to 21/25
-    null:
-      (
+    null: (
         font-size: 20px,
         line-height: 26px
       ),
