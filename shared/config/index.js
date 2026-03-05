@@ -1,9 +1,5 @@
 // eslint-disable-next-line n/no-extraneous-require
-<<<<<<< HEAD
-const pkg = require('@id-sk/frontend/package.json')
-=======
 const pkg = require('@id-sk/frontend3/package.json')
->>>>>>> develop
 
 // Node.js environment with default
 // https://nodejs.org/en/learn/getting-started/nodejs-the-difference-between-development-and-production

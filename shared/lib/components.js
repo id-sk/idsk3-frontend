@@ -16,11 +16,7 @@ const [stylesPath, scriptsPath, assetPath] = [
   'govuk-frontend.min.js',
   'assets'
 ].map((modulePath) =>
-<<<<<<< HEAD
-  pathToFileURL(packageTypeToPath('@id-sk/frontend', { modulePath }))
-=======
   pathToFileURL(packageTypeToPath('@id-sk/frontend3', { modulePath }))
->>>>>>> develop
 )
 
 /**
@@ -33,11 +29,7 @@ const [stylesPath, scriptsPath, assetPath] = [
  */
 function nunjucksEnv(searchPaths = [], nunjucksOptions = {}, packageOptions) {
   const packagePath = dirname(
-<<<<<<< HEAD
-    packageTypeToPath('@id-sk/frontend', packageOptions)
-=======
     packageTypeToPath('@id-sk/frontend3', packageOptions)
->>>>>>> develop
   )
 
   // Add to Nunjucks search paths (without 'govuk' suffix)
@@ -61,11 +53,7 @@ function nunjucksEnv(searchPaths = [], nunjucksOptions = {}, packageOptions) {
 const getComponentFixtures = async (componentName, packageOptions) => {
   return require(
     join(
-<<<<<<< HEAD
-      dirname(packageTypeToPath('@id-sk/frontend', packageOptions)),
-=======
       dirname(packageTypeToPath('@id-sk/frontend3', packageOptions)),
->>>>>>> develop
       `components/${componentName}/fixtures.json`
     )
   )
@@ -96,11 +84,7 @@ const getComponentsFixtures = async (packageOptions) => {
 const getComponentFiles = (componentName = '*', packageOptions) =>
   getListing(
     join(
-<<<<<<< HEAD
-      dirname(packageTypeToPath('@id-sk/frontend', packageOptions)),
-=======
       dirname(packageTypeToPath('@id-sk/frontend3', packageOptions)),
->>>>>>> develop
       `components/${componentName}/**/*`
     )
   )
@@ -114,11 +98,7 @@ const getComponentFiles = (componentName = '*', packageOptions) =>
 async function getComponentNames(packageOptions) {
   return getDirectories(
     join(
-<<<<<<< HEAD
-      dirname(packageTypeToPath('@id-sk/frontend', packageOptions)),
-=======
       dirname(packageTypeToPath('@id-sk/frontend3', packageOptions)),
->>>>>>> develop
       'components/'
     )
   )
