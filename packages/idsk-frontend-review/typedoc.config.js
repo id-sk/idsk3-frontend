@@ -7,7 +7,7 @@ const {
 } = require('@govuk-frontend/lib/names')
 const slash = require('slash')
 
-const basePath = join(packageNameToPath('@id-sk/frontend'), 'src')
+const basePath = join(packageNameToPath('@id-sk/frontend3'), 'src')
 const workspacePath = slash(relative(paths.root, basePath))
 const { HEROKU_APP, HEROKU_BRANCH = 'main' } = process.env
 
@@ -24,8 +24,8 @@ module.exports = {
 
   // Configure paths
   basePath,
-  entryPoints: [packageResolveToPath('@id-sk/frontend/src/govuk/all.mjs')],
-  tsconfig: packageResolveToPath('@id-sk/frontend/tsconfig.build.json'),
+  entryPoints: [packageResolveToPath('@id-sk/frontend3/src/govuk/all.mjs')],
+  tsconfig: packageResolveToPath('@id-sk/frontend3/tsconfig.build.json'),
   out: './dist/docs/jsdoc',
 
   // Turn off strict checks for JSDoc output
