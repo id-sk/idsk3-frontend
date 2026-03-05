@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "postinstall": "npm ls --depth=0",
-    "start": "npm run dev",
+    "start": "npm run start --workspace @idsk-frontend/review",
     "build-release": "./bin/build-release.sh",
     "publish-release": "./bin/publish-release.sh",
     "publish-preview": "./bin/publish-preview.sh",
