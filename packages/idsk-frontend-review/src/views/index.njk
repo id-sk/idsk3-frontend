@@ -2,7 +2,7 @@
 
 {% set htmlLang = 'sk' %}
 
-{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{#{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}#}
 
 {% block content %}
   <h1 class="govuk-heading-xl">
@@ -153,6 +153,7 @@
           <a href="/docs/stats/{{ componentKey }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ componentName }}.mjs</code></a>
         {% endset %}
 
+        {# ZAKOMENTovanie ODTIALTO:
         {{ govukSummaryList({
           card: {
             title: {
@@ -181,6 +182,7 @@
             }
           ]
         }) }}
+        AŽ POTIALTO #}
       {% endfor %}
     </div>
   </div>
