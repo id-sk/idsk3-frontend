@@ -24,7 +24,6 @@
     </button>
 
     <div id="{{ params.id }}" class="govuk-tooltip__content {{ params.contentClasses if params.contentClasses }}" role="tooltip" aria-hidden="{{ 'false' if params.contentClasses else 'true' }}">
-      <div class="govuk-tooltip__arrow"></div>
       
       <div class="govuk-tooltip__body">
         {{ params.content | safe }}

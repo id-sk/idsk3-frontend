@@ -61,6 +61,9 @@ export class Tooltip extends GOVUKFrontendComponent {
     window.addEventListener('resize', () => {
       if (this.isVisible()) this.updatePosition()
     })
+    if (this.isVisible()) {
+      this.updatePosition()
+    }
   }
 
   /**
