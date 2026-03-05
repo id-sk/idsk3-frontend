@@ -48,11 +48,11 @@ export default async () => {
         versionHistory: `${githubURL.href}/releases`
       }
     },
-    assets: ['/dist/govuk/assets', '/dist/govuk/@id-sk/frontend.min.js.map'],
+    assets: ['/dist/govuk/assets', `/dist/govuk/${pkg.name}.min.js.map`],
     sass: ['/dist/govuk-prototype-kit/init.scss'],
     scripts: [
       {
-        path: '/dist/govuk/@id-sk/frontend.min.js',
+        path: `/dist/govuk/${pkg.name}.min.js`,
         type: 'module'
       },
       {
