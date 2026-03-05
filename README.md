@@ -2,19 +2,19 @@ ID-SK Frontend ·
 [![Build Status](https://github.com/alphagov/govuk-frontend/workflows/Tests/badge.svg)](https://github.com/alphagov/govuk-frontend/actions?query=workflow%3ATests+branch%3Amain)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 =====================
-Verzia: 3.0.0 (beta)
+Verzia: 3.0.0
 
-ID-SK je komunitne rozvíjaný jednotný dizajnový systém verejnej správy, ktorý má za cieľ zjednotiť používateľské rozhrania a spôsob komunikácie s používateľom pri poskytovaní elektronických služieb na Slovensku.
+IDSK je komunitne rozvíjaný jednotný dizajnový systém verejnej správy, ktorý má za cieľ zjednotiť používateľské rozhrania a spôsob komunikácie s používateľom pri poskytovaní elektronických služieb na Slovensku.
 
-ID-SK Frontend obsahuje zdrojový kód, ktorý vychádza z [britského dizajn manuálu elektronických služieb GOV.UK (GDS)](https://design-system.service.gov.uk/).
+IDSK Frontend obsahuje zdrojový kód, ktorý vychádza z [britského dizajn manuálu elektronických služieb GOV.UK (GDS)](https://design-system.service.gov.uk/).
 
 ## idsk.gov.sk
 
-Živé príklady ID-SK komponentov s pokynmi ako ich využiť pri tvorbe vlastnej služby nájdete na [Dizajn manuále ID-SK](https://idsk.gov.sk/).
+Živé príklady IDSK komponentov s pokynmi ako ich využiť pri tvorbe vlastnej služby nájdete na [Dizajn manuále IDSK](https://idsk.gov.sk/).
 
-## Rozvoj ID-SK
+## Rozvoj IDSK
 
-Našli ste v ID-SK chybu alebo chcete navrhnúť zmenu? Môžete tak urobiť priamo na GitHube
+Našli ste v IDSK chybu alebo chcete navrhnúť zmenu? Môžete tak urobiť priamo na GitHube
 
 Chyby a úpravy: [https://github.com/id-sk/idsk3-frontend/issues](https://github.com/id-sk/idsk3-frontend/issues)
 
@@ -22,15 +22,15 @@ Diskusia: [https://github.com/id-sk/idsk3-frontend/discussions](https://github.c
 
 ## Kontakt na tím
 
-ID-SK je tvorený pod záštitou Oddelenia behaviorálnych inovácií (oKPS) Ministerstva investícií, regionálneho rozvoja a informatizácie. Pre viac informácií svoje otázky smerujte na e-mail [ID-SK tímu idsk@mirri.gov.sk](mailto:idsk@mirri.gov.sk).
+IDSK je tvorený pod záštitou Oddelenia behaviorálnych inovácií (oKPS) Ministerstva investícií, regionálneho rozvoja a informatizácie. Pre viac informácií svoje otázky smerujte na e-mail [IDSK tímu idsk@mirri.gov.sk](mailto:idsk@mirri.gov.sk).
 
 ## Rýchly štart
 
-Sú dva spôsoby, ako začať používať ID-SK Frontend vo vašej aplikácii.
+Sú dva spôsoby, ako začať používať IDSK Frontend vo vašej aplikácii.
 
 ### 1. Inštaláciou npm (odporúčame)
 
-Odporúčame nainštalovať si ID-SK Frontend zo správcu balíčkov platformy [Node (NPM)](https://www.npmjs.com/package/@id-sk/frontend).
+Odporúčame nainštalovať si IDSK Frontend zo správcu balíčkov platformy [Node (NPM)](https://www.npmjs.com/package/@id-sk/frontend).
 
 ### 2. Inštaláciou kompilovaných súborov
 
