@@ -19,7 +19,7 @@
     "clean": "del-cli dist",
     "proxy": "browser-sync start --config browsersync.config.js",
     "serve": "nodemon",
-    "start": "node src/start.mjs",
+    "start": "npm run build && node src/start.mjs",
     "test:screenshots": "gulp screenshots --color"
   },
   "dependencies": {
