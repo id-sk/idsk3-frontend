@@ -73,41 +73,34 @@
 
   </div>
 
-  {% if flags.hasDocsStyles or flags.hasDocsScripts %}
   <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-      <h2 class="govuk-heading-l">Documentation</h2>
+      <h2 class="govuk-heading-l">Dôležité odkazy</h2>
 
       <div class="govuk-grid-row">
 
-        {% if flags.hasDocsStyles %}
         <div class="govuk-grid-column-one-half">
-          <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Sass API reference</h3>
+          <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Dokumentácia</h3>
           <ul class="govuk-list">
-          {% if not flags.isDeployedToHeroku %}
-            <li><a href="/docs/sass" class="govuk-link">Local version</a></li>
-          {% endif %}
-            <li><a href="https://frontend.design-system.service.gov.uk/sass-api-reference/" class="govuk-link">Latest release</a></li>
+            <li><a href="https://www.figma.com/community/file/1581301778555425083" class="govuk-link" target="_blank">Figma</a></li>
+            <li><a href="https://idsk.gov.sk/" class="govuk-link" target="_blank">Webové sídlo IDSK3</a></li>
           </ul>
         </div>
-        {% endif %}
 
-        {% if flags.hasDocsScripts %}
         <div class="govuk-grid-column-one-half">
-          <h3 class="govuk-heading-m govuk-!-margin-bottom-2">JavaScript API reference</h3>
+          <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Aktuálne NPM balíky</h3>
           <ul class="govuk-list">
-            <li><a href="/docs/javascript" class="govuk-link">Local version</a></li>
+            <li><a href="https://www.npmjs.com/package/@id-sk/frontend" class="govuk-link" target="_blank">NPMJS balík (@id-sk/frontend)</a></li>
           </ul>
         </div>
-        {% endif %}
 
       </div>
     </div>
   </div>
-  {% endif %}
-
+  
+  {# --- ZAČIATOK ZAKOMENTOVANEJ SEKCIE (GOV.UK JavaScript modules štatistiky) --- 
   {% if flags.hasStats %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
@@ -121,29 +114,13 @@
         <a href="/docs/stats/{{ bundleKey }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ bundleKey }}.mjs</code></a>
       {% endset %}
 
-{#      {{ govukSummaryList({#}
-{#        classes: "govuk-summary-list--no-border",#}
-{#        rows: [#}
-{#          {#}
-{#            key: {#}
-{#              text: "Entry file name"#}
-{#            },#}
-{#            value: {#}
-{#              html: bundleHtml#}
-{#            }#}
-{#          },#}
-{#          {#}
-{#            key: {#}
-{#              text: "Total file size"#}
-{#            },#}
-{#            value: {#}
-{#              html:#}
-{#                bundleSize.bundled + " (bundled) <br>" +#}
-{#                bundleSize.minified + " (minified)"#}
-{#            }#}
-{#          }#}
-{#        ]#}
-{#      }) }}#}
+      {{ govukSummaryList({
+        classes: "govuk-summary-list--no-border",
+        rows: [
+          { key: { text: "Entry file name" }, value: { html: bundleHtml } },
+          { key: { text: "Total file size" }, value: { html: bundleSize.bundled + " (bundled) <br>" + bundleSize.minified + " (minified)" } }
+        ]
+      }) }}
 
       {% for componentName in componentNamesWithJavaScript | sort %}
         {% set componentKey = "components/" + componentName + "/" + componentName %}
@@ -153,38 +130,16 @@
           <a href="/docs/stats/{{ componentKey }}.html" class="govuk-body-s govuk-link govuk-!-font-weight-regular"><code>{{ componentName }}.mjs</code></a>
         {% endset %}
 
-        {# ZAKOMENTovanie ODTIALTO:
         {{ govukSummaryList({
-          card: {
-            title: {
-              text: componentName | unslugify,
-              headingLevel: 3
-            }
-          },
+          card: { title: { text: componentName | unslugify, headingLevel: 3 } },
           rows: [
-            {
-              key: {
-                text: "File name"
-              },
-              value: {
-                html: componentHtml
-              }
-            },
-            {
-              key: {
-                text: "File size"
-              },
-              value: {
-                html:
-                  componentSize.bundled + " (bundled) <br>" +
-                  componentSize.minified + " (minified)"
-              }
-            }
+            { key: { text: "File name" }, value: { html: componentHtml } },
+            { key: { text: "File size" }, value: { html: componentSize.bundled + " (bundled) <br>" + componentSize.minified + " (minified)" } }
           ]
         }) }}
-        AŽ POTIALTO #}
       {% endfor %}
     </div>
   </div>
   {% endif %}
+  --- KONIEC ZAKOMENTOVANEJ SEKCIE --- #}
 {% endblock %}
