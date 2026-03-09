@@ -43,13 +43,6 @@ examples:
       content: 'Po zameraní focusom sa objaví oranžový obrys. Text by mal mať dĺžku max. 290 znakov.'
       triggerClasses: 'govuk-tooltip__trigger--focused'
       contentClasses: 'govuk-tooltip__content--visible'
-  - name: (zameranie myšou)
-    options:
-      id: 'tooltip-hover'
-      label: 'Zameranie myšou'
-      content: 'Po zameraní myšou sa objaví sivý tieň. Text by mal mať dĺžku max. 290 znakov.'
-      triggerClasses: 'govuk-tooltip__trigger--hovered'
-      contentClasses: 'govuk-tooltip__content--visible'
   - name: (iba ikonka)
     options:
       id: 'tooltip-icon'
@@ -59,6 +52,7 @@ examples:
       id: 'tooltip-top'
       label: 'Pozícia hore'
       position: 'top'
+      classes: 'govuk-!-margin-top-5'
       content: 'Vysvetlivka sa zobrazí nad ikonou.'
   - name: (dolná vysvetlivka)
     options:

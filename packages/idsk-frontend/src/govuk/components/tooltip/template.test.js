@@ -19,18 +19,21 @@ describe('Tooltip', () => {
       expect($component.get(0).tagName).toBe('div')
       expect($trigger.get(0).tagName).toBe('button')
       expect($content.attr('role')).toBe('tooltip')
-      expect($content.text()).toContain('Toto je príklad použitia tooltipu v základnom stave. Text by mal mať dĺžku max. 290 znakov.')
+      expect($content.text()).toContain(
+        'Toto je príklad použitia tooltipu v základnom stave. Text by mal mať dĺžku max. 290 znakov.'
+      )
     })
   })
 
   describe('custom options', () => {
-    it('renders with custom ID', () => {
+    it('renders with custom ID and accessibility controls', () => {
       const $ = render('tooltip', examples.default)
       const $trigger = $('.govuk-tooltip__trigger')
       const $content = $('.govuk-tooltip__content')
 
       const id = $content.attr('id')
-      expect($trigger.attr('aria-describedby')).toBe(id)
+      // Zmenené z aria-describedby na aria-controls
+      expect($trigger.attr('aria-controls')).toBe(id)
     })
 
     it('renders with custom position attribute', () => {

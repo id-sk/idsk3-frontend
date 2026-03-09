@@ -19,12 +19,15 @@
   .govuk-tooltip {
     display: inline-flex;
     align-items: center;
+    max-width: 100%; // FIX: Zabraňuje roztlačeniu celej stránky
+    flex-wrap: wrap;
 
     // Trigger (ikonka "i")
     &__trigger {
       display: inline-block;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0; // FIX: Ikonka sa nikdy nesmie scvrknúť
       width: 24px;
       height: 24px;
       padding: 0;
@@ -57,6 +60,9 @@
     // Label (text vedľa ikonky)
     &__label {
       margin-right: govuk-spacing(2);
+      word-break: break-word;
+      white-space: normal; // FIX: Ak je displej úzky, nechaj label zalomiť
+      flex: 1 1 auto;
       @include govuk-font($size: 19);
     }
 
@@ -70,13 +76,16 @@
       display: none;
       position: absolute;
       z-index: 100;
-      width: max-content;
-      max-width: 290px;
+      // Odstránený width: max-content, to robilo tie najväčšie problémy na mobiloch!
+      width: 290px;
+      max-width: calc(100vw - 32px); // Max šírka je okno mínus bezpečný okraj
       padding: govuk-spacing(2);
       border-radius: 4px;
       color: $tooltip-text;
       background-color: $tooltip-bg;
       text-align: left;
+      word-break: break-word;
+      white-space: normal !important; // stylelint-disable-line declaration-no-important
       @include govuk-font($size: 16);
 
       input,
@@ -84,8 +93,8 @@
       textarea,
       button,
       details {
-        pointer-events: none; // Znemožní kliknutie a focus
-        opacity: 0.5; // Vizuálne naznačí, že je to "pokazené/disabled"
+        pointer-events: none;
+        opacity: 0.5;
       }
 
       &--visible {
@@ -146,7 +155,6 @@
         top: 100%;
         transform: translateX(-50%);
         border-color: $tooltip-bg transparent transparent;
-        // mixin a centrovanie
         @include govuk-tooltip-arrow-position(50%);
       }
     }
@@ -162,8 +170,27 @@
         bottom: 100%;
         transform: translateX(-50%);
         border-color: transparent transparent $tooltip-bg;
-        // mixin a centrovanie
         @include govuk-tooltip-arrow-position(50%);
+      }
+    }
+  }
+
+  // --- High Contrast / Forced Colors ---
+  @media (forced-colors: active) {
+    .govuk-tooltip__content {
+      border: 1px solid ButtonText;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .govuk-tooltip__trigger {
+      &:hover,
+      &:focus {
+        border-color: HighlightText !important; // stylelint-disable-line declaration-no-important
+        color: HighlightText !important; // stylelint-disable-line declaration-no-important
+        background-color: Highlight !important; // stylelint-disable-line declaration-no-important
       }
     }
   }

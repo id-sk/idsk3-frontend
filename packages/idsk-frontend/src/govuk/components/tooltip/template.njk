@@ -1,9 +1,9 @@
-{# 
+{#
   ======================================================================
   UPOZORNENIE PRE VÝVOJÁROV (IDSK STANDARD)
   ======================================================================
   Tento komponent slúži VÝLUČNE na krátke textové vysvetlivky do 290 znakov.
-  
+
   ZAKÁZANÉ ELEMENTY V OBSAHU (params.content):
   - Formuláre (<input>, <select>, <textarea>)
   - Tlačidlá (<button>)
@@ -18,17 +18,17 @@
     </span>
   {% endif %}
   <div class="govuk-tooltip__item-wrapper">
-    
-    <button type="button" class="govuk-tooltip__trigger {{ params.triggerClasses if params.triggerClasses }}" aria-describedby="{{ params.id }}" aria-label="Zobraziť vysvetlivku">
+
+    <button type="button" class="govuk-tooltip__trigger {{ params.triggerClasses if params.triggerClasses }}" aria-controls="{{ params.id }}" aria-expanded="{{ 'true' if params.contentClasses else 'false' }}" aria-label="Zobraziť vysvetlivku">
       <span aria-hidden="true">i</span>
     </button>
 
     <div id="{{ params.id }}" class="govuk-tooltip__content {{ params.contentClasses if params.contentClasses }}" role="tooltip" aria-hidden="{{ 'false' if params.contentClasses else 'true' }}">
-      
+
       <div class="govuk-tooltip__body">
         {{ params.content | safe }}
       </div>
-      
+
     </div>
   </div>
 </div>

@@ -5,7 +5,6 @@ const { getExamples } = require('@govuk-frontend/lib/components')
 
 describe('/components/tooltip', () => {
   let examples
-  const activationDelay = 600
 
   beforeAll(async () => {
     examples = await getExamples('tooltip')
@@ -16,29 +15,11 @@ describe('/components/tooltip', () => {
       await render(page, 'tooltip', examples.default)
     })
 
-    it('opens after delay on hover', async () => {
+    it('does NOT open on hover anymore (accessibility update)', async () => {
       await page.hover('.govuk-tooltip__trigger')
 
-      const isVisibleImmediately = await page.$eval(
-        '.govuk-tooltip__content',
-        (el) => el.classList.contains('govuk-tooltip__content--visible')
-      )
-      expect(isVisibleImmediately).toBe(false)
-
-      await new Promise((resolve) => setTimeout(resolve, activationDelay))
-
-      const isVisibleAfterDelay = await page.$eval(
-        '.govuk-tooltip__content',
-        (el) => el.classList.contains('govuk-tooltip__content--visible')
-      )
-      expect(isVisibleAfterDelay).toBe(true)
-    })
-
-    it('closes immediately on mouse leave', async () => {
-      await page.hover('.govuk-tooltip__trigger')
-      await new Promise((resolve) => setTimeout(resolve, activationDelay))
-
-      await page.hover('body')
+      // Chvíľu počkáme, aby sme si boli istí, že sa nezobrazí
+      await new Promise((resolve) => setTimeout(resolve, 300))
 
       const isVisible = await page.$eval('.govuk-tooltip__content', (el) =>
         el.classList.contains('govuk-tooltip__content--visible')
@@ -83,7 +64,7 @@ describe('/components/tooltip', () => {
     })
   })
 
-  describe('Mobile interaction (simulated click)', () => {
+  describe('Click interaction', () => {
     beforeEach(async () => {
       await render(page, 'tooltip', examples.default)
     })

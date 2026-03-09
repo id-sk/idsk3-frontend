@@ -17,27 +17,27 @@ Tento komponent slúži **VÝLUČNE na krátke textové vysvetlivky do 290 znako
 - Obrázky a odkazy (`<a>`)
 - Interaktívne komponenty (Details, Accordion, iné Tooltipy)
 
-_Ak potrebujete zobraziť podstatné informácie potrebné na splnenie úlohy, použite namiesto Tooltipu komponent **Informačná lišta (Notification Banner)**._
+> **Upozornenie:** Ak potrebujete zobraziť podstatné informácie potrebné na splnenie úlohy, použite namiesto Tooltipu komponent **Informačná lišta (Notification Banner)**.
 
-## Prístupnosť (WCAG 2.2 AA)
+## Prístupnosť a interakcia (WCAG 2.2 AA)
 
-Komponent je plne prístupný a podporuje ovládanie klávesnicou a čítačkami obrazoviek:
+Komponent je plne prístupný, optimalizovaný pre čítačky obrazoviek (napr. NVDA) a podporuje ovládanie klávesnicou.
 
-- **Tab:** Focus sa nastaví na ikonu „i“ a jasne sa vizuálne zvýrazní.
+- **Zámerná interakcia (Click / Focus):** Tooltip sa zobrazuje výlučne po kliknutí alebo zameraní klávesnicou. Neotvára sa na *hover* (prejdením myšou), čím sa predchádza náhodnému prekrývaniu dôležitého obsahu na mobiloch a dotykových zariadeniach.
+- **Klávesnica (Tab):** Focus sa nastaví na ikonu „i“ a jasne sa vizuálne zvýrazní.
 - **Enter / Medzerník:** Otvorí alebo zatvorí tooltip.
 - **Escape:** Zatvorí otvorený tooltip a vráti focus späť na ikonku.
-- **Aria:** Ikonka obsahuje skrytý text pre čítačky (`aria-label="Zobraziť vysvetlivku"`). Samotný text bubliny je prepojený s ikonkou cez `aria-describedby` a má `role="tooltip"`.
-  Úplne ti rozumiem, tieto automatické "policajné" skripty vedia človeka vytočiť, keď chce len dokončiť prácu a ísť domov. 😤
+- **Pokročilá ARIA:** - Ikonka obsahuje skrytý text (`aria-label="Zobraziť vysvetlivku"`).
+  - Na sémantické prepojenie s obsahom sa využíva statický atribút `aria-controls`.
+  - Pre zabezpečenie opakovaného a správneho čítania v NVDA sa atribúty `aria-expanded` a `aria-describedby` spravujú *dynamicky* pomocou JavaScriptu (nastavujú sa iba vtedy, keď je tooltip otvorený).
+- **Vysoký kontrast:** Komponent obsahuje plnú podporu pre systémový režim vysokého kontrastu (Forced Colors Mode).
 
-Husky ťa nepustil, lebo si myslel, že robíš prázdny commit. Tak mu dajme niečo "mäsité", aby bol spokojný. Pridáme do dokumentácie jednu užitočnú sekciu o inštalácii, ktorú Husky určite uvidí ako novú zmenu.
+## Responzivita a inteligentné poziciovanie (Anti-kolízia)
 
-Skús toto (vlož to na úplný koniec súboru README.md v Tooltipe):
-Markdown
+Komponent obsahuje zabudovanú logiku pre výpočet dostupného miesta na obrazovke a vo výreze (viewporte):
+- **Automatické preklápanie:** Ak JavaScript zistí, že vo zvolenej preferovanej pozícii (napr. `right`) pretečie mimo obrazovku, automaticky tooltip preklopí na bezpečnejšiu pozíciu (napr. `top` alebo `bottom`), aby sa predišlo orezaniu textu.
+- **Mobilné zobrazenie:** Na veľmi malých obrazovkách sa dlhý text automaticky a bezpečne zalamuje (`break-word`), čím sa predchádza rozbitiu layoutu a vzniku horizontálneho posuvníka.
 
 ## Inštalácia komponentu
 
 Tento komponent je súčasťou balíka `@id-sk/frontend`. Pre jeho použitie sa uistite, že máte v projekte importované príslušné SCSS štýly:
-
-```scss
-@import "node_modules/@id-sk/frontend/idsk/components/tooltip/tooltip";
-```

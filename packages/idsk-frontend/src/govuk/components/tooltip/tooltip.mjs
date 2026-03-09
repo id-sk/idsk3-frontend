@@ -12,8 +12,12 @@ export class Tooltip extends GOVUKFrontendComponent {
    */
   constructor($module) {
     super()
+
     /** @type {HTMLElement} */
     this.$module = /** @type {HTMLElement} */ ($module)
+
+    /** @type {boolean} */
+    this.isMousedown = false
 
     /** @type {HTMLElement | null} */
     this.$trigger = /** @type {HTMLElement | null} */ (
@@ -25,11 +29,10 @@ export class Tooltip extends GOVUKFrontendComponent {
       this.$module.querySelector('.govuk-tooltip__content')
     )
 
-    this.timer = null
-    this.delay = 200
-
+    /** @type {string | null} */
     const position = this.$module.getAttribute('data-position')
-    // Linter fix: Use nullish coalescing
+
+    /** @type {string} */
     this.preferredPosition = position ?? 'right'
 
     if (!this.$trigger || !this.$content) return
@@ -42,96 +45,53 @@ export class Tooltip extends GOVUKFrontendComponent {
    */
   init() {
     if (this.$trigger) {
-      this.$trigger.addEventListener('mouseenter', () => this.onMouseEnter())
-      this.$trigger.addEventListener('mouseleave', () => this.onMouseLeave())
-      this.$trigger.addEventListener('focus', () => this.show())
-      this.$trigger.addEventListener('blur', () => this.hide())
-      this.$trigger.addEventListener('keydown', (e) =>
-        this.onKeyDown(/** @type {KeyboardEvent} */ (e))
-      )
-      this.$trigger.addEventListener('click', (e) =>
-        this.onClick(/** @type {MouseEvent} */ (e))
-      )
+      // 1. Zaznamenáme myš
+      this.$trigger.addEventListener('mousedown', () => {
+        this.isMousedown = true
+      })
+
+      // 2. Focus otvorí tooltip (klávesnica áno, myš ignorujeme)
+      this.$trigger.addEventListener('focus', () => {
+        if (!this.isMousedown) this.show()
+      })
+
+      // 3. Blur zavrie a zruší stav myši
+      this.$trigger.addEventListener('blur', () => {
+        this.isMousedown = false
+        this.hide()
+      })
+
+      // 4. Bezpečný Click (prepínanie pre myš)
+      this.$trigger.addEventListener('click', (e) => {
+        e.preventDefault()
+        if (this.isMousedown) {
+          this.isVisible() ? this.hide() : this.show()
+        }
+      })
+
+      // 5. Escape klávesa
+      this.$trigger.addEventListener('keydown', (e) => {
+        const keyboardEvent = /** @type {KeyboardEvent} */ (e)
+        if (keyboardEvent.key === 'Escape') {
+          this.hide()
+        }
+      })
     }
 
-    document.addEventListener('click', (e) =>
-      this.onDocumentClick(/** @type {MouseEvent} */ (e))
-    )
+    // Zatvorenie pri kliknutí von
+    document.addEventListener('click', (e) => {
+      const target = /** @type {Node} */ (e.target)
+      if (!this.$module.contains(target) && this.isVisible()) {
+        this.hide()
+      }
+    })
 
     window.addEventListener('resize', () => {
       if (this.isVisible()) this.updatePosition()
     })
+
     if (this.isVisible()) {
       this.updatePosition()
-    }
-  }
-
-  /**
-   * Handle mouse enter
-   *
-   * @private
-   */
-  onMouseEnter() {
-    this.timer = setTimeout(() => {
-      this.show()
-    }, this.delay)
-  }
-
-  /**
-   * Handle mouse leave
-   *
-   * @private
-   */
-  onMouseLeave() {
-    if (this.timer) {
-      clearTimeout(this.timer)
-    }
-    this.hide()
-  }
-
-  /**
-   * Handle click
-   *
-   * @param {MouseEvent} e - Event
-   * @private
-   */
-  onClick(e) {
-    e.preventDefault()
-    if (this.isVisible()) {
-      this.hide()
-    } else {
-      this.show()
-    }
-  }
-
-  /**
-   * Handle document click
-   *
-   * @param {MouseEvent} e - Event
-   * @private
-   */
-  onDocumentClick(e) {
-    const target = /** @type {Node} */ (e.target)
-    if (!this.$module.contains(target) && this.isVisible()) {
-      this.hide()
-    }
-  }
-
-  /**
-   * Handle key down
-   *
-   * @param {KeyboardEvent} e - Event
-   * @private
-   */
-  onKeyDown(e) {
-    if (e.key === 'Escape') {
-      this.hide()
-      if (this.$trigger) this.$trigger.focus()
-    }
-    if (e.key === ' ' || e.key === 'Enter') {
-      e.preventDefault()
-      // @ts-expect-error - click simulation
-      this.onClick(e)
     }
   }
 
@@ -140,6 +100,12 @@ export class Tooltip extends GOVUKFrontendComponent {
    */
   show() {
     if (!this.$content || !this.$trigger) return
+
+    const contentId = this.$content.getAttribute('id')
+    if (contentId) {
+      this.$trigger.setAttribute('aria-describedby', contentId)
+    }
+    this.$trigger.setAttribute('aria-expanded', 'true')
 
     this.$content.classList.add('govuk-tooltip__content--visible')
     this.$content.setAttribute('aria-hidden', 'false')
@@ -155,6 +121,9 @@ export class Tooltip extends GOVUKFrontendComponent {
 
     this.$content.classList.remove('govuk-tooltip__content--visible')
     this.$content.setAttribute('aria-hidden', 'true')
+
+    this.$trigger.removeAttribute('aria-describedby')
+    this.$trigger.setAttribute('aria-expanded', 'false')
   }
 
   /**
@@ -172,10 +141,14 @@ export class Tooltip extends GOVUKFrontendComponent {
    *
    * @private
    */
+  /**
+   * Update tooltip position and arrow alignment
+   *
+   * @private
+   */
   updatePosition() {
     if (!this.$content || !this.$trigger) return
 
-    // Zmazané staré stavy, aby sa merali čisté hodnoty
     this.$module.classList.remove(
       'govuk-tooltip--top',
       'govuk-tooltip--bottom',
@@ -184,36 +157,55 @@ export class Tooltip extends GOVUKFrontendComponent {
     )
     this.$content.style.transform = ''
     this.$content.style.removeProperty('--arrow-left')
-    // reset vertikálnej šípky
     this.$content.style.removeProperty('--arrow-top')
 
     const triggerRect = this.$trigger.getBoundingClientRect()
-    const contentRect = this.$content.getBoundingClientRect()
-    const viewportWidth = window.innerWidth
-    // Výška okna
+    // Je dôležité zmerať viewport width a height, bez scrollbarov
+    const viewportWidth = document.documentElement.clientWidth
     const viewportHeight = window.innerHeight
 
-    // Rozhodnutie, či hore, dole alebo vpravo
     let pos = this.preferredPosition
+
+    // Predbežný odhad šírky (ak by bol tooltip otvorený)
+    const estimatedContentWidth = Math.min(290, viewportWidth - 32)
+    const estimatedContentHeight = this.$content.scrollHeight || 100 // fallback pre výšku
+
+    // Logika pretečenia do strán (PRE RÝCHLY PREKLOP)
     if (
       pos === 'right' &&
-      triggerRect.right + contentRect.width + 15 > viewportWidth
+      triggerRect.right + estimatedContentWidth + 15 > viewportWidth
     ) {
       pos = 'top'
     }
-    if (pos === 'top' && triggerRect.top - contentRect.height - 15 < 0) {
+    if (pos === 'left' && triggerRect.left - estimatedContentWidth - 15 < 0) {
+      pos = 'top'
+    }
+
+    // Logika pretečenia hore/dole
+    if (pos === 'top' && triggerRect.top - estimatedContentHeight - 15 < 0) {
       pos = 'bottom'
     }
 
-    // Aplikuj triedu
+    // Ak sa nezmestí ani dole a ani hore, skús ho dať napravo, ak tam aspoň nejaké miesto je
+    if (
+      pos === 'bottom' &&
+      triggerRect.bottom + estimatedContentHeight + 15 > viewportHeight &&
+      triggerRect.right + 100 < viewportWidth
+    ) {
+      pos = 'right'
+    }
+
     this.$module.classList.add(`govuk-tooltip--${pos}`)
 
-    // Detekcia kolízií do strán (IBA pre TOP a BOTTOM)
+    // Teraz zmeraj skutočný obsah, keď už vieme pozíciu
+    const finalContentRect = this.$content.getBoundingClientRect()
+
+    // JEMNÉ LADIENIE KOLÍZIÍ (Posun tooltipu po osiach)
     if (pos === 'top' || pos === 'bottom') {
-      const safeZone = 10
+      const safeZone = 16 // Väčší bezpečný okraj od hrany displeja
       const triggerCenter = triggerRect.left + triggerRect.width / 2
-      const idealLeft = triggerCenter - contentRect.width / 2
-      const idealRight = triggerCenter + contentRect.width / 2
+      const idealLeft = triggerCenter - finalContentRect.width / 2
+      const idealRight = triggerCenter + finalContentRect.width / 2
 
       let shiftX = 0
       if (idealLeft < safeZone) {
@@ -224,6 +216,7 @@ export class Tooltip extends GOVUKFrontendComponent {
 
       if (shiftX !== 0) {
         this.$content.style.transform = `translateX(calc(-50% + ${shiftX}px))`
+        // Šípka musí kompenzovať posun, aby stále ukazovala na ikonu
         this.$content.style.setProperty(
           '--arrow-left',
           `calc(50% - ${shiftX}px)`
@@ -231,13 +224,11 @@ export class Tooltip extends GOVUKFrontendComponent {
       }
     }
 
-    // Detekcia kolízií vertikálne (IBA pre LEFT a RIGHT)
     if (pos === 'left' || pos === 'right') {
-      const safeZone = 10
-      // Kde by bol stred tooltipu na osi Y
+      const safeZone = 16
       const triggerCenterY = triggerRect.top + triggerRect.height / 2
-      const idealTop = triggerCenterY - contentRect.height / 2
-      const idealBottom = triggerCenterY + contentRect.height / 2
+      const idealTop = triggerCenterY - finalContentRect.height / 2
+      const idealBottom = triggerCenterY + finalContentRect.height / 2
 
       let shiftY = 0
       if (idealTop < safeZone) {
@@ -259,5 +250,7 @@ export class Tooltip extends GOVUKFrontendComponent {
 
 /**
  * Name for the component used when initialising using data-module attributes.
+ *
+ * @type {string}
  */
 Tooltip.moduleName = 'govuk-tooltip'
