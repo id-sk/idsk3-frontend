@@ -45,43 +45,63 @@ export class Tooltip extends GOVUKFrontendComponent {
    */
   init() {
     if (this.$trigger) {
-      // 1. Zaznamenáme myš
       this.$trigger.addEventListener('mousedown', () => {
         this.isMousedown = true
       })
 
-      // 2. Focus otvorí tooltip (klávesnica áno, myš ignorujeme)
       this.$trigger.addEventListener('focus', () => {
         if (!this.isMousedown) this.show()
       })
 
-      // 3. Blur zavrie a zruší stav myši
-      this.$trigger.addEventListener('blur', () => {
+      this.$trigger.addEventListener('blur', (e) => {
+        // FIX: Ak presúvame focus do vnútra tooltipu (napr. označenie textu), nezatváraj
+        const relatedTarget = /** @type {Node} */ (e.relatedTarget)
+        if (this.$content?.contains(relatedTarget)) {
+          return
+        }
+
         this.isMousedown = false
         this.hide()
       })
 
-      // 4. Bezpečný Click (prepínanie pre myš)
       this.$trigger.addEventListener('click', (e) => {
         e.preventDefault()
+        e.stopPropagation()
         if (this.isMousedown) {
           this.isVisible() ? this.hide() : this.show()
         }
       })
 
-      // 5. Escape klávesa
       this.$trigger.addEventListener('keydown', (e) => {
         const keyboardEvent = /** @type {KeyboardEvent} */ (e)
+        if (keyboardEvent.key === 'Enter' || keyboardEvent.key === ' ') {
+          e.preventDefault()
+          e.stopPropagation()
+          this.isVisible() ? this.hide() : this.show()
+        }
         if (keyboardEvent.key === 'Escape') {
           this.hide()
+          this.$trigger?.focus() // Dobrá prax pre prístupnosť
         }
       })
     }
 
-    // Zatvorenie pri kliknutí von
+    // Povolenie interakcie s obsahom
+    if (this.$content) {
+      // Aby content mohol prijať focus pri kliku/označovaní a nespustil blur na triggeri nekontrolovane
+      this.$content.setAttribute('tabindex', '-1')
+
+      this.$content.addEventListener('click', (e) => {
+        e.stopPropagation()
+      })
+    }
+
     document.addEventListener('click', (e) => {
       const target = /** @type {Node} */ (e.target)
-      if (!this.$module.contains(target) && this.isVisible()) {
+      const isInsideTrigger = this.$trigger?.contains(target)
+      const isInsideContent = this.$content?.contains(target)
+
+      if (!isInsideTrigger && !isInsideContent && this.isVisible()) {
         this.hide()
       }
     })

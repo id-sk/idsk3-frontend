@@ -99,6 +99,7 @@
 
       &--visible {
         display: block;
+        pointer-events: auto; // Poistka, aby sa dalo na text klikať
       }
 
       // Arrow (šípka)
