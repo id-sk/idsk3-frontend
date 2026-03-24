@@ -8,24 +8,21 @@
   {% set warningBanner = true %}
 {% endif %}
 
-{%- if successBanner %}
-  {% set typeClass = "govuk-notification-banner--" + params.type %}
+{%- if params.type == "alert" %}
+  {% set alertBanner = true %}
 {% endif %}
 
-{%- if warningBanner %}
+{%- if successBanner or warningBanner or alertBanner %}
   {% set typeClass = "govuk-notification-banner--" + params.type %}
 {% endif %}
 
 {%- if params.role %}
   {% set role = params.role %}
 {% elif successBanner %}
-  {#- If type is success, add `role="status"` to prioritise the information in the notification banner to users of assistive technologies -#}
   {% set role = "status" %}
-{% elif warningBanner %}
-  {#- If type is warning, add `role="alert"` to prioritise the information in the notification banner to users of assistive technologies -#}
+{% elif warningBanner or alertBanner %}
   {% set role = "alert" %}
 {% else %}
-  {#- Otherwise add `role="region"` to make the notification banner a landmark to help users of assistive technologies to navigate to the banner -#}
   {% set role = "region" %}
 {% endif %}
 
@@ -37,6 +34,8 @@
   {% set title = "Success" %}
 {%- elif warningBanner %}
   {% set title = "Warning" %}
+{%- elif alertBanner %}
+  {% set title = "Error" %}
 {%- else %}
   {% set title = "Important" %}
 {%- endif -%}
@@ -45,22 +44,46 @@
   {% set isSmall = true %}
 {% endif %}
 
+{% set iconName = "info" %}
+{% if successBanner %}
+  {% set iconName = "check_circle" %}
+{% elif warningBanner %}
+  {% set iconName = "warning" %}
+{% elif alertBanner %}
+  {% set iconName = "error" %}
+{% endif %}
+
 <div class="govuk-notification-banner {%- if isSmall %} govuk-notification-banner--small {% endif %} {%- if typeClass %} {{ typeClass }}{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}" role="{{ role }}" aria-labelledby="{{ params.titleId | default("govuk-notification-banner-title", true) }}" data-module="govuk-notification-banner"
   {%- if params.disableAutoFocus !== undefined %} data-disable-auto-focus="{{ params.disableAutoFocus }}"{% endif %}
   {{- govukAttributes(params.attributes) }}>
-  <div class="govuk-notification-banner__header">
-    <h{{ params.titleHeadingLevel | default(2, true) }} class="govuk-notification-banner__title" id="{{ params.titleId | default("govuk-notification-banner-title", true) }}">
-      {{ title }}
-    </h{{ params.titleHeadingLevel | default(2, true) }}>
-  </div>
-  <div class="govuk-notification-banner__content">
-  {% if caller or params.html %}
-    {{ caller() if caller else params.html | safe | trim | indent(4) }}
-  {% elif params.text %}
-    {# Set default style for single line content -#}
-    <p class="govuk-notification-banner__heading">
-      {{ params.text | trim | indent(6) }}
-    </p>
-  {% endif %}
+  
+  <div class="govuk-notification-banner__inner">
+
+    <div class="govuk-notification-banner__icon">
+      <span class="material-icons" aria-hidden="true">{{ iconName }}</span>
+    </div>
+
+    <div class="govuk-notification-banner__header">
+      <h{{ params.titleHeadingLevel | default(2, true) }} class="govuk-notification-banner__title" id="{{ params.titleId | default("govuk-notification-banner-title", true) }}">
+        {{ title }}
+      </h{{ params.titleHeadingLevel | default(2, true) }}>
+    </div>
+
+    <div class="govuk-notification-banner__content">
+    {% if caller or params.html %}
+      {{ caller() if caller else params.html | safe | trim | indent(6) }}
+    {% elif params.text %}
+      <p class="govuk-notification-banner__heading">
+        {{ params.text | trim | indent(8) }}
+      </p>
+    {% endif %}
+    </div>
+
+    {% if params.actionHtml %}
+      <div class="govuk-notification-banner__action">
+        {{ params.actionHtml | safe }}
+      </div>
+    {% endif %}
+
   </div>
 </div>
