@@ -95,10 +95,3 @@ examples:
       type: alert
       titleText: 'Na stránke sa našli chyby'
       html: '<p class="govuk-body">Pred pokračovaním musíte opraviť nasledujúce chyby:</p><ul class="govuk-list govuk-list--bullet"><li><a href="#meno" class="govuk-link">Meno a priezvisko nesmie ostať prázdne</a></li><li><a href="#vek" class="govuk-link">Vek musí byť zadaný ako číslo</a></li></ul>'
-
-  - name: '- menšia verzia'
-    options:
-      isSmall: true
-      titleText: 'Nadpis informačného banneru'
-      text: 'Telo textu informácie: Lorem ipsum dolor sit amet consectetur. Ipsum diam proin ultricies amet. Gravida rhoncus ultricies odio sed molestie neque. Lacus sit congue consequat convallis ut etiam massa vulputate aenean.'
-      actionHtml: '<a href="#" class="govuk-link">Viac info</a>'

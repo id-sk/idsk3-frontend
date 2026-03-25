@@ -3,7 +3,7 @@
     @include govuk-font($size: 19);
     @include govuk-responsive-margin(8, "bottom");
 
-    max-width: 1120px;
+    max-width: 740px;
     padding: govuk-spacing(4) govuk-spacing(5);
     border-width: 2px 2px 2px 5px;
     border-style: solid;
@@ -12,16 +12,6 @@
 
     &:focus {
       outline: $govuk-focus-width solid $govuk-focus-colour;
-    }
-  }
-
-  .govuk-notification-banner--small {
-    max-width: 740px;
-    padding: govuk-spacing(3) govuk-spacing(4);
-
-    .govuk-notification-banner__header,
-    .govuk-notification-banner__content {
-      max-width: 100%;
     }
   }
 
@@ -61,14 +51,14 @@
     grid-area: header;
     display: flex;
     align-items: center;
-    max-width: 660px;
+    max-width: 100%;
     justify-self: start;
   }
 
   .govuk-notification-banner__content {
     grid-area: content;
     @include govuk-text-colour;
-    max-width: 660px;
+    max-width: 100%;
     justify-self: start;
 
     > :first-child {
