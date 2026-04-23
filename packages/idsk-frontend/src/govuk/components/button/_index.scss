@@ -83,7 +83,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
     @include govuk-font($size: 16, $weight: bold);
 
     box-sizing: border-box;
-    display: inline-block;
+    display: inline-flex;
     position: relative;
     width: 100%;
     min-height: 49px;
@@ -91,20 +91,17 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
     margin-right: 0;
     margin-left: 0;
     @include govuk-responsive-margin(6, "bottom", $adjustment: $button-shadow-size); // s2
-    padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2)
-      (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)); // s1
+    padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2);
+    // (govuk-spacing(2) - $govuk-border-width-form-element - ($button-shadow-size / 2)); // s1
+    gap: govuk-spacing(2);
     border: $govuk-border-width-form-element solid $govuk-button-border-colour;
     border-radius: 5px;
     color: $govuk-button-text-colour;
     background-color: $govuk-button-background-colour;
-    text-align: center;
-    vertical-align: top;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     appearance: none;
-
-    > * {
-      vertical-align: top;
-    }
 
     // govuk-font-size($size: 16, $line-height: 19px)
     .material-icons {
