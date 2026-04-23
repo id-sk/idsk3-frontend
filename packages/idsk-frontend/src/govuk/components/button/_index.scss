@@ -57,14 +57,14 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
   $govuk-secondary-border-hover-colour: govuk-colour("dark-grey");
   // secondary success
   $govuk-secondary-success-background-colour: govuk-colour("white");
-  $govuk-secondary-success-text-colour: govuk-colour("dark-green");
-  $govuk-secondary-success-border-colour: govuk-colour("dark-green");
+  $govuk-secondary-success-text-colour: govuk-colour("green");
+  $govuk-secondary-success-border-colour: govuk-colour("green");
   $govuk-secondary-success-active-colour: govuk-colour("light-green");
   $govuk-secondary-success-border-hover-colour: govuk-colour("dark-grey");
   // secondary warning
   $govuk-secondary-warning-background-colour: govuk-colour("white");
-  $govuk-secondary-warning-text-colour: govuk-colour("dark-red");
-  $govuk-secondary-warning-border-colour: govuk-colour("dark-red");
+  $govuk-secondary-warning-text-colour: govuk-colour("red");
+  $govuk-secondary-warning-border-colour: govuk-colour("red");
   $govuk-secondary-warning-active-colour: govuk-colour("light-red");
   $govuk-secondary-warning-border-hover-colour: govuk-colour("dark-grey");
 
@@ -209,8 +209,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
       }
 
       &:active {
-        border-color: $govuk-secondary-active-colour;
-        background-color: $govuk-secondary-background-colour;
+        background-color: $govuk-secondary-active-colour;
 
         &:hover {
           box-shadow: 0 0 0 3px $govuk-secondary-active-colour;
@@ -239,7 +238,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
         }
 
         &:active {
-          border-color: $govuk-secondary-success-active-colour;
+          background-color: $govuk-secondary-success-active-colour;
 
           &:hover {
             box-shadow: 0 0 0 3px $govuk-secondary-success-active-colour;
@@ -257,7 +256,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
         }
 
         &:active {
-          border-color: $govuk-secondary-warning-active-colour;
+          background-color: $govuk-secondary-warning-active-colour;
 
           &:hover {
             box-shadow: 0 0 0 3px $govuk-secondary-warning-active-colour;
