@@ -35,38 +35,38 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
   $govuk-button-background-colour: $govuk-button-background-colour;
   $govuk-button-text-colour: $govuk-button-text-colour;
   $govuk-button-active-colour: govuk-colour("dark-blue");
-  $govuk-button-disabled-colour: govuk-colour("greyN500");
+  $govuk-button-disabled-colour: govuk-colour("greyN400");
   $govuk-button-border-colour: transparent;
-  $govuk-button-border-hover-colour: govuk-colour("dark-blue");
+  $govuk-button-border-hover-colour: govuk-colour("dark-grey");
   // primary success
   $govuk-button-success-background-colour: govuk-colour("green");
   $govuk-button-success-active-colour: govuk-colour("dark-green");
-  $govuk-button-success-border-hover-colour: govuk-colour("dark-green");
+  $govuk-button-success-border-hover-colour: govuk-colour("dark-grey");
   // primary warning
   $govuk-button-warning-background-colour: govuk-colour("red");
   $govuk-button-warning-active-colour: govuk-colour("dark-red");
-  $govuk-button-warning-border-hover-colour: govuk-colour("dark-red");
+  $govuk-button-warning-border-hover-colour: govuk-colour("dark-grey");
 
   // secondary basic
-  $govuk-secondary-background-colour: govuk-colour("light-blue");
+  $govuk-secondary-background-colour: govuk-colour("white");
   $govuk-secondary-text-colour: govuk-colour("dark-blue");
-  $govuk-secondary-disabled-colour: govuk-colour("greyN500");
-  $govuk-secondary-disabled-background-colour: govuk-colour("greyN100");
-  $govuk-secondary-border-colour: govuk-colour("blue");
-  $govuk-secondary-active-colour: govuk-colour("dark-blue");
-  $govuk-secondary-border-hover-colour: govuk-colour("blue");
+  $govuk-secondary-disabled-colour: govuk-colour("greyN400");
+  $govuk-secondary-disabled-background-colour: govuk-colour("white");
+  $govuk-secondary-border-colour: govuk-colour("dark-blue");
+  $govuk-secondary-active-colour: govuk-colour("light-blue");
+  $govuk-secondary-border-hover-colour: govuk-colour("dark-grey");
   // secondary success
-  $govuk-secondary-success-background-colour: govuk-colour("light-green");
+  $govuk-secondary-success-background-colour: govuk-colour("white");
   $govuk-secondary-success-text-colour: govuk-colour("dark-green");
-  $govuk-secondary-success-border-colour: govuk-colour("green");
-  $govuk-secondary-success-active-colour: govuk-colour("dark-green");
-  $govuk-secondary-success-border-hover-colour: govuk-colour("green");
+  $govuk-secondary-success-border-colour: govuk-colour("dark-green");
+  $govuk-secondary-success-active-colour: govuk-colour("light-green");
+  $govuk-secondary-success-border-hover-colour: govuk-colour("dark-grey");
   // secondary warning
-  $govuk-secondary-warning-background-colour: govuk-colour("light-red");
+  $govuk-secondary-warning-background-colour: govuk-colour("white");
   $govuk-secondary-warning-text-colour: govuk-colour("dark-red");
-  $govuk-secondary-warning-border-colour: govuk-colour("red");
-  $govuk-secondary-warning-active-colour: govuk-colour("dark-red");
-  $govuk-secondary-warning-border-hover-colour: govuk-colour("red");
+  $govuk-secondary-warning-border-colour: govuk-colour("dark-red");
+  $govuk-secondary-warning-active-colour: govuk-colour("light-red");
+  $govuk-secondary-warning-border-hover-colour: govuk-colour("dark-grey");
 
   // Inverse button variables
   $govuk-inverse-button-colour: $govuk-inverse-button-background-colour;
@@ -80,12 +80,13 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
   $button-shadow-size: $govuk-border-width-form-element;
 
   .govuk-button {
-    @include govuk-font($size: 16, $line-height: 19px, $weight: bold);
+    @include govuk-font($size: 16, $weight: bold);
 
     box-sizing: border-box;
     display: inline-block;
     position: relative;
     width: 100%;
+    min-height: 49px;
     margin-top: 0;
     margin-right: 0;
     margin-left: 0;
