@@ -5,7 +5,7 @@
 /// Button component background colour
 ///
 /// @type Colour
-/// @access public
+/// @access publicA
 
 $govuk-button-background-colour: govuk-colour("blue") !default;
 
@@ -153,7 +153,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
     }
 
     &:hover {
-      box-shadow: 0 0 0 3px $govuk-button-border-hover-colour;
+      box-shadow: 0 0 0 4px $govuk-button-border-hover-colour;
     }
 
     &[disabled] {
@@ -178,7 +178,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
       background-color: $govuk-button-success-background-colour;
 
       &:hover {
-        box-shadow: 0 0 0 3px $govuk-button-success-border-hover-colour;
+        box-shadow: 0 0 0 4px $govuk-button-success-border-hover-colour;
       }
 
       &:active {
@@ -190,7 +190,7 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
       background-color: $govuk-button-warning-background-colour;
 
       &:hover {
-        box-shadow: 0 0 0 3px $govuk-button-warning-border-hover-colour;
+        box-shadow: 0 0 0 4px $govuk-button-warning-border-hover-colour;
       }
 
       &:active {
@@ -205,14 +205,14 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
       text-decoration: none;
 
       &:hover {
-        box-shadow: 0 0 0 3px $govuk-secondary-border-hover-colour;
+        box-shadow: 0 0 0 4px $govuk-secondary-border-hover-colour;
       }
 
       &:active {
         background-color: $govuk-secondary-active-colour;
 
         &:hover {
-          box-shadow: 0 0 0 3px $govuk-secondary-active-colour;
+          box-shadow: 0 0 0 4px $govuk-secondary-warning-border-hover-colour;
         }
       }
 
@@ -234,14 +234,14 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
         background: $govuk-secondary-success-background-colour;
 
         &:hover {
-          box-shadow: 0 0 0 3px $govuk-secondary-success-border-hover-colour;
+          box-shadow: 0 0 0 4px $govuk-button-warning-border-hover-colour;
         }
 
         &:active {
           background-color: $govuk-secondary-success-active-colour;
 
           &:hover {
-            box-shadow: 0 0 0 3px $govuk-secondary-success-active-colour;
+            box-shadow: 0 0 0 4px $govuk-secondary-warning-border-hover-colour;
           }
         }
       }
@@ -252,14 +252,14 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
         background: $govuk-secondary-warning-background-colour;
 
         &:hover {
-          box-shadow: 0 0 0 3px $govuk-secondary-warning-border-hover-colour;
+          box-shadow: 0 0 0 4px $govuk-secondary-warning-border-hover-colour;
         }
 
         &:active {
           background-color: $govuk-secondary-warning-active-colour;
 
           &:hover {
-            box-shadow: 0 0 0 3px $govuk-secondary-warning-active-colour;
+            box-shadow: 0 0 0 4px $govuk-secondary-warning-border-hover-colour;
           }
         }
       }
@@ -267,20 +267,39 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
 
     &--texted {
       border: none;
-      color: govuk-colour("blue");
+      color: govuk-colour("dark-blue");
       background-color: transparent;
       @include govuk-link-common;
 
       &:hover {
-        color: govuk-colour("dark-blue");
-        box-shadow: none;
+        text-decoration-thickness: 3px;
+        box-shadow: 0 0 0 4px $govuk-secondary-warning-border-hover-colour;
+      }
+
+      &:active {
+        background-color: $govuk-secondary-active-colour;
+        text-decoration-thickness: 3px;
+
+        &:hover {
+          box-shadow: 0 0 0 4px $govuk-secondary-warning-border-hover-colour;
+        }
       }
 
       &__success {
         color: govuk-colour("green");
 
         &:hover {
-          color: govuk-colour("dark-green");
+          text-decoration-thickness: 3px;
+          box-shadow: 0 0 0 4px $govuk-secondary-warning-border-hover-colour;
+        }
+
+        &:active {
+          background-color: $govuk-secondary-success-active-colour;
+          text-decoration-thickness: 3px;
+
+          &:hover {
+            box-shadow: 0 0 0 4px $govuk-secondary-warning-border-hover-colour;
+          }
         }
       }
 
@@ -288,7 +307,17 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
         color: govuk-colour("red");
 
         &:hover {
-          color: govuk-colour("dark-red");
+          text-decoration-thickness: 3px;
+          box-shadow: 0 0 0 4px $govuk-secondary-warning-border-hover-colour;
+        }
+
+        &:active {
+          background-color: $govuk-secondary-warning-active-colour;
+          text-decoration-thickness: 3px;
+
+          &:hover {
+            box-shadow: 0 0 0 4px $govuk-secondary-warning-border-hover-colour;
+          }
         }
       }
 
@@ -316,13 +345,21 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
       }
 
       &:not([disabled]):hover {
-        outline-color: govuk-colour("white");
         background-color: transparent;
-        box-shadow: none;
-
+        box-shadow: 0 0 0 4px govuk-colour("white");
+        text-decoration-thickness: 3px;
         // & > *:not(.material-icons) {
         //   text-decoration: none;
         // }
+      }
+
+      &:not([disabled]):active {
+        background-color: $govuk-secondary-active-colour;
+        text-decoration-thickness: 3px;
+
+        &:hover {
+          box-shadow: 0 0 0 4px govuk-colour("white");
+        }
       }
 
       &:focus {
@@ -335,12 +372,27 @@ $govuk-inverse-button-text-colour: $govuk-brand-colour !default;
       }
     }
 
+    &__medium {
+      min-height: 41px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    &__small {
+      min-height: 35px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+
     &__large {
+      @warn "Modifikátor '__large' je DEPRECATED a v budúcej verzii bude odstránený. Použite prosím štandardnú veľkosť, alebo modifikátory '__medium' / '__small'.";
       padding: 0.75rem 1.25rem;
     }
   }
 
   .govuk-button--start {
+    @warn "Trieda '.govuk-button--start' je DEPRECATED a v najbližšom major update bude úplne odstránená. Prosím, nahraďte ju štandardným tlačidlom.";
+
     @include govuk-typography-weight-bold;
     @include govuk-font-size($size: 24, $line-height: 1);
 
