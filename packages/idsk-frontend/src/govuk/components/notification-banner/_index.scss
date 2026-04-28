@@ -89,10 +89,10 @@
   }
 
   .govuk-notification-banner__title {
-    @include govuk-font-size($size: 24);
-    @include govuk-typography-weight-bold;
     margin: 0;
     color: govuk-colour("black");
+    @include govuk-font-size($size: 24);
+    @include govuk-typography-weight-bold;
   }
 
   .govuk-notification-banner--success {
@@ -116,6 +116,32 @@
 
     .material-icons {
       color: $govuk-error-colour;
+    }
+  }
+
+  // --- DEPRECATED ---
+  .govuk-notification-banner--small {
+    @warn "Modifikátor '--small' pre Notification Banner je DEPRECATED a v najbližšom major update bude odstránený. Komponent už túto veľkosť dizajnovo nepodporuje.";
+
+    .govuk-notification-banner__heading {
+      @include govuk-font-size($size: 19);
+    }
+
+    .govuk-notification-banner__header {
+      padding: govuk-spacing(1) govuk-spacing(3);
+    }
+
+    .govuk-notification-banner__title {
+      @include govuk-font-size($size: 16);
+    }
+
+    .govuk-body,
+    .govuk-notification-banner__content {
+      @include govuk-font-size($size: 16);
+    }
+
+    .govuk-notification-banner__content {
+      padding: govuk-spacing(3);
     }
   }
 }
