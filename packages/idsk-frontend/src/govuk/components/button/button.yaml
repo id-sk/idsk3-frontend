@@ -54,151 +54,108 @@ params:
 
 title: Tlačidlo
 examples:
-  - name: default
+  # --- 1. PRIMÁRNE TLAČIDLÁ ---
+  - name: primárne
+    description: Základné primárne tlačidlo pre hlavnú akciu na stránke.
     options:
       text: Primárne tlačidlo
       classes: govuk-button__basic
-  - name: default with html
-    options:
-      html: <span>Primárne tlačidlo</span>
-      classes: govuk-button__basic
-  - name: default with icon
-    options:
-      html: <span>Primárne tlačidlo</span><span class="material-icons" aria-hidden="true">arrow_drop_down</span><span class="material-icons rotate180" aria-hidden="true">arrow_drop_down</span>
-      classes: govuk-button__basic
-  - name: start button
-    options:
-      text: Primárne tlačidlo
-      isStartButton: true
-  - name: ako odoslanie formuláru
-    options:
-      element: input
-      text: Odoslať
-      classes: govuk-button__basic
-  - name: so stavom :active
-    description: Simuluje aktívny stav :active CSS pseudotriedy, nie je súčasťou produkčného balíčku.
-    options:
-      name: active
-      text: Aktívne
-      classes: govuk-button__basic :active
-  - name: zneplatnené
-    options:
-      element: input
-      text: Zneplatnené
-      classes: govuk-button__basic
-      disabled: true
-  - name: úspešné
+
+  - name: primárne úspešné
     options:
       text: Súhlasím
       classes: govuk-button__success
-  - name: upozorňovacie
-    options:
-      text: Upozornenie
-      classes: govuk-button__warning
-  - name: zakázané
-    options:
-      text: Zrušiť
-      disabled: true
-  - name: stav :hover
-    description: Simuluje aktívny stab :hover CSS pseudotriedy, nie je súčasťou produkčného balíčku.
-    options:
-      name: hover
-      text: Stlačené tlačídlo
-      classes: :hover
-  - name: with focus state
-    description: Simuluje aktívny stav :focus CSS pseudotriedy, nie je súčasťou produkčného balíčku.
-    options:
-      name: focus
-      text: Focussed
-      classes: :focus
-  - name: veľké
-    description: Large button
-    options:
-      name: Button Large
-      text: Veľké tlačidlo
-      classes: govuk-button__large
-  - name: veľké s ikonou
-    description: Large button with icon
-    options:
-      name: Button Large
-      html: <span>Veľké tlačidlo</span><span class="material-icons" aria-hidden="true">arrow_drop_down</span>
-      classes: govuk-button__large
+
+  # --- 2. SEKUNDÁRNE TLAČIDLÁ ---
   - name: sekundárne
-    description: Tlačidlo v stave sekundárne
+    description: Tlačidlo pre vedľajšie akcie (napríklad Zrušiť, Späť).
     options:
-      name: secondary
       text: Sekundárne tlačidlo
       classes: govuk-button--sec
+
   - name: sekundárne úspešné
     options:
-      name: secondary
       text: Sekundárne úspešné
-      classes: govuk-button--sec__success
-  - name: sekundárne upozorňovacie tlačidlo
+      classes: govuk-button--sec govuk-button--sec__success
+
+  - name: sekundárne upozorňovacie
     options:
-      name: secondary
       text: Sekundárne upozorňovacie
-      classes: govuk-button--sec__warning
-  - name: sekundárne zakázané
+      classes: govuk-button--sec govuk-button--sec__warning
+
+  # --- 3. TERCIÁRNE (TEXTOVÉ) TLAČIDLÁ ---
+  - name: terciárne (textové)
+    description: Tlačidlo bez orámovania, vhodné pre menej dôležité akcie.
     options:
-      name: secondary
-      text: Sekundárne zakázané
-      classes: govuk-button--sec
-      disabled: true
-  - name: sekundárne ako linka
-    description: Tlačidlo vo forme sekundárnej linky
-    options:
-      name: secondary
-      text: Sekundárne tlačidlo
-      href: '/'
-      classes: govuk-button--sec
-  - name: upozorňovacie
-    description: Tlačidlo kde potrebujeme varovať požívateľa
-    options:
-      name: Warning
-      text: Upozornenie
-      classes: govuk-button__warning
-  - name: upozorňovacie zakázané
-    options:
-      name: warning
-      text: Upozornenie
-      classes: govuk-button--warning
-      disabled: true
-  - name: vo forme textu
-    options:
-      name: Texted
       text: Textové tlačidlo
       classes: govuk-button--texted
-  - name: vo forme textu s ikonou
+
+  - name: terciárne úspešné
     options:
-      name: Texted
-      classes: govuk-button--texted
-      html: <span>tlacidloy</span><span>tlacidloy</span><span class="material-icons" aria-hidden="true">arrow_drop_down</span><span>tlacidloy</span>
-  - name: textové úspešné
-    options:
-      name: Texted btn success
-      text: Textové tlačidlo
+      text: Textové úspešné
       classes: govuk-button--texted govuk-button--texted__success
-  - name: textové upozorňovacie
+
+  - name: terciárne upozorňovacie
     options:
-      name: Texted
-      text: Textové tlačidlo
+      text: Textové upozorňovacie
       classes: govuk-button--texted govuk-button--texted__warning
-  - name: textové zakázané
+
+  # --- 4. TLAČIDLÁ S IKONAMI ---
+  - name: s ikonou naľavo
+    description: Využíva parameter `html` pre vloženie ikony pred text.
     options:
-      name: Texted
-      text: Textové tlačidlo
-      classes: govuk-button--texted
-      disabled: true
-  - name: textové úspešné zakázané
+      html: <span class="material-icons" aria-hidden="true">arrow_back</span> <span>Naspäť</span>
+      classes: govuk-button__basic
+
+  - name: s ikonou napravo
+    description: Využíva parameter `html` pre vloženie ikony za text.
     options:
-      name: Texted btn success
-      text: Textové tlačidlo
-      classes: govuk-button--texted govuk-button--texted__success
-      disabled: true
-  - name: textové upozorňovacie zakázané
+      html: <span>Pokračovať</span> <span class="material-icons" aria-hidden="true">arrow_forward</span>
+      classes: govuk-button__basic
+
+  - name: s ikonami na oboch stranách
     options:
-      name: Texted
-      text: Texted btn warning
-      classes: govuk-button--texted govuk-button--texted__warning
+      html: <span class="material-icons" aria-hidden="true">add</span> <span>Pridať položku</span> <span class="material-icons" aria-hidden="true">check</span>
+      classes: govuk-button__basic
+
+  - name: iba ikona
+    description: Tlačidlo obsahujúce iba ikonu. Obsahuje `aria-label` pre čítačky obrazoviek.
+    options:
+      html: <span class="material-icons" aria-hidden="true">close</span>
+      classes: govuk-button--sec govuk-button--sec__warning
+      attributes:
+        aria-label: Zavrieť
+
+  # --- 5. VEĽKOSTI TLAČIDIEL ---
+  - name: stredné (medium)
+    description: Tlačidlo so zmenšeným vertikálnym odsadením.
+    options:
+      text: Stredné tlačidlo
+      classes: govuk-button__basic govuk-button__medium
+
+  - name: malé (small)
+    description: Kompaktné tlačidlo pre použitie v stiesnených priestoroch (napr. tabuľky).
+    options:
+      text: Malé tlačidlo
+      classes: govuk-button__basic govuk-button__small
+
+  # --- 6. ŠPECIFICKÉ STAVY A ELEMENTY ---
+  - name: zamerané (focus)
+    description: Ukážka stavu pri zameraní prvku klávesnicou (simuluje :focus pseudotriedu). Tento vizuál je kľúčový pre prístupnosť (a11y).
+    options:
+      text: Zamerané tlačidlo
+      classes: govuk-button__basic :focus
+
+  - name: zakázané (disabled)
+    description: Používa sa, ak akcia momentálne nie je pre používateľa dostupná.
+    options:
+      text: Odoslať
+      classes: govuk-button__basic
       disabled: true
+
+  - name: ako odkaz (link)
+    description: Ak je zadaný parameter `href`, komponent sa automaticky vyrenderuje ako `<a>` tag.
+    options:
+      text: Prejsť na úvodnú stránku
+      classes: govuk-button__basic
+      href: '#'

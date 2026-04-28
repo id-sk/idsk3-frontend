@@ -328,8 +328,8 @@ $govuk-font-family-gds-transport: "GDS Transport", arial, sans-serif;
 Bad:
 
 ```scss
-@import "_foo.scss";
-@import "_bar/foo.scss";
+@import "_foo";
+@import "_bar/foo";
 ```
 
 Good:
