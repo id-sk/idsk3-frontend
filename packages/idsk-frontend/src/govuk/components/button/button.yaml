@@ -66,11 +66,6 @@ examples:
       text: Súhlasím
       classes: govuk-button__success
 
-  - name: primárne upozorňovacie
-    options:
-      text: Upozornenie
-      classes: govuk-button__warning
-
   # --- 2. SEKUNDÁRNE TLAČIDLÁ ---
   - name: sekundárne
     description: Tlačidlo pre vedľajšie akcie (napríklad Zrušiť, Späť).
@@ -127,7 +122,7 @@ examples:
     description: Tlačidlo obsahujúce iba ikonu. Obsahuje `aria-label` pre čítačky obrazoviek.
     options:
       html: <span class="material-icons" aria-hidden="true">close</span>
-      classes: govuk-button__basic
+      classes: govuk-button--sec govuk-button--sec__warning
       attributes:
         aria-label: Zavrieť
 
@@ -145,6 +140,12 @@ examples:
       classes: govuk-button__basic govuk-button__small
 
   # --- 6. ŠPECIFICKÉ STAVY A ELEMENTY ---
+  - name: zamerané (focus)
+    description: Ukážka stavu pri zameraní prvku klávesnicou (simuluje :focus pseudotriedu). Tento vizuál je kľúčový pre prístupnosť (a11y).
+    options:
+      text: Zamerané tlačidlo
+      classes: govuk-button__basic :focus
+
   - name: zakázané (disabled)
     description: Používa sa, ak akcia momentálne nie je pre používateľa dostupná.
     options:
@@ -153,8 +154,8 @@ examples:
       disabled: true
 
   - name: ako odkaz (link)
-    description: Ak je zadaný parameter `href`, komponent sa automaticky vyrenderuje ako `<a>` tag namiesto `<button>`.
+    description: Ak je zadaný parameter `href`, komponent sa automaticky vyrenderuje ako `<a>` tag.
     options:
       text: Prejsť na úvodnú stránku
       classes: govuk-button__basic
-      href: /
+      href: '#'
